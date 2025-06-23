@@ -53,16 +53,19 @@
       }
 
       .cta-button {
-        display: inline-block;
-        background-color: white;
-        color: black;
-        font-weight: 500;
-        padding: 12px 28px;
-        font-size: 1rem;
+        background-color: rgba(255, 255, 255, 0.08); /* soft glassy look */
+        color: #ffffff;
+        font-size: 0.75rem;
+        text-align: center;
+        font-family: "Helvetica Neue", sans-serif;
+        text-transform: uppercase;
+        padding: 0.5rem 1.25rem;
+        border: 1px solid rgba(255, 255, 255, 0.2);
         border-radius: 8px;
-        cursor: pointer;
+        font-weight: 500;
         text-decoration: none;
-        transition: background 0.3s ease;
+        transition: all 0.3s ease;
+        backdrop-filter: blur(6px); /* optional for glassmorphism */
 
         /* ✅ Fix for clickability */
         position: relative;
@@ -507,7 +510,7 @@
             Drive awareness, take real action, and inspire others with
             purpose-built solutions that protect our planet.
           </p>
-          <a href="#about" class="cta-button">Explore initiatives</a>
+          <a href="#explore" class="cta-button">Explore Resources</a>
         </div>
         <a href="https://sdgs.un.org/goals/goal13" target="_blank"
           ><img src="./assets/images/sdg13.png" alt="SDG 13" class="sdg-corner"
@@ -571,8 +574,8 @@
           </p>
         </div>
       </div>
+      <div id="explore"></div>
     </section>
-
     <section class="content-hub-section">
       <div class="block-container">
         <div class="block-content">
