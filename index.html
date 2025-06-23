@@ -165,13 +165,80 @@
         transform: translateY(-4px);
         color: #ccc;
       }
+
+      .sdg13-layout {
+        background: #fff;
+        color: white;
+        font-family: "Outfit", sans-serif;
+        padding: 4rem 1.5rem;
+      }
+
+      .sdg13-container {
+        display: grid;
+        grid-template-columns: 1fr 1.2fr;
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        align-items: center;
+      }
+
+      .video-frame iframe {
+        width: 100%;
+        height: 300px;
+        border-radius: 1rem;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      /* Content Styling */
+      .sdg13-label {
+        color: #14cb5a;
+        font-size: 0.85rem;
+        font-family: "Helvetica Neue", sans-serif;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+
+      .sdg13-heading {
+        font-size: 2rem;
+        font-weight: 500;
+        font-family: "Helvetica Neue", sans-serif;
+        margin: 0 0 1.25rem;
+        color: black;
+        line-height: 1.3;
+      }
+
+      .sdg13-content p {
+        font-family: "Helvetica Neue", sans-serif;
+        font-size: 1.05rem;
+        text-align: justify;
+        line-height: 1.7;
+        margin-bottom: 1.2rem;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 900px) {
+        .sdg13-container {
+          grid-template-columns: 1fr;
+          text-align: justify;
+        }
+
+        .sdg13-heading {
+          font-size: 1.75rem;
+        }
+
+        .sdg13-content p {
+          font-size: 1rem;
+        }
+      }
     </style>
   </head>
   <body>
     <header class="header" id="header">
       <div class="header-left">
         <div style="display: flex; align-items: center; gap: 16px">
-          <div class="logo">CLM8</div>
+          <div class="logo">clm8.</div>
           <div class="logo-separator"></div>
           <div class="logo">
             <img
@@ -235,6 +302,42 @@
       <a href="#join" class="cta-button">Join Today</a>
     </div>
 
+    <section class="sdg13-layout">
+      <div class="sdg13-container">
+        <!-- Left Side: Video -->
+        <div class="sdg13-video">
+          <div class="video-frame">
+            <iframe
+              src="https://www.youtube.com/embed/L1YcAbs3bdY?si=SbFlHvoaSq4kAS3s"
+              title="SDG 13 - Climate Action"
+              frameborder="0"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+
+        <!-- Right Side: Content -->
+        <div class="sdg13-content">
+          <span class="sdg13-label">SDG 13</span>
+          <h2 class="sdg13-heading">Guiding Goals for Change</h2>
+
+          <p>
+            SDG 13 focuses on urgent actions to combat climate change and its
+            impacts. clm8 aligns with this by supporting resilience building,
+            policy reform, and institutional readiness for natural disasters and
+            environmental risk.
+          </p>
+
+          <p>
+            Our initiatives directly support education, awareness, and local
+            capacity building ensuring that communities are equipped to mitigate
+            climate threats, adapt to change, and engage in inclusive climate
+            planning.
+          </p>
+        </div>
+      </div>
+    </section>
+
     <button class="scroll-to-top" onclick="scrollToTop()">^</button>
 
     <footer class="footer">
@@ -276,7 +379,7 @@
       </div>
 
       <div class="footer-bottom">
-        <p>Copyright © 2025 CLM8. All rights reserved.</p>
+        <p>Copyright © 2025 clm8. All rights reserved.</p>
       </div>
     </footer>
 
