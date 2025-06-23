@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template for Global CSS</title>
+    <link rel="stylesheet" href="./css/global.css" />
+  </head>
+  <body>
+    <header class="header" id="header">
+      <div class="header-left">
+        <div style="display: flex; align-items: center; gap: 16px">
+          <div class="logo">IMAGINE.</div>
+          <div class="logo-separator"></div>
+          <div class="logo">
+            <img
+              src="./assets/images/sdgs.png"
+              alt=""
+              width="25%"
+              height="25%"
+            />
+          </div>
+        </div>
+        <div class="mobile-menu-button" onclick="toggleMobileMenu()">☰</div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="#">Products</a>
+        <a href="#">Leaderboards</a>
+        <a href="#">Enterprise</a>
+        <a href="#">Government</a>
+        <a href="#">Customers</a>
+        <a href="#">Resources</a>
+      </nav>
+
+      <div class="header-right">
+        <a href="#" class="profile-button">Profile →</a>
+      </div>
+
+      <div class="mobile-nav" id="mobileNav">
+        <a href="#">Products</a>
+        <a href="#">Leaderboards</a>
+        <a href="#">Enterprise</a>
+        <a href="#">Government</a>
+        <a href="#">Customers</a>
+        <a href="#">Resources</a>
+        <a href="#" class="profile-button">Profile →</a>
+      </div>
+    </header>
+    <main></main>
+
+    <button class="scroll-to-top" onclick="scrollToTop()">^</button>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h4>Website Links</h4>
+          <a href="#">Home</a>
+          <a href="#">Shop</a>
+          <a href="#">Gallery</a>
+          <a href="#">Feedback</a>
+          <a href="#">Team</a>
+          <a href="#">Sitemap</a>
+        </div>
+
+        <div class="footer-column">
+          <h4>Useful Links</h4>
+          <a href="#">Conditions</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Cookies</a>
+          <a href="#">Anti Corruption</a>
+          <a href="#">Asset License</a>
+        </div>
+
+        <div class="footer-column">
+          <h4>Content Pages</h4>
+          <a href="#">Content 01</a>
+          <a href="#">Content 02</a>
+          <a href="#">Content 03</a>
+          <a href="#">Content 04</a>
+        </div>
+
+        <div class="footer-column">
+          <h4>Student Pages</h4>
+          <a href="#">Student 01</a>
+          <a href="#">Student 02</a>
+          <a href="#">Student 03</a>
+          <a href="#">Student 04</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>Copyright © 2025 CLM8. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      function toggleMobileMenu() {
+        document.getElementById("header").classList.toggle("show-mobile-nav");
+      }
+
+      function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    </script>
+  </body>
+</html>
