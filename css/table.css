@@ -21,10 +21,12 @@
 .climate-scroll {
   overflow-x: auto;
   overflow-y: visible;
-  border-radius: 12px;
-  box-shadow: 0 0 14px rgba(0, 0, 0, 0.08);
-  border: 1px solid #e6e6e6;
-  background: #fdfdfd;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.36);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(2.9px);
+  -webkit-backdrop-filter: blur(2.9px);
+  border: 1px solid rgba(255, 255, 255, 0.32);
   position: relative;
   z-index: 1;
 }
@@ -33,7 +35,7 @@
   width: 100%;
   border-collapse: collapse;
   min-width: 800px;
-  background: white;
+  background: rgba(255, 255, 255, 0.6);
 }
 
 .climate-table th,
@@ -47,7 +49,7 @@
 }
 
 .climate-table thead th {
-  background: #d1f0dc;
+  background: rgba(209, 240, 220, 0.6);
   color: #064e3b;
   font-weight: 500;
   position: sticky;
@@ -58,7 +60,7 @@
 
 .climate-table td:first-child,
 .climate-table th:first-child {
-  background: #f5fff9;
+  background: rgba(245, 255, 249, 0.8);
   position: sticky;
   left: 0;
   font-weight: 500;
@@ -68,19 +70,44 @@
 }
 
 .climate-table tr:nth-child(even) {
-  background: #f8fdfb;
+  background: rgba(248, 253, 251, 0.8);
 }
 
 .climate-table tbody tr:hover {
-  background: #eefaf3;
+  background: rgba(238, 250, 243, 0.6);
 }
 
+/* ========== NOTE BELOW TABLE ========== */
 .table-note {
   text-align: left;
   font-size: 0.75rem;
-  color: #666;
-  background: #f1f7f3;
+  color: #444;
+  background: rgba(241, 247, 243, 0.6);
+  backdrop-filter: blur(2.9px);
+  -webkit-backdrop-filter: blur(2.9px);
+  border-radius: 12px;
   padding: 0.75rem 1rem;
+  margin-top: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(200, 200, 200, 0.3);
+}
+
+.note-flex {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.note-flex img {
+  height: 50px;
+  width: 50px;
+  flex-shrink: 0;
+}
+
+.note-flex span {
+  text-align: right;
+  flex: 1;
 }
 
 .country {

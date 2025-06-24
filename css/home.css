@@ -84,7 +84,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: -0.25%;
+  margin-top: 0.2%;
   z-index: 10;
   padding: 2rem 3rem;
   background: rgba(12, 191, 108, 0.866);
@@ -102,9 +102,14 @@
   margin: 0;
 }
 
+.cta-bar img {
+  width: 64px;
+  height: 64px;
+}
+
 .sdg-corner {
   position: absolute;
-  bottom: 20%;
+  bottom: 77%;
   right: 1%;
   margin-bottom: 8vh;
   transition: linear;
@@ -113,24 +118,6 @@
   width: 100px;
   max-width: 25vw;
   opacity: 0.95;
-}
-
-.scroll-to-top {
-  position: fixed;
-  bottom: 20px;
-  right: 24px;
-  width: 20px;
-  font-size: 2rem;
-  color: white;
-  background: #0cc170;
-  border: none;
-  cursor: pointer;
-  z-index: 999;
-}
-
-.scroll-to-top:hover {
-  transform: translateY(-4px);
-  color: #ccc;
 }
 
 .sdg13-layout {
