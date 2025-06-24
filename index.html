@@ -3,456 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Template for Global CSS</title>
+    <title>clm8 - Climate Action for Everyone</title>
     <link rel="stylesheet" href="./css/global.css" />
-    <style>
-      /* ─────── Hero Section ─────── */
-      .hero {
-        position: relative;
-        width: 100%;
-        height: 100vh;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        padding: 80px 1rem 0; /* Avoid header overlap */
-        margin-bottom: -18vh;
-        z-index: 2;
-        overflow: hidden;
-      }
-
-      .text-wrapper {
-        position: relative;
-        margin-bottom: 25vh;
-        margin-top: -5vh;
-        z-index: 3;
-        color: white;
-        max-width: 800px;
-      }
-
-      .hero-title {
-        font-family: "Unbounded", sans-serif;
-        font-size: clamp(2.5rem, 6vw, 4.5rem);
-        font-weight: 700;
-        line-height: 1.2;
-        background: linear-gradient(90deg, #ffffff, #eae8e6);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        margin-bottom: 1rem;
-        text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-      }
-
-      .hero-subtitle {
-        font-size: 1.1rem;
-        font-weight: 400;
-        color: #eee;
-        max-width: 600px;
-        margin: 0 auto 2rem;
-        line-height: 1.6;
-      }
-
-      .cta-button {
-        background-color: rgba(255, 255, 255, 0.08); /* soft glassy look */
-        color: #ffffff;
-        font-size: 0.75rem;
-        text-align: center;
-        font-family: "Helvetica Neue", sans-serif;
-        text-transform: uppercase;
-        padding: 0.5rem 1.25rem;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 8px;
-        font-weight: 500;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        backdrop-filter: blur(6px); /* optional for glassmorphism */
-
-        /* ✅ Fix for clickability */
-        position: relative;
-        z-index: 10;
-      }
-
-      .cta-button:hover {
-        background-color: #f2f2f2;
-      }
-
-      /* ─────── Video Background ─────── */
-      .hero-video-wrapper {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 0;
-        overflow: hidden;
-        pointer-events: none;
-      }
-
-      .hero-video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      /* Overlay & Gradient Fade */
-      .hero-overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.4);
-        z-index: 1;
-      }
-
-      .hero-bottom-fade {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        height: 200px;
-        background: linear-gradient(to bottom, transparent, #111);
-        z-index: 2;
-        pointer-events: none;
-      }
-
-      /* ─────── CTA Bar ─────── */
-      .cta-bar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 1vh;
-        z-index: 10;
-        padding: 2rem 3rem;
-        background: rgba(12, 191, 108, 0.866);
-        backdrop-filter: blur(8px);
-        border-top: 1px solid rgba(255, 255, 255, 0.08);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        box-shadow: 0 2px 12px rgba(1, 59, 34, 1);
-        color: black;
-        font-family: "Helvetica Neue", sans-serif;
-      }
-
-      .cta-bar h2 {
-        font-size: 2rem;
-        font-weight: 500;
-        margin: 0;
-      }
-
-      .sdg-corner {
-        position: absolute;
-        bottom: 20%;
-        right: 1%;
-        margin-bottom: 8vh;
-        transition: linear;
-        z-index: 5;
-        border-radius: 10px;
-        width: 100px;
-        max-width: 25vw;
-        opacity: 0.95;
-      }
-
-      .scroll-to-top {
-        position: fixed;
-        bottom: 20px;
-        right: 24px;
-        width: 20px;
-        font-size: 2rem;
-        color: white;
-        background: #0cc170;
-        border: none;
-        cursor: pointer;
-        z-index: 999;
-      }
-
-      .scroll-to-top:hover {
-        transform: translateY(-4px);
-        color: #ccc;
-      }
-
-      .sdg13-layout {
-        background: #fff;
-        color: white;
-        font-family: "Outfit", sans-serif;
-        padding: 4rem 1.5rem;
-      }
-
-      .sdg13-container {
-        display: grid;
-        grid-template-columns: 1fr 1.2fr;
-        gap: 2rem;
-        max-width: 1200px;
-        margin: 0 auto;
-        align-items: center;
-      }
-
-      .video-frame iframe {
-        width: 100%;
-        height: 300px;
-        border-radius: 1rem;
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
-      }
-
-      /* Content Styling */
-      .sdg13-label {
-        color: #14cb5a;
-        font-size: 0.85rem;
-        font-family: "Helvetica Neue", sans-serif;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        display: block;
-        margin-bottom: 0.5rem;
-      }
-
-      .sdg13-heading {
-        font-size: 2rem;
-        font-weight: 500;
-        font-family: "Helvetica Neue", sans-serif;
-        margin: 0 0 1.25rem;
-        color: black;
-        line-height: 1.3;
-      }
-
-      .sdg13-content p {
-        font-family: "Helvetica Neue", sans-serif;
-        font-size: 1.05rem;
-        text-align: justify;
-        line-height: 1.7;
-        margin-bottom: 1.2rem;
-      }
-
-      /* Responsive Design */
-      @media (max-width: 900px) {
-        .sdg13-container {
-          grid-template-columns: 1fr;
-          text-align: justify;
-        }
-
-        .sdg13-heading {
-          font-size: 1.75rem;
-        }
-
-        .sdg13-content p {
-          font-size: 1rem;
-        }
-      }
-
-      .block-section {
-        background: #ffffff;
-        color: #000000;
-        padding: 1rem 1.5rem;
-        font-family: "Outfit", sans-serif;
-        margin-bottom: 2rem;
-        margin-top: -2rem;
-      }
-
-      .block-container {
-        max-width: 900px;
-        margin: 0 auto;
-      }
-
-      .block-label {
-        color: #14cb5a;
-        font-size: 0.85rem;
-        font-family: "Helvetica Neue", sans-serif;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        display: block;
-        margin-bottom: 0.5rem;
-      }
-
-      .block-heading {
-        font-size: 2rem;
-        font-weight: 500;
-        font-family: "Helvetica Neue", sans-serif;
-        margin: 0 0 1.25rem;
-        line-height: 1.3;
-      }
-
-      .block-content p {
-        font-family: "Helvetica Neue", sans-serif;
-        font-size: 1.05rem;
-        line-height: 1.7;
-        text-align: justify;
-        margin-bottom: 1.2rem;
-      }
-
-      /* Responsive */
-      @media (max-width: 900px) {
-        .block-heading {
-          font-size: 1.75rem;
-        }
-
-        .block-content p {
-          font-size: 1rem;
-        }
-      }
-
-      .content-hub-section {
-        background: #f9f9f9;
-        color: #111;
-        font-family: "Outfit", sans-serif;
-        padding: 4rem 1.5rem;
-        width: 100%;
-      }
-
-      .content-hub-section .block-container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 0 1rem;
-      }
-
-      .content-hub-section .block-content {
-        text-align: center;
-      }
-
-      .content-hub-section .block-label {
-        color: #0cc170;
-        font-size: 0.85rem;
-        font-family: "Helvetica Neue", sans-serif;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        display: block;
-        margin-bottom: 0.5rem;
-      }
-
-      .content-hub-section .block-heading {
-        font-size: 2rem;
-        font-weight: 500;
-        font-family: "Helvetica Neue", sans-serif;
-        margin: 0 0 1.25rem;
-        color: #111;
-        line-height: 1.3;
-      }
-
-      .content-hub-section .block-content p {
-        font-family: "Helvetica Neue", sans-serif;
-        font-size: 1.05rem;
-        line-height: 1.7;
-        text-align: center;
-        max-width: 800px;
-        margin: 0 auto;
-        color: #444;
-      }
-
-      /* Responsive Tweak */
-      @media (max-width: 768px) {
-        .content-hub-section .block-heading {
-          font-size: 1.6rem;
-        }
-
-        .content-hub-section .block-content p {
-          font-size: 1rem;
-        }
-      }
-
-      .wrapper {
-        display: grid;
-        grid-template-columns: repeat(4, 1fr); /* Desktop */
-        gap: 1.5rem;
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 2rem 1rem;
-      }
-
-      .card {
-        position: relative;
-        overflow: hidden;
-        border-radius: 16px;
-        height: 320px;
-        width: 100%;
-        cursor: pointer;
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        opacity: 0;
-        transform: translateY(40px);
-      }
-
-      .card.show {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-      }
-
-      .card img {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        z-index: 1;
-        transition: transform 0.4s ease;
-      }
-
-      .card:hover img {
-        transform: scale(1.05);
-      }
-
-      .card .info {
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.7);
-        color: #fff;
-        z-index: 2;
-        opacity: 0;
-        padding: 1.5rem;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        transition: opacity 0.4s ease;
-      }
-
-      .card:hover .info {
-        opacity: 1;
-      }
-
-      .card .info h1 {
-        font-size: 1.15rem;
-        font-weight: 700;
-        margin-bottom: 0.5rem;
-        color: #fff;
-      }
-
-      .card .info p {
-        font-size: 0.9rem;
-        color: #ccc;
-        margin-bottom: 1rem;
-        line-height: 1.5;
-      }
-
-      .card .button {
-        background-color: rgba(255, 255, 255, 0.08); /* soft glassy look */
-        color: #ffffff;
-        font-size: 0.75rem;
-        text-align: center;
-        font-family: "Helvetica Neue", sans-serif;
-        text-transform: uppercase;
-        padding: 0.5rem 1.25rem;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        border-radius: 8px;
-        font-weight: 500;
-        text-decoration: none;
-        transition: all 0.3s ease;
-        backdrop-filter: blur(6px); /* optional for glassmorphism */
-      }
-
-      @media (max-width: 1200px) {
-        .wrapper {
-          grid-template-columns: repeat(1, 1fr);
-          width: 80%;
-        }
-      }
-
-      @media (max-width: 768px) {
-        .wrapper {
-          grid-template-columns: repeat(1, 1fr);
-          width: 80%;
-        }
-      }
-    </style>
+    <link rel="stylesheet" href="./css/home.css" />
   </head>
   <body>
     <header class="header" id="header">
@@ -462,10 +15,10 @@
           <div class="logo-separator"></div>
           <div class="logo">
             <img
-              src="./assets/images/sdgs.png"
+              src="./assets/images/sdgsaf.webp"
               alt=""
-              width="25%"
-              height="25%"
+              width="20%"
+              height="20%"
             />
           </div>
         </div>
@@ -473,9 +26,9 @@
       </div>
 
       <nav class="nav-links">
-        <a href="#">Products</a>
-        <a href="#">Leaderboards</a>
-        <a href="#">Enterprise</a>
+        <a href="/">Home</a>
+        <a href="#">Volunteer</a>
+        <a href="/table.html">Climate Data</a>
         <a href="#">Government</a>
         <a href="#">Customers</a>
         <a href="#">Resources</a>
@@ -486,9 +39,9 @@
       </div>
 
       <div class="mobile-nav" id="mobileNav">
-        <a href="#">Products</a>
-        <a href="#">Leaderboards</a>
-        <a href="#">Enterprise</a>
+        <a href="/">Home</a>
+        <a href="#">Volunteer</a>
+        <a href="/table.html">Climate Data</a>
         <a href="#">Government</a>
         <a href="#">Customers</a>
         <a href="#">Resources</a>
@@ -510,7 +63,7 @@
             Drive awareness, take real action, and inspire others with
             purpose-built solutions that protect our planet.
           </p>
-          <a href="#explore" class="cta-button">Explore Resources</a>
+          <a href="#explore" class="main-button">Explore Resources</a>
         </div>
         <a href="https://sdgs.un.org/goals/goal13" target="_blank"
           ><img src="./assets/images/sdg13.png" alt="SDG 13" class="sdg-corner"
@@ -519,7 +72,12 @@
     </main>
     <div class="cta-bar">
       <h2>What are you waiting for?</h2>
-      <a href="#join" class="cta-button">Join Today</a>
+      <a
+        href="#join"
+        class="main-button"
+        style="background-color: rgba(255, 255, 255, 1); color: black"
+        >Join Today</a
+      >
     </div>
 
     <section class="sdg13-layout">
@@ -588,6 +146,16 @@
             climate challenges, take meaningful action, and share knowledge with
             your community.
           </p>
+          <!-- Dropdown Container -->
+          <div class="dropdown">
+            <select class="dropdown-select">
+              <option>Most Popular</option>
+              <option>Newest</option>
+              <option>Oldest</option>
+              <option>A–Z</option>
+              <option>Z–A</option>
+            </select>
+          </div>
         </div>
       </div>
       <br />
@@ -652,24 +220,22 @@
           </div>
         </div>
       </div>
-
-      <script>
-        const cards = document.querySelectorAll(".card");
-
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("show");
-              }
-            });
-          },
-          { threshold: 0.2 }
-        );
-
-        cards.forEach((card) => observer.observe(card));
-      </script>
     </section>
+    <div class="cta-bar" style="text-align: center; display: block">
+      <img
+        src="./assets/images/quote.png"
+        alt=""
+        width="64px"
+        height="64px"
+        style="margin: auto"
+      />
+      <h3>
+        Be part of our global mission to fight climate change and advance UN
+        Sustainable Development Goal 13. Together, through education,
+        innovation, and united action, we can build a more sustainable future.
+      </h3>
+      <div style="margin-bottom: 2rem"></div>
+    </div>
 
     <button class="scroll-to-top" onclick="scrollToTop()">^</button>
 
@@ -724,6 +290,21 @@
       function scrollToTop() {
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
+
+      const cards = document.querySelectorAll(".card");
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("show");
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+
+      cards.forEach((card) => observer.observe(card));
     </script>
   </body>
 </html>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Template for Global CSS</title>
+    <link rel="stylesheet" href="./css/global.css" />
+    <link rel="preconnect" href="https://flagcdn.com" crossorigin />
+    <link rel="stylesheet" href="./css/table.css" />
+  </head>
+  <body>
+    <header class="header" id="header">
+      <div class="header-left">
+        <div style="display: flex; align-items: center; gap: 16px">
+          <div class="logo">clm8.</div>
+          <div class="logo-separator"></div>
+          <div class="logo">
+            <img
+              src="./assets/images/sdgs.png"
+              alt=""
+              width="25%"
+              height="25%"
+            />
+          </div>
+        </div>
+        <div class="mobile-menu-button" onclick="toggleMobileMenu()">☰</div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="#">Volunteer</a>
+        <a href="/table.html">Climate Data</a>
+        <a href="#">Government</a>
+        <a href="#">Customers</a>
+        <a href="#">Resources</a>
+      </nav>
+
+      <div class="header-right">
+        <a href="#" class="profile-button">Profile →</a>
+      </div>
+
+      <div class="mobile-nav" id="mobileNav">
+        <a href="/">Home</a>
+        <a href="#">Volunteer</a>
+        <a href="/table.html">Climate Data</a>
+        <a href="#">Government</a>
+        <a href="#">Customers</a>
+        <a href="#">Resources</a>
+        <a href="#" class="profile-button">Profile →</a>
+      </div>
+    </header>
+    <main>
+      <section class="block-section">
+        <div class="block-wrapper">
+          <div class="block-container">
+            <div class="block-content">
+              <span class="block-label">ANALYZE</span>
+              <h2 class="block-heading">Global Climate Action Through Data</h2>
+              <p>
+                Discover how countries around the world are responding to the
+                climate crisis. Our climate analytics table reveals key trends,
+                national initiatives, and measurable progress aligned with SDG
+                13 empowering you to learn from real-world efforts and drive
+                change through informed action.
+              </p>
+              <p>
+                Through collaboration, innovation, and advocacy, we strive to
+                address the urgent challenges posed by climate change and create
+                a more resilient and equitable world for all.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="climate-section">
+        <div class="climate-scroll">
+          <table class="climate-table">
+            <thead>
+              <tr>
+                <th>Country</th>
+                <th>Temp Rise</th>
+                <th>Renewables</th>
+                <th>Reforested</th>
+                <th>Emissions</th>
+                <th>Initiatives</th>
+                <th>Alignment</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="country">
+                    <img
+                      src="https://flagcdn.com/w40/lk.png"
+                      width="20"
+                      alt="Sri Lanka flag"
+                    />
+                    Sri Lanka
+                  </div>
+                </td>
+                <td>+1.2°C</td>
+                <td>42%</td>
+                <td>8,500 ha</td>
+                <td>⬆️ Increasing</td>
+                <td>Solar Lanka</td>
+                <td>Energy & Farming</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="country">
+                    <img
+                      src="https://flagcdn.com/w40/in.png"
+                      width="20"
+                      alt="India flag"
+                    />
+                    India
+                  </div>
+                </td>
+                <td>+1.0°C</td>
+                <td>38%</td>
+                <td>21,000 ha</td>
+                <td>⬇️ Decreasing</td>
+                <td>EV Policy</td>
+                <td>Urban Shift</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="country">
+                    <img
+                      src="https://flagcdn.com/w40/de.png"
+                      width="20"
+                      alt="Germany flag"
+                    />
+                    Germany
+                  </div>
+                </td>
+                <td>+0.9°C</td>
+                <td>47%</td>
+                <td>9,200 ha</td>
+                <td>↔️ Stable</td>
+                <td>Green Hydrogen</td>
+                <td>Industry Reform</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="country">
+                    <img
+                      src="https://flagcdn.com/w40/us.png"
+                      width="20"
+                      alt="USA flag"
+                    />
+                    USA
+                  </div>
+                </td>
+                <td>+1.6°C</td>
+                <td>19%</td>
+                <td>3,800 ha</td>
+                <td>⬆️ Increasing</td>
+                <td>Climate Act 2023</td>
+                <td>Transport & Energy</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="country">
+                    <img
+                      src="https://flagcdn.com/w40/fr.png"
+                      width="20"
+                      alt="France flag"
+                    />
+                    France
+                  </div>
+                </td>
+                <td>+0.7°C</td>
+                <td>55%</td>
+                <td>12,000 ha</td>
+                <td>⬇️ Decreasing</td>
+                <td>NetZero France</td>
+                <td>Energy Innovation</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="country">
+                    <img
+                      src="https://flagcdn.com/w40/jp.png"
+                      width="20"
+                      alt="Japan flag"
+                    />
+                    Japan
+                  </div>
+                </td>
+                <td>+0.8°C</td>
+                <td>25%</td>
+                <td>4,000 ha</td>
+                <td>↔️ Stable</td>
+                <td>Smart Grid 2040</td>
+                <td>Urban Planning</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="country">
+                    <img
+                      src="https://flagcdn.com/w40/br.png"
+                      width="20"
+                      alt="Brazil flag"
+                    />
+                    Brazil
+                  </div>
+                </td>
+                <td>+1.4°C</td>
+                <td>81%</td>
+                <td>31,000 ha</td>
+                <td>⬇️ Decreasing</td>
+                <td>Amazon Shield</td>
+                <td>Deforestation Control</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="country">
+                    <img
+                      src="https://flagcdn.com/w40/au.png"
+                      width="20"
+                      alt="Australia flag"
+                    />
+                    Australia
+                  </div>
+                </td>
+                <td>+1.7°C</td>
+                <td>29%</td>
+                <td>6,700 ha</td>
+                <td>⬆️ Increasing</td>
+                <td>Climate Smart Farms</td>
+                <td>Water & Land</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="country">
+                    <img
+                      src="https://flagcdn.com/w40/cn.png"
+                      width="20"
+                      alt="China flag"
+                    />
+                    China
+                  </div>
+                </td>
+                <td>+1.5°C</td>
+                <td>35%</td>
+                <td>11,500 ha</td>
+                <td>⬆️ Increasing</td>
+                <td>Green Belt</td>
+                <td>Urban Emissions</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="country">
+                    <img
+                      src="https://flagcdn.com/w40/ng.png"
+                      width="20"
+                      alt="Nigeria flag"
+                    />
+                    Nigeria
+                  </div>
+                </td>
+                <td>+1.3°C</td>
+                <td>13%</td>
+                <td>9,000 ha</td>
+                <td>↔️ Stable</td>
+                <td>Solar Villages</td>
+                <td>Rural Access</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="country">
+                    <img
+                      src="https://flagcdn.com/w40/ca.png"
+                      width="20"
+                      alt="Canada flag"
+                    />
+                    Canada
+                  </div>
+                </td>
+                <td>+1.0°C</td>
+                <td>61%</td>
+                <td>14,200 ha</td>
+                <td>⬇️ Decreasing</td>
+                <td>Carbon Tax</td>
+                <td>Forests & Fuel</td>
+              </tr>
+              <tr>
+                <td colspan="7" class="table-note">
+                  Source: UNFCCC, FAO, IRENA, National Climate Reports (2024)
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <div class="cta-bar">
+      <h2>What are you waiting for?</h2>
+      <a
+        href="#join"
+        class="main-button"
+        style="background-color: rgba(255, 255, 255, 1); color: black"
+        >Join Today</a
+      >
+    </div>
+
+    <button class="scroll-to-top" onclick="scrollToTop()">^</button>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h4>Website Links</h4>
+          <a href="#">Home</a>
+          <a href="#">Shop</a>
+          <a href="#">Gallery</a>
+          <a href="#">Feedback</a>
+          <a href="#">Team</a>
+          <a href="#">Sitemap</a>
+        </div>
+
+        <div class="footer-column">
+          <h4>Useful Links</h4>
+          <a href="#">Conditions</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Cookies</a>
+          <a href="#">Anti Corruption</a>
+          <a href="#">Asset License</a>
+        </div>
+
+        <div class="footer-column">
+          <h4>Content Pages</h4>
+          <a href="#">Content 01</a>
+          <a href="#">Content 02</a>
+          <a href="#">Content 03</a>
+          <a href="#">Content 04</a>
+        </div>
+
+        <div class="footer-column">
+          <h4>Student Pages</h4>
+          <a href="#">Student 01</a>
+          <a href="#">Student 02</a>
+          <a href="#">Student 03</a>
+          <a href="#">Student 04</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>Copyright © 2025 CLM8. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      function toggleMobileMenu() {
+        document.getElementById("header").classList.toggle("show-mobile-nav");
+      }
+
+      function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    </script>
+  </body>
+</html>
