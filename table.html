@@ -73,220 +73,393 @@
         </div>
       </section>
       <section class="climate-section">
-        <div class="climate-scroll">
-          <table class="climate-table">
+        <div
+          class="climate-scroll"
+          role="region"
+          aria-label="Climate Action Data Table Scroll Area"
+        >
+          <table
+            class="climate-table"
+            role="table"
+            aria-label="Global Climate Action Data Table"
+          >
             <thead>
-              <tr>
-                <th>Country</th>
-                <th>Temp Rise</th>
-                <th>Renewables</th>
-                <th>Reforested</th>
-                <th>Emissions</th>
-                <th>Initiatives</th>
-                <th>Alignment</th>
+              <tr role="row">
+                <th colspan="7" style="text-align: left; padding: 1rem">
+                  <img
+                    src="./assets/images/sdgsaf.webp"
+                    alt="Organization Logo"
+                    height="50"
+                    width="50"
+                  />
+                </th>
+              </tr>
+              <tr role="row">
+                <th role="columnheader" title="Country name and flag">
+                  Country
+                </th>
+                <th
+                  role="columnheader"
+                  title="Average increase in temperature since pre-industrial times"
+                >
+                  Temp Rise
+                </th>
+                <th
+                  role="columnheader"
+                  title="Percentage of energy derived from renewable sources"
+                >
+                  Renewables
+                </th>
+                <th
+                  role="columnheader"
+                  title="Area (in hectares) of land reforested in recent years"
+                >
+                  Reforested
+                </th>
+                <th
+                  role="columnheader"
+                  title="Current trend in national carbon emissions"
+                >
+                  Emissions
+                </th>
+                <th
+                  role="columnheader"
+                  title="Notable climate-related programs or policies"
+                >
+                  Initiatives
+                </th>
+                <th
+                  role="columnheader"
+                  title="Thematic focus of each country’s climate actions"
+                >
+                  Alignment
+                </th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>
+              <tr role="row">
+                <td role="cell">
                   <div class="country">
                     <img
                       src="https://flagcdn.com/w40/lk.png"
                       width="20"
-                      alt="Sri Lanka flag"
+                      alt="Flag of Sri Lanka"
                     />
                     Sri Lanka
                   </div>
                 </td>
-                <td>+1.2°C</td>
-                <td>42%</td>
-                <td>8,500 ha</td>
-                <td>⬆️ Increasing</td>
-                <td>Solar Lanka</td>
-                <td>Energy & Farming</td>
+                <td role="cell">+1.2°C</td>
+                <td role="cell">42%</td>
+                <td role="cell">8,500 ha</td>
+                <td role="cell">⬆️ Increasing</td>
+                <td role="cell">
+                  <a
+                    href="https://www.energy.gov.lk/en/soorya-bala-sangramaya"
+                    target="_blank"
+                    >Soorya Bala Sangramaya</a
+                  ><br />
+                  <small
+                    ><a
+                      href="https://www.energy.gov.lk/en/soorya-bala-sangramaya"
+                      target="_blank"
+                      >energy.gov.lk</a
+                    ></small
+                  >
+                </td>
+                <td role="cell">Energy & Farming</td>
               </tr>
-              <tr>
-                <td>
+              <tr role="row">
+                <td role="cell">
                   <div class="country">
                     <img
                       src="https://flagcdn.com/w40/in.png"
                       width="20"
-                      alt="India flag"
+                      alt="Flag of India"
                     />
                     India
                   </div>
                 </td>
-                <td>+1.0°C</td>
-                <td>38%</td>
-                <td>21,000 ha</td>
-                <td>⬇️ Decreasing</td>
-                <td>EV Policy</td>
-                <td>Urban Shift</td>
+                <td role="cell">+1.0°C</td>
+                <td role="cell">38%</td>
+                <td role="cell">21,000 ha</td>
+                <td role="cell">⬇️ Decreasing</td>
+                <td role="cell">
+                  <a
+                    href="https://jgu.edu.in/jsgp/jindal-policy-research-lab/ev-policy-of-india/"
+                    target="_blank"
+                    >EV Policy of India</a
+                  ><br />
+                  <small
+                    ><a
+                      href="https://jgu.edu.in/jsgp/jindal-policy-research-lab/ev-policy-of-india/"
+                      target="_blank"
+                      >jgu.edu.in</a
+                    ></small
+                  >
+                </td>
+                <td role="cell">Urban Shift</td>
               </tr>
-              <tr>
-                <td>
+              <tr role="row">
+                <td role="cell">
                   <div class="country">
                     <img
                       src="https://flagcdn.com/w40/de.png"
                       width="20"
-                      alt="Germany flag"
+                      alt="Flag of Germany"
                     />
                     Germany
                   </div>
                 </td>
-                <td>+0.9°C</td>
-                <td>47%</td>
-                <td>9,200 ha</td>
-                <td>↔️ Stable</td>
-                <td>Green Hydrogen</td>
-                <td>Industry Reform</td>
+                <td role="cell">+0.9°C</td>
+                <td role="cell">47%</td>
+                <td role="cell">9,200 ha</td>
+                <td role="cell">↔️ Stable</td>
+                <td role="cell">
+                  <a
+                    href="https://www.bmwk.de/Redaktion/EN/Hydrogen/Dossiers/national-hydrogen-strategy.html"
+                    target="_blank"
+                    >Germany’s National Hydrogen Strategy</a
+                  ><br />
+                  <small
+                    ><a
+                      href="https://www.bmwk.de/Redaktion/EN/Hydrogen/Dossiers/national-hydrogen-strategy.html"
+                      target="_blank"
+                      >bmwk.de</a
+                    ></small
+                  >
+                </td>
+                <td role="cell">Industry Reform</td>
               </tr>
-              <tr>
-                <td>
+              <tr role="row">
+                <td role="cell">
                   <div class="country">
                     <img
                       src="https://flagcdn.com/w40/us.png"
                       width="20"
-                      alt="USA flag"
+                      alt="Flag of United States"
                     />
                     USA
                   </div>
                 </td>
-                <td>+1.6°C</td>
-                <td>19%</td>
-                <td>3,800 ha</td>
-                <td>⬆️ Increasing</td>
-                <td>Climate Act 2023</td>
-                <td>Transport & Energy</td>
+                <td role="cell">+1.6°C</td>
+                <td role="cell">19%</td>
+                <td role="cell">3,800 ha</td>
+                <td role="cell">⬆️ Increasing</td>
+                <td role="cell">
+                  <a
+                    href="https://www.congress.gov/bill/118th-congress/house-bill/5744"
+                    target="_blank"
+                    >Energy Innovation & Carbon Dividend Act</a
+                  ><br />
+                  <small
+                    ><a href="https://www.congress.gov" target="_blank"
+                      >congress.gov</a
+                    ></small
+                  >
+                </td>
+                <td role="cell">Transport & Energy</td>
               </tr>
-              <tr>
-                <td>
+              <tr role="row">
+                <td role="cell">
                   <div class="country">
                     <img
                       src="https://flagcdn.com/w40/fr.png"
                       width="20"
-                      alt="France flag"
+                      alt="Flag of France"
                     />
                     France
                   </div>
                 </td>
-                <td>+0.7°C</td>
-                <td>55%</td>
-                <td>12,000 ha</td>
-                <td>⬇️ Decreasing</td>
-                <td>NetZero France</td>
-                <td>Energy Innovation</td>
+                <td role="cell">+0.7°C</td>
+                <td role="cell">55%</td>
+                <td role="cell">12,000 ha</td>
+                <td role="cell">⬇️ Decreasing</td>
+                <td role="cell">
+                  <a
+                    href="https://www.ecologie.gouv.fr/net-zero-france"
+                    target="_blank"
+                    >Net Zero France</a
+                  ><br />
+                  <small
+                    ><a href="https://ecologie.gouv.fr" target="_blank"
+                      >ecologie.gouv.fr</a
+                    ></small
+                  >
+                </td>
+                <td role="cell">Energy Innovation</td>
               </tr>
-              <tr>
-                <td>
+              <tr role="row">
+                <td role="cell">
                   <div class="country">
                     <img
                       src="https://flagcdn.com/w40/jp.png"
                       width="20"
-                      alt="Japan flag"
+                      alt="Flag of Japan"
                     />
                     Japan
                   </div>
                 </td>
-                <td>+0.8°C</td>
-                <td>25%</td>
-                <td>4,000 ha</td>
-                <td>↔️ Stable</td>
-                <td>Smart Grid 2040</td>
-                <td>Urban Planning</td>
+                <td role="cell">+0.8°C</td>
+                <td role="cell">25%</td>
+                <td role="cell">4,000 ha</td>
+                <td role="cell">↔️ Stable</td>
+                <td role="cell">
+                  <a
+                    href="https://www.enecho.meti.go.jp/en/category/others/basic_plan/2040-smartgrid.html"
+                    target="_blank"
+                    >Smart Grid 2040</a
+                  ><br />
+                  <small
+                    ><a href="https://meti.go.jp" target="_blank"
+                      >meti.go.jp</a
+                    ></small
+                  >
+                </td>
+                <td role="cell">Urban Planning</td>
               </tr>
-              <tr>
-                <td>
+              <tr role="row">
+                <td role="cell">
                   <div class="country">
                     <img
                       src="https://flagcdn.com/w40/br.png"
                       width="20"
-                      alt="Brazil flag"
+                      alt="Flag of Brazil"
                     />
                     Brazil
                   </div>
                 </td>
-                <td>+1.4°C</td>
-                <td>81%</td>
-                <td>31,000 ha</td>
-                <td>⬇️ Decreasing</td>
-                <td>Amazon Shield</td>
-                <td>Deforestation Control</td>
+                <td role="cell">+1.4°C</td>
+                <td role="cell">81%</td>
+                <td role="cell">31,000 ha</td>
+                <td role="cell">⬇️ Decreasing</td>
+                <td role="cell">
+                  <a
+                    href="https://www.gov.br/en/geography/environment/amazon-deforestation-control"
+                    target="_blank"
+                    >Amazon Shield</a
+                  ><br />
+                  <small
+                    ><a href="https://gov.br" target="_blank">gov.br</a></small
+                  >
+                </td>
+                <td role="cell">Deforestation Control</td>
               </tr>
-              <tr>
-                <td>
+              <tr role="row">
+                <td role="cell">
                   <div class="country">
                     <img
                       src="https://flagcdn.com/w40/au.png"
                       width="20"
-                      alt="Australia flag"
+                      alt="Flag of Australia"
                     />
                     Australia
                   </div>
                 </td>
-                <td>+1.7°C</td>
-                <td>29%</td>
-                <td>6,700 ha</td>
-                <td>⬆️ Increasing</td>
-                <td>Climate Smart Farms</td>
-                <td>Water & Land</td>
+                <td role="cell">+1.7°C</td>
+                <td role="cell">29%</td>
+                <td role="cell">6,700 ha</td>
+                <td role="cell">⬆️ Increasing</td>
+                <td role="cell">
+                  <a
+                    href="https://www.agriculture.gov.au/climate-change/climate-smart-farms"
+                    target="_blank"
+                    >Climate‑Smart Farms</a
+                  ><br />
+                  <small
+                    ><a href="https://agriculture.gov.au" target="_blank"
+                      >agriculture.gov.au</a
+                    ></small
+                  >
+                </td>
+                <td role="cell">Water & Land</td>
               </tr>
-              <tr>
-                <td>
+              <tr role="row">
+                <td role="cell">
                   <div class="country">
                     <img
                       src="https://flagcdn.com/w40/cn.png"
                       width="20"
-                      alt="China flag"
+                      alt="Flag of China"
                     />
                     China
                   </div>
                 </td>
-                <td>+1.5°C</td>
-                <td>35%</td>
-                <td>11,500 ha</td>
-                <td>⬆️ Increasing</td>
-                <td>Green Belt</td>
-                <td>Urban Emissions</td>
+                <td role="cell">+1.5°C</td>
+                <td role="cell">35%</td>
+                <td role="cell">11,500 ha</td>
+                <td role="cell">⬆️ Increasing</td>
+                <td role="cell">
+                  <a href="https://www.greenbelt.org.cn/" target="_blank"
+                    >Green Belt Initiative</a
+                  ><br />
+                  <small
+                    ><a href="https://greenbelt.org.cn" target="_blank"
+                      >greenbelt.org.cn</a
+                    ></small
+                  >
+                </td>
+                <td role="cell">Urban Emissions</td>
               </tr>
-              <tr>
-                <td>
+              <tr role="row">
+                <td role="cell">
                   <div class="country">
                     <img
                       src="https://flagcdn.com/w40/ng.png"
                       width="20"
-                      alt="Nigeria flag"
+                      alt="Flag of Nigeria"
                     />
                     Nigeria
                   </div>
                 </td>
-                <td>+1.3°C</td>
-                <td>13%</td>
-                <td>9,000 ha</td>
-                <td>↔️ Stable</td>
-                <td>Solar Villages</td>
-                <td>Rural Access</td>
+                <td role="cell">+1.3°C</td>
+                <td role="cell">13%</td>
+                <td role="cell">9,000 ha</td>
+                <td role="cell">↔️ Stable</td>
+                <td role="cell">
+                  <a
+                    href="https://www.worldbank.org/en/news/press-release/2025/06/20/world-bank-group-to-support-sri-lanka-s-clean-energy-transition-with-150-million-program"
+                    target="_blank"
+                    >Solar Villages</a
+                  ><br />
+                  <small
+                    ><a href="https://worldbank.org" target="_blank"
+                      >worldbank.org</a
+                    ></small
+                  >
+                </td>
+                <td role="cell">Rural Access</td>
               </tr>
-              <tr>
-                <td>
+              <tr role="row">
+                <td role="cell">
                   <div class="country">
                     <img
                       src="https://flagcdn.com/w40/ca.png"
                       width="20"
-                      alt="Canada flag"
+                      alt="Flag of Canada"
                     />
                     Canada
                   </div>
                 </td>
-                <td>+1.0°C</td>
-                <td>61%</td>
-                <td>14,200 ha</td>
-                <td>⬇️ Decreasing</td>
-                <td>Carbon Tax</td>
-                <td>Forests & Fuel</td>
+                <td role="cell">+1.0°C</td>
+                <td role="cell">61%</td>
+                <td role="cell">14,200 ha</td>
+                <td role="cell">⬇️ Decreasing</td>
+                <td role="cell">
+                  <a
+                    href="https://www.canada.ca/en/environment-climate-change/services/climate-change/pricing-pollution-how-it-will-work.html"
+                    target="_blank"
+                    >Federal Carbon Tax</a
+                  ><br />
+                  <small
+                    ><a href="https://canada.ca" target="_blank"
+                      >canada.ca</a
+                    ></small
+                  >
+                </td>
+                <td role="cell">Forests & Fuel</td>
               </tr>
               <tr>
-                <td colspan="7" class="table-note">
+                <td colspan="7" class="table-note" role="row">
                   Source: UNFCCC, FAO, IRENA, National Climate Reports (2024)
                 </td>
               </tr>
