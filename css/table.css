@@ -175,3 +175,7 @@ tbody td small a:hover {
 tbody td small a:active {
   color: #666;
 }
+
+.logo .logo-text {
+  color: rgb(117, 208, 126);
+}
