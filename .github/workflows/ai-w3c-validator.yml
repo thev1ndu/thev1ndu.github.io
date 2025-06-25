@@ -114,7 +114,7 @@ jobs:
 
           messages_content=$(cat html-validation-report/messages-for-ai.txt)
 
-          echo "You are a senior front-end engineer and expert in W3C standards. Carefully review the following HTML validation messages returned by the W3C Validator. For each message, provide: **Issue:** [Original validation message] **Context:** [Where and why this issue occurs] **Impact:** [Its effect on rendering, accessibility, SEO, etc.] **Solution:** [How to resolve it] **Example Fix:** [Correct HTML snippet]. Use modern HTML5 practices and return the results in clear, structured Markdown. Validation Messages:" > prompt.txt
+          echo "${{ vars.GEMINI_PROMPT }}" > prompt.txt
           echo "$messages_content" >> prompt.txt
 
           prompt_text=$(cat prompt.txt)
