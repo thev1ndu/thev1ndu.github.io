@@ -1,4 +1,4 @@
-name: W3C HTML Validation with Gemini AI
+name: W3C HTML Validation with Gemini Suggestions
 
 on:
   push:
@@ -30,6 +30,7 @@ jobs:
         run: |
           mkdir -p html-validation-report
           echo "🧪 W3C HTML Validation Summary" > html-validation-report/summary.txt
+          echo "" > html-validation-report/warnings-only.txt
 
           for file in $(find . -name "*.html"); do
             echo "🔍 Validating: $file" | tee -a html-validation-report/summary.txt
@@ -44,45 +45,48 @@ jobs:
             echo "$file: ❌ $ERRORS errors, ⚠️ $WARNINGS warnings" | tee -a html-validation-report/summary.txt
 
             jq -r '.messages[] | "\(.type | ascii_upcase): Line \(.lastLine // "N/A") Col \(.lastColumn // "N/A"): \(.message)"' \
-              html-validation-report/$(basename "$file").json >> html-validation-report/summary.txt
+              html-validation-report/$(basename "$file").json | tee -a html-validation-report/summary.txt
+
+            # Extract only INFOs for AI processing
+            jq -r '.messages[] | select(.type == "info") | "INFO: Line \(.lastLine // "N/A") Col \(.lastColumn // "N/A"): \(.message)"' \
+              html-validation-report/$(basename "$file").json >> html-validation-report/warnings-only.txt
 
             echo "--------------------------------------" >> html-validation-report/summary.txt
           done
 
-      - name: Call Gemini AI to explain and fix issues
+      - name: Ask Gemini for suggestions for warnings
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
-          SUMMARY=$(cat html-validation-report/summary.txt)
-          PROMPT="Here is a W3C HTML validation error report. Please explain the errors and suggest fixes:\n\n$SUMMARY"
+          WARNINGS=$(cat html-validation-report/warnings-only.txt)
+          PROMPT="These are W3C HTML validation warnings. For each line, provide a helpful suggestion below it, in the format:\n\nINFO: ...\n🔧 Gemini AI Suggestion: ...\n\nWarnings:\n\n$WARNINGS"
 
-          # Create safe JSON payload
+          # Escape for JSON
           echo '{
             "contents": [
               {
                 "parts": [
                   {
-                    "text": "'"$(echo "$PROMPT" | sed 's/"/\\"/g')"'"
+                    "text": "'"$(echo "$PROMPT" | sed 's/"/\\"/g')"'" 
                   }
                 ]
               }
             ],
             "generationConfig": {
-              "temperature": 0.7
+              "temperature": 0.4
             }
           }' > prompt.json
 
-          # Call Gemini API
+          # Call Gemini
           RESPONSE=$(curl -s -X POST \
             -H "Authorization: Bearer $GEMINI_API_KEY" \
             -H "Content-Type: application/json" \
             -d @prompt.json \
             "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent")
 
-          # Extract AI response or fallback
           SUGGESTIONS=$(echo "$RESPONSE" | jq -r '.candidates[0].content.parts[0].text // "⚠️ No suggestions returned by Gemini."')
 
-          echo -e "\n\n🔧 Gemini AI Suggestions:" >> html-validation-report/summary.txt
+          echo -e "\n\n🔧 Gemini AI Suggestions for Warnings:" >> html-validation-report/summary.txt
           echo "$SUGGESTIONS" >> html-validation-report/summary.txt
 
       - name: Upload HTML validation report
