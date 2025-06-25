@@ -53,26 +53,37 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
-          SUMMARY=$(cat html-validation-report/summary.txt | jq -Rs .)
-          PROMPT="Here is a W3C HTML validation error report. Please explain the errors and suggest fixes:\n$SUMMARY"
+          SUMMARY=$(cat html-validation-report/summary.txt)
+          PROMPT="Here is a W3C HTML validation error report. Please explain the errors and suggest fixes:\n\n$SUMMARY"
 
+          # Create safe JSON payload
+          echo '{
+            "contents": [
+              {
+                "parts": [
+                  {
+                    "text": "'"$(echo "$PROMPT" | sed 's/"/\\"/g')"'"
+                  }
+                ]
+              }
+            ],
+            "generationConfig": {
+              "temperature": 0.7
+            }
+          }' > prompt.json
+
+          # Call Gemini API
           RESPONSE=$(curl -s -X POST \
             -H "Authorization: Bearer $GEMINI_API_KEY" \
             -H "Content-Type: application/json" \
-            -d '{
-              "contents": [
-                {
-                  "parts": [
-                    { "text": '"$PROMPT"' }
-                  ]
-                }
-              ],
-              "generationConfig": { "temperature": 0.7 }
-            }' \
+            -d @prompt.json \
             "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent")
 
+          # Extract AI response or fallback
+          SUGGESTIONS=$(echo "$RESPONSE" | jq -r '.candidates[0].content.parts[0].text // "⚠️ No suggestions returned by Gemini."')
+
           echo -e "\n\n🔧 Gemini AI Suggestions:" >> html-validation-report/summary.txt
-          echo "$RESPONSE" | jq -r '.candidates[0].content.parts[0].text' >> html-validation-report/summary.txt || echo "❌ Failed to fetch suggestions"
+          echo "$SUGGESTIONS" >> html-validation-report/summary.txt
 
       - name: Upload HTML validation report
         uses: actions/upload-artifact@v4
