@@ -166,7 +166,7 @@ jobs:
       - name: Upload validation report
         uses: actions/upload-artifact@v4
         with:
-          name: w3c-html-report-${{ steps.set-time.outputs.timestamp }}
+          name: w3c-validator-report-${{ steps.set-time.outputs.timestamp }}
           path: html-validation-report/
           retention-days: 30
 
