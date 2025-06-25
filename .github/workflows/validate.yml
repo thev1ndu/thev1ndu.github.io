@@ -20,9 +20,11 @@ jobs:
       - name: Install jq (JSON processor)
         run: sudo apt-get install -y jq
 
-      - name: Set report timestamp
+      - name: Set report timestamp (Sri Lanka time)
         id: set-time
-        run: echo "timestamp=$(date +'%Y-%m-%d-%H-%M')" >> $GITHUB_OUTPUT
+        run: |
+          sudo timedatectl set-timezone Asia/Colombo
+          echo "timestamp=$(date +'%Y-%m-%d-%H-%M')" >> $GITHUB_OUTPUT
 
       - name: Find and validate HTML files
         run: |
@@ -53,5 +55,5 @@ jobs:
       - name: Upload HTML validation report
         uses: actions/upload-artifact@v4
         with:
-          name: w3c-html-validation-report-${{ steps.set-time.outputs.timestamp }}
+          name: w3c-html-api-report-${{ steps.set-time.outputs.timestamp }}
           path: html-validation-report/
