@@ -1,0 +1,43 @@
+name: Validate HTML with W3C
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  validate-html:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+
+      - name: Download vnu.jar (W3C Validator)
+        run: |
+          mkdir -p tools
+          curl -L -o tools/vnu.zip https://github.com/validator/validator/releases/latest/download/vnu.zip
+          unzip tools/vnu.zip -d tools
+          chmod +x tools/vnu*/vnu.jar
+
+      - name: Run HTML validation
+        run: |
+          mkdir -p html-validation-report
+          java -jar tools/vnu*/vnu.jar --errors-only --format json ./ > html-validation-report/report.json || true
+          java -jar tools/vnu*/vnu.jar --errors-only --format text ./ > html-validation-report/report.txt || true
+
+      - name: Upload Validation Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: w3c-html-validation-report
+          path: html-validation-report/
