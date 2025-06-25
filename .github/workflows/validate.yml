@@ -2,15 +2,14 @@ name: W3C HTML Validation with Gemini Suggestions
 
 on:
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
-    branches: [master]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
   validate-html:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -23,76 +22,199 @@ jobs:
       - name: Set report timestamp (Sri Lanka time)
         id: set-time
         run: |
-          sudo timedatectl set-timezone Asia/Colombo
-          echo "timestamp=$(date +'%Y-%m-%d-%H-%M')" >> $GITHUB_OUTPUT
+          # Set timezone and capture timestamp
+          export TZ=Asia/Colombo
+          timestamp=$(date +'%Y-%m-%d-%H-%M')
+          echo "timestamp=$timestamp" >> $GITHUB_OUTPUT
+          echo "Report timestamp: $timestamp"
 
       - name: Validate HTML files and collect messages
         run: |
           mkdir -p html-validation-report
           echo "🧪 W3C HTML Validation Summary" > html-validation-report/summary.txt
+          echo "Generated on: $(TZ=Asia/Colombo date)" >> html-validation-report/summary.txt
+          echo "===========================================" >> html-validation-report/summary.txt
+          echo "" >> html-validation-report/summary.txt
+          
+          # Initialize messages file for AI
           echo "" > html-validation-report/messages-for-ai.txt
-
-          for file in $(find . -name "*.html"); do
+          
+          # Find HTML files
+          html_files=$(find . -name "*.html" -type f | head -20)  # Limit to 20 files to avoid overwhelming
+          
+          if [ -z "$html_files" ]; then
+            echo "⚠️ No HTML files found in repository" | tee -a html-validation-report/summary.txt
+            exit 0
+          fi
+          
+          total_errors=0
+          total_warnings=0
+          
+          for file in $html_files; do
             echo "🔍 Validating: $file" | tee -a html-validation-report/summary.txt
-
-            curl -s -H "Content-Type: text/html; charset=utf-8" \
+            
+            # Validate with W3C Nu HTML Checker
+            response_file="html-validation-report/$(basename "$file" .html)_response.json"
+            
+            # Use POST request with file content
+            curl -s -X POST \
+              -H "Content-Type: text/html; charset=utf-8" \
               --data-binary @"$file" \
-              "https://validator.w3.org/nu/?out=json" > html-validation-report/$(basename "$file").json
-
-            ERRORS=$(jq '.messages | map(select(.type == "error")) | length' html-validation-report/$(basename "$file").json)
-            WARNINGS=$(jq '.messages | map(select(.type == "info")) | length' html-validation-report/$(basename "$file").json)
-
-            echo "$file: ❌ $ERRORS errors, ⚠️ $WARNINGS warnings" | tee -a html-validation-report/summary.txt
-
-            jq -r '.messages[] | "\(.type | ascii_upcase): Line \(.lastLine // "N/A") Col \(.lastColumn // "N/A"): \(.message)"' \
-              html-validation-report/$(basename "$file").json | tee -a html-validation-report/summary.txt | tee -a html-validation-report/messages-for-ai.txt
-
-            echo "--------------------------------------" >> html-validation-report/summary.txt
+              "https://validator.w3.org/nu/?out=json" > "$response_file"
+            
+            # Check if response is valid JSON
+            if ! jq empty "$response_file" 2>/dev/null; then
+              echo "❌ Failed to validate $file (invalid response)" | tee -a html-validation-report/summary.txt
+              continue
+            fi
+            
+            # Count errors and warnings
+            errors=$(jq '.messages | map(select(.type == "error")) | length' "$response_file" 2>/dev/null || echo "0")
+            warnings=$(jq '.messages | map(select(.type == "info")) | length' "$response_file" 2>/dev/null || echo "0")
+            
+            total_errors=$((total_errors + errors))
+            total_warnings=$((total_warnings + warnings))
+            
+            echo "   ❌ $errors errors, ⚠️ $warnings warnings" | tee -a html-validation-report/summary.txt
+            
+            # Extract messages for AI analysis
+            if [ "$errors" -gt 0 ] || [ "$warnings" -gt 0 ]; then
+              echo "File: $file" >> html-validation-report/messages-for-ai.txt
+              jq -r '.messages[] | "\(.type | ascii_upcase): Line \(.lastLine // "N/A") Col \(.lastColumn // "N/A"): \(.message)"' \
+                "$response_file" 2>/dev/null >> html-validation-report/messages-for-ai.txt || echo "Failed to parse messages for $file" >> html-validation-report/messages-for-ai.txt
+              echo "" >> html-validation-report/messages-for-ai.txt
+            fi
+            
+            # Add detailed results to summary
+            if [ "$errors" -gt 0 ] || [ "$warnings" -gt 0 ]; then
+              jq -r '.messages[] | "   \(.type | ascii_upcase): Line \(.lastLine // "N/A") Col \(.lastColumn // "N/A"): \(.message)"' \
+                "$response_file" 2>/dev/null >> html-validation-report/summary.txt || echo "   Failed to parse detailed messages" >> html-validation-report/summary.txt
+            fi
+            
+            echo "" >> html-validation-report/summary.txt
           done
+          
+          echo "===========================================" >> html-validation-report/summary.txt
+          echo "📊 Total: ❌ $total_errors errors, ⚠️ $total_warnings warnings" >> html-validation-report/summary.txt
+          echo "total_errors=$total_errors" >> $GITHUB_ENV
+          echo "total_warnings=$total_warnings" >> $GITHUB_ENV
 
       - name: Ask Gemini for suggestions
+        if: env.total_errors > 0 || env.total_warnings > 0
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
-          RAW_MESSAGES=$(cat html-validation-report/messages-for-ai.txt)
+          # Check if API key is available
+          if [ -z "$GEMINI_API_KEY" ]; then
+            echo "⚠️ GEMINI_API_KEY not set. Skipping AI suggestions." | tee -a html-validation-report/summary.txt
+            exit 0
+          fi
+          
+          # Check if there are messages to analyze
+          if [ ! -s html-validation-report/messages-for-ai.txt ]; then
+            echo "✅ No validation issues found. Skipping AI suggestions." | tee -a html-validation-report/summary.txt
+            exit 0
+          fi
+          
+          # Read validation messages
+          messages_content=$(cat html-validation-report/messages-for-ai.txt)
+          
+          # Create prompt
+          cat > prompt.txt << 'EOF'
+You are an expert web developer reviewing W3C HTML validation results. 
+Analyze the following validation messages and provide specific, actionable suggestions to fix each issue.
 
-          # Write prompt to file
-          cat <<EOF > prompt.txt
-These are W3C HTML validation messages (both errors and warnings).
-For each message, provide a suggestion in this format:
+For each validation message, provide:
+1. A brief explanation of what the issue means
+2. A specific solution or fix
+3. If applicable, provide a code example
 
-ERROR: ...
-🔧 Gemini AI Suggestion: ...
+Format your response as:
+**Issue:** [Original validation message]
+**Explanation:** [What this means]
+**Solution:** [How to fix it]
+**Example:** [Code example if applicable]
 
-or
-
-INFO: ...
-🔧 Gemini AI Suggestion: ...
-
-Messages:
-$RAW_MESSAGES
+Validation Messages:
 EOF
-
-          # Prepare JSON payload safely
-          JSON_PAYLOAD=$(jq -n \
-            --arg text "$(cat prompt.txt)" \
-            '{ contents: [ { parts: [ { text: $text } ] } ], generationConfig: { temperature: 0.5 } }')
-
-          # Send request to Gemini
-          RESPONSE=$(curl -s -X POST \
-            -H "Authorization: Bearer $GEMINI_API_KEY" \
+          
+          echo "$messages_content" >> prompt.txt
+          
+          # Prepare JSON payload with proper escaping
+          prompt_text=$(cat prompt.txt)
+          
+          # Create JSON payload using jq to properly escape
+          json_payload=$(jq -n \
+            --arg text "$prompt_text" \
+            '{
+              contents: [{
+                parts: [{
+                  text: $text
+                }]
+              }],
+              generationConfig: {
+                temperature: 0.3,
+                maxOutputTokens: 2048
+              }
+            }')
+          
+          # Make API request to Gemini
+          echo "🤖 Requesting suggestions from Gemini AI..."
+          
+          response=$(curl -s -X POST \
             -H "Content-Type: application/json" \
-            -d "$JSON_PAYLOAD" \
-            "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent")
-
-          # Extract response or fallback
-          SUGGESTIONS=$(echo "$RESPONSE" | jq -r '.candidates[0].content.parts[0].text // "⚠️ No suggestions returned by Gemini."')
-
-          echo -e "\n\n🔧 Gemini AI Suggestions:" >> html-validation-report/summary.txt
-          echo "$SUGGESTIONS" >> html-validation-report/summary.txt
+            -d "$json_payload" \
+            "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=$GEMINI_API_KEY")
+          
+          # Extract suggestions from response
+          suggestions=$(echo "$response" | jq -r '.candidates[0].content.parts[0].text // empty')
+          
+          if [ -n "$suggestions" ]; then
+            echo "" >> html-validation-report/summary.txt
+            echo "🤖 Gemini AI Suggestions:" >> html-validation-report/summary.txt
+            echo "===========================================" >> html-validation-report/summary.txt
+            echo "$suggestions" >> html-validation-report/summary.txt
+          else
+            echo "" >> html-validation-report/summary.txt
+            echo "⚠️ Unable to get suggestions from Gemini AI" >> html-validation-report/summary.txt
+            # Debug: Show error if available
+            error_msg=$(echo "$response" | jq -r '.error.message // empty')
+            if [ -n "$error_msg" ]; then
+              echo "Error details: $error_msg" >> html-validation-report/summary.txt
+            fi
+          fi
 
       - name: Upload validation report
         uses: actions/upload-artifact@v4
         with:
           name: w3c-html-report-${{ steps.set-time.outputs.timestamp }}
           path: html-validation-report/
+          retention-days: 30
+
+      - name: Comment on PR (if applicable)
+        if: github.event_name == 'pull_request' && (env.total_errors > 0 || env.total_warnings > 0)
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const path = 'html-validation-report/summary.txt';
+            
+            if (fs.existsSync(path)) {
+              const summary = fs.readFileSync(path, 'utf8');
+              const truncatedSummary = summary.length > 65000 ? 
+                summary.substring(0, 65000) + '\n\n... (truncated)' : 
+                summary;
+              
+              await github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: `## 🧪 W3C HTML Validation Results\n\n\`\`\`\n${truncatedSummary}\n\`\`\``
+              });
+            }
+
+      - name: Fail if errors found
+        if: env.total_errors > 0
+        run: |
+          echo "❌ HTML validation failed with $total_errors errors"
+          exit 1
