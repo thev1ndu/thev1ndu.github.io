@@ -50,33 +50,26 @@ jobs:
             echo "--------------------------------------" >> html-validation-report/summary.txt
           done
 
-      - name: Ask Gemini for suggestions (all messages)
+      - name: Ask Gemini for suggestions (errors and warnings)
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
-          MESSAGES=$(cat html-validation-report/messages-for-ai.txt)
+          RAW_MESSAGES=$(cat html-validation-report/messages-for-ai.txt)
 
-          PROMPT=$(cat <<EOF
-Below are HTML validation messages including both ERRORS and WARNINGS.
-
-For each message, suggest a fix using the format:
-
+          PROMPT="These are W3C HTML validation messages (errors and warnings). For each message, provide a fix in the format:
 ERROR: ...
 🔧 Gemini AI Suggestion: ...
-
 or
-
 INFO: ...
 🔧 Gemini AI Suggestion: ...
 
 Messages:
-$MESSAGES
-EOF
-)
+$RAW_MESSAGES"
 
+          # Use jq to safely encode the prompt into JSON
           JSON_PAYLOAD=$(jq -n \
             --arg text "$PROMPT" \
-            '{ contents: [ { parts: [ { text: $text } ] } ], generationConfig: { temperature: 0.5 } }')
+            '{contents: [{parts: [{text: $text}]}], generationConfig: {temperature: 0.5}}')
 
           RESPONSE=$(curl -s -X POST \
             -H "Authorization: Bearer $GEMINI_API_KEY" \
