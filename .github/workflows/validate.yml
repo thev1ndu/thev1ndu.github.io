@@ -119,23 +119,7 @@ jobs:
           messages_content=$(cat html-validation-report/messages-for-ai.txt)
           
           # Create prompt file
-          cat > prompt.txt << 'PROMPT_EOF'
-You are an expert web developer reviewing W3C HTML validation results. 
-Analyze the following validation messages and provide specific, actionable suggestions to fix each issue.
-
-For each validation message, provide:
-1. A brief explanation of what the issue means
-2. A specific solution or fix
-3. If applicable, provide a code example
-
-Format your response as:
-**Issue:** [Original validation message]
-**Explanation:** [What this means]
-**Solution:** [How to fix it]
-**Example:** [Code example if applicable]
-
-Validation Messages:
-PROMPT_EOF
+          echo "You are an expert web developer reviewing W3C HTML validation results. Analyze the following validation messages and provide specific, actionable suggestions to fix each issue. For each validation message, provide: 1. A brief explanation of what the issue means 2. A specific solution or fix 3. If applicable, provide a code example. Format your response as: **Issue:** [Original validation message] **Explanation:** [What this means] **Solution:** [How to fix it] **Example:** [Code example if applicable]. Validation Messages:" > prompt.txt
           
           echo "$messages_content" >> prompt.txt
           
