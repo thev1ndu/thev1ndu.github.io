@@ -20,11 +20,14 @@ jobs:
       - name: Install jq (JSON processor)
         run: sudo apt-get install -y jq
 
+      - name: Set report timestamp
+        id: set-time
+        run: echo "timestamp=$(date +'%Y-%m-%d-%H-%M')" >> $GITHUB_OUTPUT
+
       - name: Find and validate HTML files
         run: |
           mkdir -p html-validation-report
           echo "🧪 W3C HTML Validation Summary" > html-validation-report/summary.txt
-          echo "======================================" >> html-validation-report/summary.txt
 
           for file in $(find . -name "*.html"); do
             echo ""
@@ -41,7 +44,6 @@ jobs:
 
             echo "$file: ❌ $ERRORS errors, ⚠️ $WARNINGS warnings" | tee -a html-validation-report/summary.txt
 
-            # Print each error/warning
             jq -r '.messages[] | "\(.type | ascii_upcase): Line \(.lastLine // "N/A") Col \(.lastColumn // "N/A"): \(.message)"' \
               html-validation-report/$(basename "$file").json | tee -a html-validation-report/summary.txt
 
@@ -51,5 +53,5 @@ jobs:
       - name: Upload HTML validation report
         uses: actions/upload-artifact@v4
         with:
-          name: w3c-html-api-report
+          name: w3c-html-validation-report-${{ steps.set-time.outputs.timestamp }}
           path: html-validation-report/
