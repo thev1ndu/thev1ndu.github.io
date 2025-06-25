@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="./css/global.css" />
     <link rel="preconnect" href="https://flagcdn.com" crossorigin />
     <link rel="stylesheet" href="./css/table.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <script src="./js/script.js"></script>
   </head>
   <body>
     <header class="header" id="header">
@@ -456,7 +461,13 @@
       >
     </div>
 
-    <button class="scroll-to-top" onclick="scrollToTop()">^</button>
+    <button
+      class="scroll-to-top"
+      onclick="scrollToTop()"
+      aria-label="Scroll to Top"
+    >
+      <i class="fas fa-arrow-up"></i>
+    </button>
 
     <footer class="footer">
       <div class="footer-grid">
@@ -497,18 +508,8 @@
       </div>
 
       <div class="footer-bottom">
-        <p>Copyright © 2025 CLM8. All rights reserved.</p>
+        <p>Copyright © 2025 SCALE. All rights reserved.</p>
       </div>
     </footer>
-
-    <script>
-      function toggleMobileMenu() {
-        document.getElementById("header").classList.toggle("show-mobile-nav");
-      }
-
-      function scrollToTop() {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
-    </script>
   </body>
 </html>
