@@ -1,10 +1,10 @@
-name: W3C HTML Validation with Gemini Suggestions
+name: W3C HTML Validation with Full Gemini Suggestions
 
 on:
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
-    branches: [master]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -26,11 +26,11 @@ jobs:
           sudo timedatectl set-timezone Asia/Colombo
           echo "timestamp=$(date +'%Y-%m-%d-%H-%M')" >> $GITHUB_OUTPUT
 
-      - name: Validate HTML files
+      - name: Validate HTML files and collect messages
         run: |
           mkdir -p html-validation-report
           echo "🧪 W3C HTML Validation Summary" > html-validation-report/summary.txt
-          echo "" > html-validation-report/warnings-only.txt
+          echo "" > html-validation-report/messages-for-ai.txt
 
           for file in $(find . -name "*.html"); do
             echo "🔍 Validating: $file" | tee -a html-validation-report/summary.txt
@@ -45,48 +45,48 @@ jobs:
             echo "$file: ❌ $ERRORS errors, ⚠️ $WARNINGS warnings" | tee -a html-validation-report/summary.txt
 
             jq -r '.messages[] | "\(.type | ascii_upcase): Line \(.lastLine // "N/A") Col \(.lastColumn // "N/A"): \(.message)"' \
-              html-validation-report/$(basename "$file").json | tee -a html-validation-report/summary.txt
-
-            # Extract only INFOs for AI processing
-            jq -r '.messages[] | select(.type == "info") | "INFO: Line \(.lastLine // "N/A") Col \(.lastColumn // "N/A"): \(.message)"' \
-              html-validation-report/$(basename "$file").json >> html-validation-report/warnings-only.txt
+              html-validation-report/$(basename "$file").json | tee -a html-validation-report/summary.txt | tee -a html-validation-report/messages-for-ai.txt
 
             echo "--------------------------------------" >> html-validation-report/summary.txt
           done
 
-      - name: Ask Gemini for suggestions for warnings
+      - name: Ask Gemini for suggestions (all messages)
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
-          WARNINGS=$(cat html-validation-report/warnings-only.txt)
-          PROMPT="These are W3C HTML validation warnings. For each line, provide a helpful suggestion below it, in the format:\n\nINFO: ...\n🔧 Gemini AI Suggestion: ...\n\nWarnings:\n\n$WARNINGS"
+          MESSAGES=$(cat html-validation-report/messages-for-ai.txt)
 
-          # Escape for JSON
-          echo '{
-            "contents": [
-              {
-                "parts": [
-                  {
-                    "text": "'"$(echo "$PROMPT" | sed 's/"/\\"/g')"'" 
-                  }
-                ]
-              }
-            ],
-            "generationConfig": {
-              "temperature": 0.4
-            }
-          }' > prompt.json
+          PROMPT=$(cat <<EOF
+Below are HTML validation messages including both ERRORS and WARNINGS.
 
-          # Call Gemini
+For each message, suggest a fix using the format:
+
+ERROR: ...
+🔧 Gemini AI Suggestion: ...
+
+or
+
+INFO: ...
+🔧 Gemini AI Suggestion: ...
+
+Messages:
+$MESSAGES
+EOF
+)
+
+          JSON_PAYLOAD=$(jq -n \
+            --arg text "$PROMPT" \
+            '{ contents: [ { parts: [ { text: $text } ] } ], generationConfig: { temperature: 0.5 } }')
+
           RESPONSE=$(curl -s -X POST \
             -H "Authorization: Bearer $GEMINI_API_KEY" \
             -H "Content-Type: application/json" \
-            -d @prompt.json \
+            -d "$JSON_PAYLOAD" \
             "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent")
 
           SUGGESTIONS=$(echo "$RESPONSE" | jq -r '.candidates[0].content.parts[0].text // "⚠️ No suggestions returned by Gemini."')
 
-          echo -e "\n\n🔧 Gemini AI Suggestions for Warnings:" >> html-validation-report/summary.txt
+          echo -e "\n\n🔧 Gemini AI Suggestions:" >> html-validation-report/summary.txt
           echo "$SUGGESTIONS" >> html-validation-report/summary.txt
 
       - name: Upload HTML validation report
