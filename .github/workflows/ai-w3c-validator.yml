@@ -10,7 +10,6 @@ on:
 jobs:
   w3c-validator:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -18,7 +17,7 @@ jobs:
       - name: Install tools
         run: |
           sudo apt-get update
-          sudo apt-get install -y jq curl pandoc texlive
+          sudo apt-get install -y jq curl
 
       - name: Set report timestamp (Sri Lanka time)
         id: set-time
@@ -36,9 +35,12 @@ jobs:
           echo "**Generated on:** $(TZ=Asia/Colombo date)" >> html-validation-report/summary.md
           echo "" >> html-validation-report/summary.md
           echo "---" >> html-validation-report/summary.md
+          echo "" >> html-validation-report/summary.md
+
           echo "" > html-validation-report/messages-for-ai.txt
 
           html_files=$(find . -name "*.html" -type f | head -20)
+
           if [ -z "$html_files" ]; then
             echo "⚠️ **No HTML files found in repository**" | tee -a html-validation-report/summary.md
             exit 0
@@ -49,6 +51,7 @@ jobs:
 
           for file in $html_files; do
             echo "## 🔍 Validating: \`$file\`" | tee -a html-validation-report/summary.md
+
             response_file="html-validation-report/$(basename "$file" .html)_response.json"
 
             curl -s -X POST \
@@ -61,8 +64,8 @@ jobs:
               continue
             fi
 
-            errors=$(jq '.messages | map(select(.type == "error")) | length' "$response_file")
-            warnings=$(jq '.messages | map(select(.type == "info")) | length' "$response_file")
+            errors=$(jq '.messages | map(select(.type == "error")) | length' "$response_file" 2>/dev/null || echo "0")
+            warnings=$(jq '.messages | map(select(.type == "info")) | length' "$response_file" 2>/dev/null || echo "0")
 
             total_errors=$((total_errors + errors))
             total_warnings=$((total_warnings + warnings))
@@ -72,10 +75,15 @@ jobs:
 
             if [ "$errors" -gt 0 ] || [ "$warnings" -gt 0 ]; then
               echo "File: $file" >> html-validation-report/messages-for-ai.txt
-              jq -r '.messages[] | "\(.type | ascii_upcase): Line \(.lastLine // "N/A") Col \(.lastColumn // "N/A"): \(.message)"' "$response_file" >> html-validation-report/messages-for-ai.txt
+              jq -r '.messages[] | "\(.type | ascii_upcase): Line \(.lastLine // "N/A") Col \(.lastColumn // "N/A"): \(.message)"' \
+                "$response_file" >> html-validation-report/messages-for-ai.txt
               echo "" >> html-validation-report/messages-for-ai.txt
+            fi
+
+            if [ "$errors" -gt 0 ] || [ "$warnings" -gt 0 ]; then
               echo "### Validation Issues:" >> html-validation-report/summary.md
-              jq -r '.messages[] | "- **\(.type | ascii_upcase):** Line \(.lastLine // "N/A") Col \(.lastColumn // "N/A"): \(.message)"' "$response_file" >> html-validation-report/summary.md
+              jq -r '.messages[] | "- **\(.type | ascii_upcase):** Line \(.lastLine // "N/A") Col \(.lastColumn // "N/A"): \(.message)"' \
+                "$response_file" >> html-validation-report/summary.md || echo "- **ERROR:** Failed to parse detailed messages" >> html-validation-report/summary.md
             fi
 
             echo "" >> html-validation-report/summary.md
@@ -104,13 +112,26 @@ jobs:
             exit 0
           fi
 
+          messages_content=$(cat html-validation-report/messages-for-ai.txt)
+
           echo "${{ vars.GEMINI_PROMPT }}" > prompt.txt
-          cat html-validation-report/messages-for-ai.txt >> prompt.txt
+          echo "$messages_content" >> prompt.txt
+
           prompt_text=$(cat prompt.txt)
 
           json_payload=$(jq -n \
             --arg text "$prompt_text" \
-            '{ contents: [{ parts: [{ text: $text }] }], generationConfig: { temperature: 0.3, maxOutputTokens: 2048 } }')
+            '{
+              contents: [{
+                parts: [{
+                  text: $text
+                }]
+              }],
+              generationConfig: {
+                temperature: 0.3,
+                maxOutputTokens: 2048
+              }
+            }')
 
           echo "🤖 Requesting suggestions from Gemini AI..."
 
@@ -119,8 +140,10 @@ jobs:
             -d "$json_payload" \
             "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=$GEMINI_API_KEY")
 
+          # Save full raw response for optional debugging
           echo "$response" > html-validation-report/gemini-raw-response.json
 
+          # Extract all text parts
           suggestions=$(echo "$response" | jq -r '[.candidates[0].content.parts[]?.text] | join("\n\n") // empty')
 
           if [ -n "$suggestions" ]; then
@@ -135,13 +158,10 @@ jobs:
 
             error_msg=$(echo "$response" | jq -r '.error.message // empty')
             if [ -n "$error_msg" ]; then
+              echo "" >> html-validation-report/summary.md
               echo "**Error details:** $error_msg" >> html-validation-report/summary.md
             fi
           fi
-
-      - name: Convert markdown report to PDF
-        run: |
-          pandoc html-validation-report/summary.md -o html-validation-report/summary.pdf
 
       - name: Upload validation report
         uses: actions/upload-artifact@v4
@@ -160,9 +180,9 @@ jobs:
 
             if (fs.existsSync(path)) {
               const summary = fs.readFileSync(path, 'utf8');
-              const truncatedSummary = summary.length > 65000
-                ? summary.substring(0, 65000) + '\n\n... (truncated)'
-                : summary;
+              const truncatedSummary = summary.length > 65000 ? 
+                summary.substring(0, 65000) + '\n\n... (truncated)' : 
+                summary;
 
               await github.rest.issues.createComment({
                 issue_number: context.issue.number,
