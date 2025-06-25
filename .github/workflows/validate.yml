@@ -2,9 +2,9 @@ name: W3C HTML Validation with Full Gemini Suggestions
 
 on:
   push:
-    branches: [master]
+    branches: [main]
   pull_request:
-    branches: [master]
+    branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -54,22 +54,13 @@ jobs:
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
-          RAW_MESSAGES=$(cat html-validation-report/messages-for-ai.txt)
+          RAW_MESSAGES=$(cat html-validation-report/messages-for-ai.txt | tr '\n' '⏎')
 
-          PROMPT="These are W3C HTML validation messages (errors and warnings). For each message, provide a fix in the format:
-ERROR: ...
-🔧 Gemini AI Suggestion: ...
-or
-INFO: ...
-🔧 Gemini AI Suggestion: ...
+          PROMPT="These are W3C HTML validation messages. For each line, give a fix in the format: ERROR: ... ⏎🔧 Gemini AI Suggestion: ... or INFO: ... ⏎🔧 Gemini AI Suggestion: ... ⏎Messages: $RAW_MESSAGES"
 
-Messages:
-$RAW_MESSAGES"
-
-          # Use jq to safely encode the prompt into JSON
           JSON_PAYLOAD=$(jq -n \
             --arg text "$PROMPT" \
-            '{contents: [{parts: [{text: $text}]}], generationConfig: {temperature: 0.5}}')
+            '{ contents: [ { parts: [ { text: $text } ] } ], generationConfig: { temperature: 0.5 } }')
 
           RESPONSE=$(curl -s -X POST \
             -H "Authorization: Bearer $GEMINI_API_KEY" \
@@ -80,7 +71,7 @@ $RAW_MESSAGES"
           SUGGESTIONS=$(echo "$RESPONSE" | jq -r '.candidates[0].content.parts[0].text // "⚠️ No suggestions returned by Gemini."')
 
           echo -e "\n\n🔧 Gemini AI Suggestions:" >> html-validation-report/summary.txt
-          echo "$SUGGESTIONS" >> html-validation-report/summary.txt
+          echo "$SUGGESTIONS" | tr '⏎' '\n' >> html-validation-report/summary.txt
 
       - name: Upload HTML validation report
         uses: actions/upload-artifact@v4
