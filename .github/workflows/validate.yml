@@ -1,0 +1,59 @@
+name: W3C HTML Validation
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  validate-html:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install jq (JSON processor)
+        run: sudo apt-get install -y jq
+
+      - name: Set report timestamp (Sri Lanka time)
+        id: set-time
+        run: |
+          sudo timedatectl set-timezone Asia/Colombo
+          echo "timestamp=$(date +'%Y-%m-%d-%H-%M')" >> $GITHUB_OUTPUT
+
+      - name: Find and validate HTML files
+        run: |
+          mkdir -p html-validation-report
+          echo "🧪 W3C HTML Validation Summary" > html-validation-report/summary.txt
+
+          for file in $(find . -name "*.html"); do
+            echo ""
+            echo "🔍 Validating: $file"
+            echo "" >> html-validation-report/summary.txt
+            echo "🔍 Validating: $file" >> html-validation-report/summary.txt
+
+            curl -s -H "Content-Type: text/html; charset=utf-8" \
+                 --data-binary @"$file" \
+                 "https://validator.w3.org/nu/?out=json" > html-validation-report/$(basename "$file").json
+
+            ERRORS=$(jq '.messages | map(select(.type == "error")) | length' html-validation-report/$(basename "$file").json)
+            WARNINGS=$(jq '.messages | map(select(.type == "info")) | length' html-validation-report/$(basename "$file").json)
+
+            echo "$file: ❌ $ERRORS errors, ⚠️ $WARNINGS warnings" | tee -a html-validation-report/summary.txt
+
+            jq -r '.messages[] | "\(.type | ascii_upcase): Line \(.lastLine // "N/A") Col \(.lastColumn // "N/A"): \(.message)"' \
+              html-validation-report/$(basename "$file").json | tee -a html-validation-report/summary.txt
+
+            echo "--------------------------------------" >> html-validation-report/summary.txt
+          done
+
+      - name: Upload HTML validation report
+        uses: actions/upload-artifact@v4
+        with:
+          name: w3c-html-api-report-${{ steps.set-time.outputs.timestamp }}
+          path: html-validation-report/
