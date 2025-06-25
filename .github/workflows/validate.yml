@@ -1,10 +1,10 @@
-name: W3C HTML Validation with Full Gemini Suggestions
+name: W3C HTML Validation with Gemini Suggestions
 
 on:
   push:
-    branches: [main]
+    branches: [master]
   pull_request:
-    branches: [main]
+    branches: [master]
   workflow_dispatch:
 
 jobs:
@@ -50,30 +50,48 @@ jobs:
             echo "--------------------------------------" >> html-validation-report/summary.txt
           done
 
-      - name: Ask Gemini for suggestions (errors and warnings)
+      - name: Ask Gemini for suggestions
         env:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
         run: |
-          RAW_MESSAGES=$(cat html-validation-report/messages-for-ai.txt | tr '\n' '⏎')
+          RAW_MESSAGES=$(cat html-validation-report/messages-for-ai.txt)
 
-          PROMPT="These are W3C HTML validation messages. For each line, give a fix in the format: ERROR: ... ⏎🔧 Gemini AI Suggestion: ... or INFO: ... ⏎🔧 Gemini AI Suggestion: ... ⏎Messages: $RAW_MESSAGES"
+          # Write prompt to file
+          cat <<EOF > prompt.txt
+These are W3C HTML validation messages (both errors and warnings).
+For each message, provide a suggestion in this format:
 
+ERROR: ...
+🔧 Gemini AI Suggestion: ...
+
+or
+
+INFO: ...
+🔧 Gemini AI Suggestion: ...
+
+Messages:
+$RAW_MESSAGES
+EOF
+
+          # Prepare JSON payload safely
           JSON_PAYLOAD=$(jq -n \
-            --arg text "$PROMPT" \
+            --arg text "$(cat prompt.txt)" \
             '{ contents: [ { parts: [ { text: $text } ] } ], generationConfig: { temperature: 0.5 } }')
 
+          # Send request to Gemini
           RESPONSE=$(curl -s -X POST \
             -H "Authorization: Bearer $GEMINI_API_KEY" \
             -H "Content-Type: application/json" \
             -d "$JSON_PAYLOAD" \
             "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent")
 
+          # Extract response or fallback
           SUGGESTIONS=$(echo "$RESPONSE" | jq -r '.candidates[0].content.parts[0].text // "⚠️ No suggestions returned by Gemini."')
 
           echo -e "\n\n🔧 Gemini AI Suggestions:" >> html-validation-report/summary.txt
-          echo "$SUGGESTIONS" | tr '⏎' '\n' >> html-validation-report/summary.txt
+          echo "$SUGGESTIONS" >> html-validation-report/summary.txt
 
-      - name: Upload HTML validation report
+      - name: Upload validation report
         uses: actions/upload-artifact@v4
         with:
           name: w3c-html-report-${{ steps.set-time.outputs.timestamp }}
