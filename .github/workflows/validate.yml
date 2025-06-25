@@ -1,4 +1,4 @@
-name: Validate HTML with W3C
+name: W3C HTML Validation
 
 on:
   push:
@@ -14,30 +14,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Java
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'temurin'
-          java-version: '17'
+      - name: Install jq (JSON processor)
+        run: sudo apt-get install -y jq
 
-      - name: Download vnu.jar (W3C Validator)
-        run: |
-          mkdir -p tools
-          curl -L -o tools/vnu.zip https://github.com/validator/validator/releases/latest/download/vnu.zip
-          unzip tools/vnu.zip -d tools
-          chmod +x tools/vnu*/vnu.jar
-
-      - name: Run HTML validation
+      - name: Find and validate HTML files
         run: |
           mkdir -p html-validation-report
-          java -jar tools/vnu*/vnu.jar --errors-only --format json ./ > html-validation-report/report.json || true
-          java -jar tools/vnu*/vnu.jar --errors-only --format text ./ > html-validation-report/report.txt || true
+          echo "Validating HTML files..." > html-validation-report/summary.txt
+          for file in $(find . -name "*.html"); do
+            echo "Validating: $file"
+            curl -s -H "Content-Type: text/html; charset=utf-8" \
+                 --data-binary @"$file" \
+                 "https://validator.w3.org/nu/?out=json" > html-validation-report/$(basename "$file").json
 
-      - name: Upload Validation Report
+            ERRORS=$(jq '.messages | map(select(.type == "error")) | length' html-validation-report/$(basename "$file").json)
+            WARNINGS=$(jq '.messages | map(select(.type == "info")) | length' html-validation-report/$(basename "$file").json)
+
+            echo "$file: ❌ $ERRORS errors, ⚠️ $WARNINGS warnings" >> html-validation-report/summary.txt
+          done
+
+      - name: Upload HTML validation report
         uses: actions/upload-artifact@v4
         with:
-          name: w3c-html-validation-report
+          name: w3c-html-api-report
           path: html-validation-report/
