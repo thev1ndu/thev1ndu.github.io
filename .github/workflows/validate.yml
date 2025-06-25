@@ -1,12 +1,10 @@
-name: W3C HTML Validation
+name: W3C HTML Validation with Gemini AI
 
 on:
   push:
-    branches:
-      - master
+    branches: [main]
   pull_request:
-    branches:
-      - master
+    branches: [main]
   workflow_dispatch:
 
 jobs:
@@ -17,8 +15,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Install jq (JSON processor)
-        run: sudo apt-get install -y jq
+      - name: Install tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq curl
 
       - name: Set report timestamp (Sri Lanka time)
         id: set-time
@@ -26,20 +26,17 @@ jobs:
           sudo timedatectl set-timezone Asia/Colombo
           echo "timestamp=$(date +'%Y-%m-%d-%H-%M')" >> $GITHUB_OUTPUT
 
-      - name: Find and validate HTML files
+      - name: Validate HTML files
         run: |
           mkdir -p html-validation-report
           echo "🧪 W3C HTML Validation Summary" > html-validation-report/summary.txt
 
           for file in $(find . -name "*.html"); do
-            echo ""
-            echo "🔍 Validating: $file"
-            echo "" >> html-validation-report/summary.txt
-            echo "🔍 Validating: $file" >> html-validation-report/summary.txt
+            echo "🔍 Validating: $file" | tee -a html-validation-report/summary.txt
 
             curl -s -H "Content-Type: text/html; charset=utf-8" \
-                 --data-binary @"$file" \
-                 "https://validator.w3.org/nu/?out=json" > html-validation-report/$(basename "$file").json
+              --data-binary @"$file" \
+              "https://validator.w3.org/nu/?out=json" > html-validation-report/$(basename "$file").json
 
             ERRORS=$(jq '.messages | map(select(.type == "error")) | length' html-validation-report/$(basename "$file").json)
             WARNINGS=$(jq '.messages | map(select(.type == "info")) | length' html-validation-report/$(basename "$file").json)
@@ -47,13 +44,38 @@ jobs:
             echo "$file: ❌ $ERRORS errors, ⚠️ $WARNINGS warnings" | tee -a html-validation-report/summary.txt
 
             jq -r '.messages[] | "\(.type | ascii_upcase): Line \(.lastLine // "N/A") Col \(.lastColumn // "N/A"): \(.message)"' \
-              html-validation-report/$(basename "$file").json | tee -a html-validation-report/summary.txt
+              html-validation-report/$(basename "$file").json >> html-validation-report/summary.txt
 
             echo "--------------------------------------" >> html-validation-report/summary.txt
           done
 
+      - name: Call Gemini AI to explain and fix issues
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: |
+          SUMMARY=$(cat html-validation-report/summary.txt | jq -Rs .)
+          PROMPT="Here is a W3C HTML validation error report. Please explain the errors and suggest fixes:\n$SUMMARY"
+
+          RESPONSE=$(curl -s -X POST \
+            -H "Authorization: Bearer $GEMINI_API_KEY" \
+            -H "Content-Type: application/json" \
+            -d '{
+              "contents": [
+                {
+                  "parts": [
+                    { "text": '"$PROMPT"' }
+                  ]
+                }
+              ],
+              "generationConfig": { "temperature": 0.7 }
+            }' \
+            "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent")
+
+          echo -e "\n\n🔧 Gemini AI Suggestions:" >> html-validation-report/summary.txt
+          echo "$RESPONSE" | jq -r '.candidates[0].content.parts[0].text' >> html-validation-report/summary.txt || echo "❌ Failed to fetch suggestions"
+
       - name: Upload HTML validation report
         uses: actions/upload-artifact@v4
         with:
-          name: w3c-html-api-report-${{ steps.set-time.outputs.timestamp }}
+          name: w3c-html-report-${{ steps.set-time.outputs.timestamp }}
           path: html-validation-report/
