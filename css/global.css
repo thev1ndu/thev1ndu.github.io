@@ -25,7 +25,7 @@ body {
   font-size: 16px;
   line-height: 1.6;
   background-color: #fff;
-  color: #fff;
+  color: #000000;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -402,6 +402,16 @@ img {
 .block-label {
   color: #14cb5a;
   font-size: 0.85rem;
+  font-family: "Helvetica Neue", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.page-label {
+  color: #14cb5a;
+  font-size: 0.95rem;
   font-family: "Helvetica Neue", sans-serif;
   text-transform: uppercase;
   letter-spacing: 1px;

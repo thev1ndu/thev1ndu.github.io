@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student 2: Page Editor | SAGE</title>
+    <link rel="stylesheet" href="./css/global.css" />
+    <link rel="icon" href="./assets/images/favicon.png" />
+    <meta
+      name="description"
+      content="SAGE empowers individuals and communities to take meaningful climate action. Join us in building a sustainable future for everyone."
+    />
+    <meta
+      name="keywords"
+      content="climate action, sustainability, environment, global warming, green energy, carbon footprint"
+    />
+    <meta name="author" content="ThevinduW" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <script src="./js/script.js"></script>
+    <style>
+      /* ========= Base Body Styles ========= */
+      body {
+        font-family: "Helvetica Neue", sans-serif;
+        font-size: 1rem;
+        line-height: 1.6;
+        background-color: #ffffff;
+        color: #2a2a2a;
+      }
+
+      /* ========= Main Container ========= */
+      main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 3rem 1.5rem;
+      }
+
+      /* ========= Section Card Layout ========= */
+      section {
+        margin-bottom: 3rem;
+        padding: 2.5rem;
+        background: rgba(255, 255, 255, 0.85);
+        border-radius: 20px;
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        scroll-margin-top: 100px;
+      }
+
+      section:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.15);
+      }
+
+      /* ========= Typography ========= */
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 1.2rem;
+        color: #1c3c3c;
+        padding-bottom: 0.5rem;
+        border-bottom: 3px solid #4caf50;
+        text-transform: capitalize;
+        letter-spacing: 0.5px;
+      }
+
+      h3 {
+        font-size: 1.35rem;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+        color: #2f4f4f;
+        font-weight: 500;
+      }
+
+      p {
+        font-size: 1.05rem;
+        color: #333;
+        margin-bottom: 1.2rem;
+      }
+
+      /* ========= Lists ========= */
+      ul,
+      ol {
+        padding-left: 1.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      ul li,
+      ol li {
+        margin-bottom: 0.7rem;
+        line-height: 1.7;
+        padding-left: 0.5rem;
+      }
+
+      ul li::marker {
+        color: #4caf50;
+      }
+
+      /* ========= Code Styling ========= */
+      code {
+        font-family: "Courier New", monospace;
+        background-color: #f4f4f4;
+        color: #b30038;
+        padding: 2px 6px;
+        font-size: 0.95rem;
+        border-radius: 6px;
+        white-space: nowrap;
+      }
+
+      /* ========= Responsive Layout ========= */
+      @media (max-width: 768px) {
+        main {
+          padding: 1.5rem;
+        }
+
+        section {
+          padding: 1.8rem;
+        }
+
+        h2 {
+          font-size: 1.6rem;
+        }
+
+        h3 {
+          font-size: 1.15rem;
+        }
+
+        p,
+        li {
+          font-size: 0.97rem;
+        }
+      }
+
+      /* ========= Custom Class for Highlighting Author/Student ========= */
+      .student {
+        text-align: center;
+        background: rgba(12, 191, 108, 0.866);
+        color: #fff;
+        font-weight: bold;
+        padding: 0.75rem;
+        text-transform: uppercase;
+        margin-top: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header" id="header">
+      <div class="header-left">
+        <div style="display: flex; align-items: center; gap: 16px">
+          <div class="logo logo-text">SAGE</div>
+          <div class="logo-separator"></div>
+          <div class="logo">
+            <img src="./assets/images/sdgsaf.webp" alt="SDG Logo" />
+          </div>
+        </div>
+        <div class="mobile-menu-button" onclick="toggleMobileMenu()">☰</div>
+      </div>
+
+      <nav class="nav-links">
+        <a href="/">Home</a>
+        <a href="#">Volunteer</a>
+        <a href="/table.html">Climate Data</a>
+        <a href="#">Government</a>
+        <a href="#">Customers</a>
+        <a href="#">Resources</a>
+      </nav>
+
+      <div class="header-right">
+        <a href="#" class="profile-button">Profile →</a>
+      </div>
+
+      <div class="mobile-nav" id="mobileNav">
+        <a href="/">Home</a>
+        <a href="#">Volunteer</a>
+        <a href="/table.html">Climate Data</a>
+        <a href="#">Government</a>
+        <a href="#">Customers</a>
+        <a href="#">Resources</a>
+        <a href="#" class="profile-button">Profile →</a>
+      </div>
+    </header>
+    <div class="student">
+      <h1>Thevindu Wickramaarachchi - Student 2</h1>
+    </div>
+    <main>
+      <section id="template-development">
+        <h2>Template Development</h2>
+
+        <p class="page-label">Technical Description</p>
+        <p>
+          The base template was crafted using semantic HTML5 structure combined
+          with modern design practices. It includes:
+        </p>
+        <ul>
+          <li>
+            Semantic elements: <code>&lt;header&gt;</code>,
+            <code>&lt;main&gt;</code>, <code>&lt;footer&gt;</code>, and
+            <code>&lt;section&gt;</code>
+          </li>
+          <li>
+            Responsive navigation bar using Flexbox for alignment and
+            mobile-first media queries for layout adjustments
+          </li>
+          <li>
+            Mobile menu toggle implemented via JavaScript and controlled with
+            CSS visibility logic
+          </li>
+          <li>
+            Glassmorphism effects applied to the header and footer using
+            <code>backdrop-filter</code> and <code>rgba()</code> transparency
+          </li>
+          <li>
+            Scroll-to-top feature with smooth scrolling and animated icon
+            interaction
+          </li>
+          <li>
+            Custom font integration via Google Fonts and @font-face (e.g.,
+            "Astro" and "Helvetica Neue")
+          </li>
+        </ul>
+
+        <p class="page-label">Accessibility</p>
+        <p>Accessibility considerations included:</p>
+        <ul>
+          <li>
+            ARIA labels applied to interactive buttons (e.g., scroll-to-top)
+          </li>
+          <li>Keyboard-accessible navigation through proper HTML structure</li>
+          <li>
+            Clear visual hierarchy using semantic tags and contrasting text
+            colors
+          </li>
+          <li>
+            Font sizes and spacing optimized for readability across screen sizes
+          </li>
+        </ul>
+
+        <p class="page-label">Link to the Validation Page</p>
+        <p>
+          <a href="../validationPage/validation_ST2.html#template"
+            >Validation report for the base template</a
+          >
+        </p>
+
+        <p class="page-label">Link to the Template Page</p>
+        <p>
+          <a href="../template.html">View the implemented template</a>
+        </p>
+      </section>
+      <section id="home-page-development">
+        <h2>Home Page Development</h2>
+
+        <p class="page-label">Technical Description</p>
+        <p>
+          The home page was designed to create a modern, immersive user
+          experience centered around climate action. It includes the following
+          implementations:
+        </p>
+        <ul>
+          <li>
+            Hero section with full-screen autoplay background video using
+            <code>&lt;video&gt;</code> and <code>object-fit: cover</code>
+          </li>
+          <li>
+            Animated title and subtitle with text shadows and linear-gradient
+            effects via <code>-webkit-background-clip</code>
+          </li>
+          <li>
+            Fixed-position SDG badge image placed with precision using absolute
+            positioning
+          </li>
+          <li>
+            Dynamic call-to-action bar with blurred background and soft drop
+            shadows for a glassmorphism effect
+          </li>
+          <li>
+            “About SDG 13” section with responsive two-column layout using CSS
+            Grid and embedded YouTube video in a styled container
+          </li>
+          <li>
+            Mission block styled with custom typography and centered layout
+            inside a reusable <code>.block-section</code> component
+          </li>
+          <li>Quote-style callout with centered content and thematic colors</li>
+          <li>
+            Content Hub with 4 interactive cards using hover overlays, animated
+            fade-in (via Intersection Observer), and responsive design
+          </li>
+        </ul>
+
+        <p class="page-label">Accessibility</p>
+        <p>Accessibility practices included:</p>
+        <ul>
+          <li>Meaningful alt text for all images and decorative elements</li>
+          <li>
+            Text contrast and font sizes compliant with WCAG 2.1 AA guidelines
+          </li>
+          <li>Keyboard focusability and smooth navigation through sections</li>
+          <li>
+            ARIA label on the scroll-to-top button for assistive technologies
+          </li>
+        </ul>
+
+        <p class="page-label">Link to the Validation Page</p>
+        <p>
+          <a href="../validationPage/validation_ST2.html#home"
+            >Validation report for the home page implementation</a
+          >
+        </p>
+
+        <p class="page-label">Link to the Home Page</p>
+        <p>
+          <a href="../home.html">View the SAGE Home Page</a>
+        </p>
+      </section>
+      <section id="climate-data-table">
+        <h2>Climate Data Table</h2>
+
+        <p class="page-label">Technical Description</p>
+        <p>
+          The climate data page presents an interactive and accessible data
+          table visualizing key environmental metrics across multiple countries.
+          This implementation includes:
+        </p>
+        <ul>
+          <li>
+            Scrollable responsive table built inside a flex container with
+            <code>overflow-x: auto</code> for horizontal navigation on smaller
+            devices
+          </li>
+          <li>
+            Sticky headers and sticky first column using
+            <code>position: sticky</code> for enhanced readability during
+            horizontal scrolling
+          </li>
+          <li>
+            Glassmorphism effects applied to the scroll container and table
+            cells using <code>backdrop-filter</code> and semi-transparent
+            backgrounds
+          </li>
+          <li>
+            Alternating row styling with <code>nth-child(even)</code> and hover
+            highlights for better UX
+          </li>
+          <li>
+            Flag images with country names inside a flexbox layout for visual
+            clarity
+          </li>
+          <li>
+            Table links styled with different states (hover, visited, active)
+            and external data source citation
+          </li>
+          <li>
+            Custom call-to-action section below the table encouraging user
+            participation
+          </li>
+        </ul>
+
+        <p class="page-label">Accessibility</p>
+        <p>
+          Accessibility features ensured that the table and surrounding layout
+          are user-friendly and compliant:
+        </p>
+        <ul>
+          <li>
+            ARIA labels on the scroll area and the table to improve screen
+            reader compatibility
+          </li>
+          <li>Descriptive <code>alt</code> text on all country flags</li>
+          <li>
+            Clear visual contrast for header and cell content to meet WCAG 2.1
+            AA color contrast standards
+          </li>
+          <li>
+            Semantic <code>&lt;table&gt;</code>, <code>&lt;thead&gt;</code>, and
+            <code>&lt;tbody&gt;</code> structure with appropriate
+            <code>&lt;th&gt;</code> usage
+          </li>
+        </ul>
+
+        <p class="page-label">Link to the Validation Page</p>
+        <p>
+          <a href="../validationPage/validation_ST2.html#table"
+            >View the validation report for the Climate Data Table</a
+          >
+        </p>
+
+        <p class="page-label">Link to the Climate Data Page</p>
+        <p>
+          <a href="../table.html">Open the interactive Climate Data Table</a>
+        </p>
+      </section>
+      <section id="challenges-lessons">
+        <h2 class="header-for-content">Challenges and Lessons Learned</h2>
+
+        <h3 class="page-label">Challenges Faced</h3>
+        <ul class="content">
+          <li>
+            Responsive Layout Issues: Ensuring consistency across all devices
+            was tricky, especially with sidebars and videos.<br />
+            ✅ Solved using media queries, CSS Grid/Flexbox, and wrapper
+            containers.
+          </li>
+
+          <li>
+            Sticky Sidebar Navigation: The sidebar overlapped content and broke
+            anchor navigation.<br />
+            ✅ Fixed with <code>position: sticky</code> and
+            <code>scroll-margin-top</code>.
+          </li>
+
+          <li>
+            Glassmorphism Compatibility: Some browsers didn’t render
+            <code>backdrop-filter</code> correctly.<br />
+            ✅ Added fallback styles and
+            <code>-webkit-backdrop-filter</code> prefixes.
+          </li>
+
+          <li>
+            Table Overflow on Mobile: Tables stretched beyond screen width on
+            small devices.<br />
+            ✅ Solved using <code>overflow-x: auto</code> inside a responsive
+            wrapper.
+          </li>
+        </ul>
+
+        <h3 class="page-label">Lessons Learned</h3>
+        <ul class="content">
+          <li>Mobile-first design simplifies responsive adjustments later.</li>
+          <li>
+            CSS Grid and Flexbox provide clean, scalable layout structures.
+          </li>
+          <li>
+            Accessibility (alt text, contrast, semantic tags) enhances user
+            experience.
+          </li>
+          <li>
+            Testing across browsers and devices catches layout bugs early.
+          </li>
+        </ul>
+      </section>
+      <section id="accessibility">
+        <h2 class="header-for-content">Accessibility</h2>
+        <p class="content">
+          The Content Page was developed with a strong emphasis on
+          accessibility, ensuring that users of all abilities can engage with
+          the content effectively. Key accessibility considerations include:
+        </p>
+        <ul class="content">
+          <li>
+            Semantic HTML structure: Content is organized using proper headings
+            (<code>&lt;h1&gt;</code>–<code>&lt;h3&gt;</code>), paragraphs,
+            lists, and sections, helping screen readers interpret the page
+            logically.
+          </li>
+          <li>
+            Alt text for images: All informative images include descriptive
+            <code>alt</code> attributes, enabling users with visual impairments
+            to understand visual content.
+          </li>
+          <li>
+            Keyboard-navigable layout: All interactive elements such as links,
+            dropdowns, and buttons are accessible via keyboard navigation.
+          </li>
+          <li>
+            High contrast and readable fonts: The use of dark text on light
+            backgrounds (and vice versa) ensures sufficient contrast, while
+            system-friendly fonts like "Helvetica Neue" enhance readability.
+          </li>
+          <li>
+            ARIA labels: Icons and buttons (like the “scroll to top” feature)
+            include <code>aria-labels</code> to describe their function to
+            assistive technologies.
+          </li>
+          <li>
+            Responsive design for all devices: The page adapts to screen size
+            changes without losing usability or content clarity, benefiting
+            users with zoom or touch-based interactions.
+          </li>
+        </ul>
+      </section>
+      <section id="compliance">
+        <h2 class="header-for-content">Compliance</h2>
+        <p class="content">
+          The pages adhere to Janet web publishing standards, focusing on
+          accessibility, privacy, and responsible content delivery.
+        </p>
+        <ul class="content">
+          <li>
+            Semantic HTML, alt text, keyboard support, and responsive design
+            ensure WCAG 2.1 accessibility alignment.
+          </li>
+          <li>
+            No personal data is collected, maintaining GDPR compliance and
+            respecting user privacy.
+          </li>
+          <li>
+            All content is educational and suitable for public academic contexts
+            per Janet’s Acceptable Use Policy.
+          </li>
+          <li>
+            Secure code practices avoid risky scripts and third-party tracking
+            tools.
+          </li>
+          <li>
+            Fonts, icons, and media are sourced with proper licensing via
+            official CDNs.
+          </li>
+        </ul>
+      </section>
+      <section id="references">
+        <h2 class="header-for-content">References</h2>
+        <ol class="content">
+          <li id="ref1">
+            World Health Organization. (2021). <i>Air Pollution</i>. Retrieved
+            from
+            <a
+              href="https://www.who.int/news-room/fact-sheets/detail/ambient-(outdoor)-air-quality-and-health"
+              target="_blank"
+            >
+              https://www.who.int/news-room/fact-sheets/detail/ambient-(outdoor)-air-quality-and-health
+            </a>
+          </li>
+          <li id="ref2">
+            Intergovernmental Panel on Climate Change (IPCC). (2023).
+            <i>Climate Change 2023: Synthesis Report</i>. Retrieved from
+            <a href="https://www.ipcc.ch/report/ar6/syr/" target="_blank"
+              >https://www.ipcc.ch/report/ar6/syr/</a
+            >
+          </li>
+          <li id="ref3">
+            NASA Global Climate Change. (2022).
+            <i>Vital Signs of the Planet</i>. Retrieved from
+            <a href="https://climate.nasa.gov/" target="_blank"
+              >https://climate.nasa.gov/</a
+            >
+          </li>
+          <li id="ref4">
+            W3C. (2018). <i>Web Content Accessibility Guidelines (WCAG) 2.1</i>.
+            Retrieved from
+            <a href="https://www.w3.org/TR/WCAG21/" target="_blank"
+              >https://www.w3.org/TR/WCAG21/</a
+            >
+          </li>
+          <li id="ref5">
+            FlagCDN. (2023). <i>Flag CDN Documentation</i>. Retrieved from
+            <a href="https://flagcdn.com/" target="_blank"
+              >https://flagcdn.com/</a
+            >
+          </li>
+          <li id="ref6">
+            MDN Web Docs. (2024). <i>CSS: Cascading Style Sheets</i>. Retrieved
+            from
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/CSS"
+              target="_blank"
+            >
+              https://developer.mozilla.org/en-US/docs/Web/CSS
+            </a>
+          </li>
+          <li id="ref7">
+            W3Schools. (2024). <i>CSS Media Queries</i>. Retrieved from
+            <a
+              href="https://www.w3schools.com/css/css_rwd_mediaqueries.asp"
+              target="_blank"
+            >
+              https://www.w3schools.com/css/css_rwd_mediaqueries.asp
+            </a>
+          </li>
+          <li id="ref8">
+            Google Developers. (2023). <i>Web Accessibility</i>. Retrieved from
+            <a
+              href="https://developers.google.com/web/fundamentals/accessibility"
+              target="_blank"
+            >
+              https://developers.google.com/web/fundamentals/accessibility
+            </a>
+          </li>
+        </ol>
+      </section>
+    </main>
+
+    <button
+      class="scroll-to-top"
+      onclick="scrollToTop()"
+      aria-label="Scroll to Top"
+    >
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h4>Website Links</h4>
+          <a href="#">Home</a>
+          <a href="#">Shop</a>
+          <a href="#">Gallery</a>
+          <a href="#">Feedback</a>
+          <a href="#">Team</a>
+          <a href="#">Sitemap</a>
+        </div>
+
+        <div class="footer-column">
+          <h4>Useful Links</h4>
+          <a href="#">Conditions</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Cookies</a>
+          <a href="#">Anti Corruption</a>
+          <a href="#">Asset License</a>
+        </div>
+
+        <div class="footer-column">
+          <h4>Content Pages</h4>
+          <a href="#">Content 01</a>
+          <a href="./content_ST2.html">Content 02</a>
+          <a href="#">Content 03</a>
+          <a href="#">Content 04</a>
+        </div>
+
+        <div class="footer-column">
+          <h4>Student Pages</h4>
+          <a href="#">Student 01</a>
+          <a href="#">Student 02</a>
+          <a href="#">Student 03</a>
+          <a href="#">Student 04</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>Copyright © 2025 SAGE. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      function toggleMobileMenu() {
+        document.getElementById("header").classList.toggle("show-mobile-nav");
+      }
+
+      function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    </script>
+  </body>
+</html>
