@@ -483,6 +483,7 @@ img {
   margin-top: 3%;
   z-index: 10;
   padding: 2rem 3rem;
+  border-radius: 1px;
   background: rgba(12, 191, 108, 0.866);
   backdrop-filter: blur(8px);
   border-top: 1px solid rgba(255, 255, 255, 0.08);
