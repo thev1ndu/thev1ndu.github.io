@@ -121,8 +121,16 @@ img {
 }
 
 .logo img {
-  width: 20%;
-  height: 20%;
+  height: 40px;
+  width: auto;
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.logo-primary img {
+  height: 30px;
+  width: auto;
+  vertical-align: middle;
 }
 
 .logo-separator {
