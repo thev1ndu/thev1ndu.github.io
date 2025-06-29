@@ -518,7 +518,7 @@ img {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-top: 3%;
+  margin-top: 5vh;
   margin-right: 5%;
   margin-left: 7%;
   z-index: 10;
