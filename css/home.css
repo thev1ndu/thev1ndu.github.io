@@ -8,7 +8,7 @@
   align-items: center;
   text-align: center;
   padding: 80px 1rem 0;
-  margin-bottom: -18vh;
+  margin-bottom: -7rem;
   z-index: 2;
   overflow: hidden;
 }
@@ -78,22 +78,6 @@
   background: linear-gradient(to bottom, transparent, #111);
   z-index: 2;
   pointer-events: none;
-}
-
-.cta-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 3%;
-  z-index: 10;
-  padding: 2rem 3rem;
-  background: rgba(12, 191, 108, 0.866);
-  backdrop-filter: blur(8px);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 2px 12px rgba(1, 59, 34, 1);
-  color: black;
-  font-family: "Helvetica Neue", sans-serif;
 }
 
 .cta-bar h2 {
