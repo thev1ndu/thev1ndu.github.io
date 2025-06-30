@@ -1,3 +1,4 @@
+/* ========== Layout Container ========== */
 .blog-layout {
   display: flex;
   max-width: 1400px;
@@ -7,10 +8,12 @@
   font-family: "Helvetica Neue", sans-serif;
 }
 
+/* Anchor scroll offset */
 section {
   scroll-margin-top: 100px;
 }
 
+/* ========== Sidebar Navigation ========== */
 .sidebar-nav {
   width: 250px;
   scroll-behavior: smooth;
@@ -55,6 +58,7 @@ section {
   color: #4caf50;
 }
 
+/* ========== Blog Images ========== */
 .blog-content img {
   display: block;
   max-width: 100%;
@@ -64,6 +68,7 @@ section {
   margin: 20px auto;
 }
 
+/* Section-specific images (float layout) */
 .blog-content section img {
   float: left;
   margin: 15px;
@@ -74,26 +79,31 @@ section {
   border: 3px solid #ccc;
 }
 
+/* Clear float */
 .blog-content section::after {
   content: "";
   display: block;
   clear: both;
 }
 
+/* Centered heading */
 .content-heading {
   text-align: center;
 }
 
+/* Top margin for inline images */
 .content img {
   margin-top: 2.5rem;
   border-radius: 20px;
 }
 
+/* Community farming image style */
 .image-community-farming {
   height: 35vh;
   margin-left: 35px;
 }
 
+/* ========== Responsive: Tablet and below ========== */
 @media (max-width: 1024px) {
   .blog-layout {
     flex-direction: column;
@@ -131,10 +141,12 @@ section {
   }
 }
 
+/* ========== Hero Section ========== */
 .hero-content {
   height: 100vh;
 }
 
+/* Section spacing control */
 .sections {
   margin-top: -7rem;
 }
@@ -143,6 +155,7 @@ section {
   margin-bottom: 3rem;
 }
 
+/* ========== Image Grid (Visible Signs Section) ========== */
 .image-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -166,6 +179,8 @@ section {
   color: #333;
   line-height: 1.4;
 }
+
+/* ========== Embedded Video Styling ========== */
 .video-frame {
   width: 65%;
   margin: auto;
@@ -196,6 +211,7 @@ section {
   border: none;
 }
 
+/* ========== Adaptation Grid Section ========== */
 #adaptation {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -215,6 +231,7 @@ section {
   }
 }
 
+/* ========== Innovation Cards ========== */
 .card-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -247,13 +264,14 @@ section {
   line-height: 1.6;
 }
 
-/* Mobile responsive */
+/* Mobile card layout */
 @media (max-width: 768px) {
   .card-wrapper {
     grid-template-columns: 1fr;
   }
 }
 
+/* ========== Statistics Table ========== */
 .stats-table-wrapper {
   margin-top: 2rem;
   overflow-x: auto;
@@ -292,6 +310,7 @@ section {
   }
 }
 
+/* ========== Youth Climate Image ========== */
 .youth-climate {
   height: auto;
   width: 90%;
