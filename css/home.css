@@ -344,3 +344,7 @@
     width: 80%;
   }
 }
+
+#explore {
+  scroll-margin-top: 7.5rem;
+}
