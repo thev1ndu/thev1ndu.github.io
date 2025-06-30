@@ -116,29 +116,6 @@
   gap: 8px;
 }
 
-/* ========== CTA BAR ========== */
-.cta-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 0.4%;
-  z-index: 10;
-  padding: 2rem 3rem;
-  background: rgba(12, 191, 108, 0.866);
-  backdrop-filter: blur(8px);
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 2px 12px rgba(1, 59, 34, 1);
-  color: black;
-  font-family: "Helvetica Neue", sans-serif;
-}
-
-.cta-bar h2 {
-  font-size: 2rem;
-  font-weight: 500;
-  margin: 0;
-}
-
 /* ========== TABLE LINKS ========== */
 tbody td a:link {
   color: #0056b3;
