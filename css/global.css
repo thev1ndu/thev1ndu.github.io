@@ -147,10 +147,18 @@ img {
 
 .nav-links a {
   color: white;
-  text-decoration: none;
+  /* text-decoration: none; */
   font-size: 0.95rem;
   font-weight: 500;
   transition: color 0.2s;
+}
+
+.nav-links a.active {
+  text-decoration: underline;
+  /* color: #4caf50; */
+  text-underline-offset: 6px;
+  text-decoration-thickness: 2px;
+  text-decoration-color: #4caf50;
 }
 
 .nav-links a:hover {
