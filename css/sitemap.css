@@ -1,0 +1,92 @@
+.page-label {
+  margin-bottom: 1rem;
+  font-size: 30px;
+}
+
+section {
+  max-height: 900px;
+  max-width: 1300px;
+  margin: 2rem;
+  overflow: hidden;
+}
+
+section:hover {
+  overflow: auto;
+  scrollbar-width: thin;
+}
+
+.svg-mobile {
+  display: none;
+}
+
+.site-map rect {
+  width: 80px;
+  height: 30px;
+  rx: 10;
+  fill: white;
+  stroke: #77c052;
+  stroke-width: 2;
+  transition: fill 0.3s ease;
+}
+
+.site-map rect:hover {
+  fill: #dbffe2;
+  cursor: pointer;
+}
+
+.site-map line {
+  stroke: #81c784;
+  stroke-width: 2;
+}
+
+.site-map polyline {
+  fill: #4caf50;
+}
+
+.site-map svg text {
+  font-size: 14px;
+  fill: #2f7e4c;
+  pointer-events: none;
+}
+
+.site-map .rect1 {
+  width: 110px;
+}
+
+.site-map .rect2 {
+  width: 90px;
+}
+
+.site-map .rect3 {
+  height: 26px;
+  width: 75px;
+}
+
+.site-map .text2 {
+  font-size: 12px;
+}
+
+@media screen and (max-width: 600px) {
+  .svg-mobile {
+    display: block;
+  }
+
+  .svg-desktop {
+    display: none;
+  }
+
+  .page-label {
+    font-size: 20px;
+  }
+
+  section {
+    margin: 1rem;
+    height: 730px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  section {
+    height: 585px;
+  }
+}
