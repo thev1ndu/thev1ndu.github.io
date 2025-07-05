@@ -1,17 +1,17 @@
 .container {
-  display: flex;
-  flex-direction: row-reverse;
+  display: flex; /* Enables Flexbox layout */
+  flex-direction: row-reverse; /* Positions main content to the left and aside to the right */
   max-width: 1200px;
   margin: 0 auto;
   padding: 2rem;
 }
 
 main {
-  flex: 3;
+  flex: 3; /* Takes up 3 parts of the available flex space */
 }
 
 aside {
-  flex: 1;
+  flex: 1; /* Takes up 1 part of the available flex space */
   background-color: #ffffff;
   padding: 1.5rem;
   border: 1px solid #d6dee3;
@@ -19,9 +19,9 @@ aside {
   margin-right: 1.25rem;
   margin-top: 1.5rem;
   margin-bottom: 4.3rem;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(12px); /* Applies blur effect behind the element */
+  -webkit-backdrop-filter: blur(12px); /* Safari support for backdrop blur */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* Adds subtle shadow for depth */
 }
 
 aside h3 {
@@ -55,11 +55,11 @@ section {
   padding: 2.5rem;
   background: rgba(255, 255, 255, 0.85);
   border-radius: 10px;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  scroll-margin-top: 100px;
+  backdrop-filter: blur(12px); /* Applies background blur effect */
+  -webkit-backdrop-filter: blur(12px); /* Safari support for backdrop blur */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08); /* Adds subtle shadow for elevation */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover transitions */
+  scroll-margin-top: 100px; /* Sets offset for scroll positioning */
 }
 
 h2 {
@@ -123,7 +123,7 @@ code {
 }
 
 .refs {
-  margin-bottom: 15px;
-  display: block;
+  margin-bottom: 15px; /* Sets bottom spacing between this block and the next */
+  display: block; /* Ensures element takes full width and behaves like block */
   text-align: left;
 }

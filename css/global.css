@@ -1,5 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:400;500;700&display=swap");
 @import url("https://fonts.cdnfonts.com/css/helvetica-neue-55");
+
 @font-face {
   font-family: "Astro";
   src: url("../assets/fonts/Astro.otf") format("truetype");
@@ -16,7 +17,7 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  scroll-behavior: smooth; /* Enables smooth scrolling for anchor links */
 }
 
 body {
@@ -27,15 +28,15 @@ body {
   background-color: #fff;
   color: #000000;
   min-height: 100vh;
-  display: flex;
+  display: flex; /* Enables column flex layout for sticky footer */
   flex-direction: column;
-  overflow-x: hidden;
+  overflow-x: hidden; /* Prevents horizontal scrolling */
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
 }
 
 main {
-  flex: 1;
+  flex: 1; /* Makes main content take remaining vertical space */
   width: 100%;
   max-width: 1440px;
   margin: 0 auto;
@@ -87,24 +88,24 @@ img {
 
 /* ─────── Header ─────── */
 .header {
-  position: relative; /* So .mobile-nav can be positioned absolutely inside */
-  display: grid;
+  position: relative; /* Required for absolute mobile nav */
+  display: grid; /* Grid layout for three header sections */
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   padding: 16px 48px;
   z-index: 1000;
-  position: sticky;
+  position: sticky; /* Keeps header visible on scroll */
   top: 0;
 
   /* Glassmorphism */
   background: rgba(0, 0, 0, 0.5);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(15.8px);
-  -webkit-backdrop-filter: blur(15.8px);
+  backdrop-filter: blur(15.8px); /* Background blur effect */
+  -webkit-backdrop-filter: blur(15.8px); /* Safari support */
 }
 
 .header-left {
-  display: flex;
+  display: flex; /* Aligns logo and nav inline */
   align-items: center;
   gap: 16px;
 }
@@ -140,14 +141,13 @@ img {
 }
 
 .nav-links {
-  display: flex;
+  display: flex; /* Horizontal nav links */
   gap: 32px;
   justify-content: center;
 }
 
 .nav-links a {
   color: white;
-  /* text-decoration: none; */
   font-size: 0.95rem;
   font-weight: 500;
   transition: color 0.2s;
@@ -155,7 +155,6 @@ img {
 
 .nav-links a.active {
   text-decoration: underline;
-  /* color: #4caf50; */
   text-underline-offset: 6px;
   text-decoration-thickness: 2px;
   text-decoration-color: #4caf50;
@@ -194,12 +193,12 @@ img {
 
 /* ─────── Mobile Nav ─────── */
 .mobile-nav {
-  display: none;
+  display: none; /* Hidden by default */
   flex-direction: column;
   gap: 16px;
   padding: 20px 48px;
   width: 100%;
-  position: absolute;
+  position: absolute; /* Positioned below sticky header */
   top: 100%;
   left: 0;
   z-index: 1001;
@@ -242,7 +241,7 @@ img {
 /* ─────── Responsive Header ─────── */
 @media (max-width: 768px) {
   .header {
-    display: flex;
+    display: flex; /* Switch to flex layout on small screens */
     flex-direction: column;
     align-items: center;
     padding: 16px 24px;
@@ -255,15 +254,15 @@ img {
 
   .nav-links,
   .header-right {
-    display: none;
+    display: none; /* Hide main nav and profile */
   }
 
   .mobile-menu-button {
-    display: block;
+    display: block; /* Show menu icon */
   }
 
   .header.show-mobile-nav .mobile-nav {
-    display: flex;
+    display: flex; /* Show mobile nav on toggle */
   }
 }
 
@@ -277,7 +276,7 @@ img {
 }
 
 .footer-grid {
-  display: grid;
+  display: grid; /* Grid layout for footer columns */
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
   gap: 32px;
   max-width: 1200px;
@@ -324,7 +323,7 @@ img {
 /* ─────── Responsive Footer ─────── */
 @media (max-width: 600px) {
   .footer-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr; /* Two columns on small screens */
     gap: 24px;
   }
 
@@ -355,7 +354,7 @@ img {
 }
 
 .dropdown {
-  position: relative;
+  position: relative; /* Allows absolute positioning of dropdown options */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -377,7 +376,7 @@ img {
   font-weight: 500;
   text-decoration: none;
   transition: all 0.3s ease;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px); /* Adds subtle background blur */
   position: relative;
   z-index: 10;
   cursor: pointer;
@@ -425,7 +424,9 @@ img {
   margin: 0 auto;
 }
 
-.block-label {
+.block-label,
+.page-label,
+.author-label {
   color: #14cb5a;
   font-size: 0.85rem;
   font-family: "Helvetica Neue", sans-serif;
@@ -436,23 +437,11 @@ img {
 }
 
 .page-label {
-  color: #14cb5a;
   font-size: 0.95rem;
-  font-family: "Helvetica Neue", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  display: block;
-  margin-bottom: 0.5rem;
 }
 
 .author-label {
   color: #5a5a5a;
-  font-size: 0.85rem;
-  font-family: "Helvetica Neue", sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  display: block;
-  margin-bottom: 0.5rem;
 }
 
 .block-heading {
@@ -472,32 +461,26 @@ img {
   text-align: left;
 }
 
-.block-content p {
+.block-content p,
+.content-h,
+.content {
   font-family: "Helvetica Neue", sans-serif;
   font-size: 1.05rem;
   line-height: 1.7;
-  text-align: justify;
   margin-bottom: 1.2rem;
 }
 
 .content-h {
-  font-family: "Helvetica Neue", sans-serif;
-  font-size: 1.05rem;
-  line-height: 1.7;
   text-align: center;
-  margin-bottom: 1.2rem;
 }
 
 .content {
-  font-family: "Helvetica Neue", sans-serif;
-  font-size: 1.05rem;
-  line-height: 1.6;
   text-align: justify;
   margin-bottom: 1.1rem;
 }
 
 .scroll-to-top {
-  position: fixed;
+  position: fixed; /* Fixed on screen */
   bottom: 30px;
   right: 30px;
   width: 50px;
@@ -523,7 +506,7 @@ img {
 }
 
 .cta-bar {
-  display: flex;
+  display: flex; /* Horizontal layout of CTA elements */
   justify-content: space-between;
   align-items: center;
   margin-top: 5vh;
@@ -533,7 +516,7 @@ img {
   padding: 2rem 3rem;
   border-radius: 10px;
   background: rgba(1, 255, 136, 0.566);
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px); /* Soft glass blur */
   border-top: 1px solid rgba(255, 255, 255, 0.08);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 2px 12px rgba(1, 59, 34, 0.2);

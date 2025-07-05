@@ -1,23 +1,23 @@
 .hero {
-  position: relative;
+  position: relative; /* Contains absolutely positioned video and overlays */
   width: 100%;
-  height: 100vh;
-  display: flex;
+  height: 100vh; /* Full viewport height */
+  display: flex; /* Centers content vertically and horizontally */
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
   padding: 80px 1rem 0;
   margin-bottom: -7rem;
-  z-index: 2;
-  overflow: hidden;
+  z-index: 2; /* Above background video and overlay */
+  overflow: hidden; /* Prevents scrollbars from overflowing content */
 }
 
 .text-wrapper {
   position: relative;
   margin-bottom: 25vh;
   margin-top: -5vh;
-  z-index: 3;
+  z-index: 3; /* Above overlay */
   color: white;
   max-width: 800px;
 }
@@ -44,34 +44,34 @@
 }
 
 .hero-video-wrapper {
-  position: absolute;
+  position: absolute; /* Covers entire hero section */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 0;
-  overflow: hidden;
-  pointer-events: none;
+  z-index: 0; /* Lowest layer behind everything */
+  overflow: hidden; /* Ensures video doesn't overflow */
+  pointer-events: none; /* Allows clicks to pass through */
 }
 
 .hero-video {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* Covers background without distortion */
 }
 
 .hero-overlay {
-  position: absolute;
+  position: absolute; /* Covers video as overlay */
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.4);
-  z-index: 1;
+  z-index: 1; /* Above video, below content */
 }
 
 .hero-bottom-fade {
-  position: absolute;
+  position: absolute; /* Bottom gradient effect */
   bottom: 0;
   width: 100%;
   height: 200px;
@@ -92,7 +92,7 @@
 }
 
 .sdg-corner {
-  position: absolute;
+  position: absolute; /* Floating SDG badge */
   bottom: 77%;
   right: 1%;
   margin-bottom: 8vh;
@@ -112,12 +112,12 @@
 }
 
 .sdg13-container {
-  display: grid;
+  display: grid; /* Two-column layout */
   grid-template-columns: 1fr 1.2fr;
   gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
-  align-items: center;
+  align-items: center; /* Vertical centering */
 }
 
 .video-frame iframe {
@@ -157,7 +157,7 @@
 /* Responsive Design */
 @media (max-width: 900px) {
   .sdg13-container {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Stacks items vertically */
     text-align: justify;
   }
 
@@ -238,8 +238,8 @@
 }
 
 .wrapper {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  display: grid; /* Card layout grid */
+  grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
   gap: 1.5rem;
   max-width: 1200px;
   margin: 0 auto;
@@ -247,8 +247,8 @@
 }
 
 .card {
-  position: relative;
-  overflow: hidden;
+  position: relative; /* Needed for overlay layers */
+  overflow: hidden; /* Prevents image overflow */
   border-radius: 16px;
   height: 320px;
   width: 100%;
@@ -256,12 +256,12 @@
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateY(40px); /* Initial entrance animation */
 }
 
 .card.show {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateY(0); /* Animate into place */
 }
 
 .card:hover {
@@ -270,7 +270,7 @@
 }
 
 .card img {
-  position: absolute;
+  position: absolute; /* Fills entire card */
   inset: 0;
   width: 100%;
   height: 100%;
@@ -280,11 +280,11 @@
 }
 
 .card:hover img {
-  transform: scale(1.05);
+  transform: scale(1.05); /* Zoom effect on hover */
 }
 
 .card .info {
-  position: absolute;
+  position: absolute; /* Text overlay */
   inset: 0;
   background: rgba(0, 0, 0, 0.7);
   color: #fff;
@@ -328,23 +328,23 @@
   font-weight: 500;
   text-decoration: none;
   transition: all 0.3s ease;
-  backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px); /* Soft glass look */
 }
 
 @media (max-width: 1200px) {
   .wrapper {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(1, 1fr); /* Stack cards vertically */
     width: 80%;
   }
 }
 
 @media (max-width: 768px) {
   .wrapper {
-    grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(1, 1fr); /* Mobile view */
     width: 80%;
   }
 }
 
 #explore {
-  scroll-margin-top: 7.5rem;
+  scroll-margin-top: 7.5rem; /* Scroll anchor offset */
 }

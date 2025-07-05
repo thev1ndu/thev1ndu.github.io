@@ -1,6 +1,6 @@
 /* ========== Layout Container ========== */
 .blog-layout {
-  display: flex;
+  display: flex; /* Enables horizontal layout between sidebar and content */
   max-width: 1400px;
   margin: 0 auto;
   padding: 32px 24px;
@@ -10,21 +10,21 @@
 
 /* Anchor scroll offset */
 section {
-  scroll-margin-top: 100px;
+  scroll-margin-top: 100px; /* Offsets scroll position for fixed headers */
 }
 
 /* ========== Sidebar Navigation ========== */
 .sidebar-nav {
   width: 250px;
-  scroll-behavior: smooth;
+  scroll-behavior: smooth; /* Enables smooth anchor link scrolling */
   padding: 100px 15px;
   background-color: #ffffff;
   border-right: 1px solid #ccc;
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  overflow-y: hidden;
-  flex-shrink: 0;
+  position: sticky; /* Keeps sidebar visible while scrolling */
+  top: 0; /* Sticks to top of viewport */
+  height: 100vh; /* Full viewport height */
+  overflow-y: hidden; /* Hides vertical scroll in sidebar */
+  flex-shrink: 0; /* Prevents sidebar from shrinking in flex layout */
 }
 
 .sidebar-nav h3 {
@@ -60,7 +60,7 @@ section {
 
 /* ========== Blog Images ========== */
 .blog-content img {
-  display: block;
+  display: block; /* Removes inline gap below image */
   max-width: 100%;
   height: auto;
   border-radius: 12px;
@@ -70,7 +70,7 @@ section {
 
 /* Section-specific images (float layout) */
 .blog-content section img {
-  float: left;
+  float: left; /* Floats image for text wrapping */
   margin: 15px;
   max-width: 320px;
   margin-bottom: 1rem;
@@ -83,7 +83,7 @@ section {
 .blog-content section::after {
   content: "";
   display: block;
-  clear: both;
+  clear: both; /* Clears floated image to prevent layout issues */
 }
 
 /* Centered heading */
@@ -106,12 +106,12 @@ section {
 /* ========== Responsive: Tablet and below ========== */
 @media (max-width: 1024px) {
   .blog-layout {
-    flex-direction: column;
+    flex-direction: column; /* Stack sidebar and content vertically */
   }
 
   .sidebar-nav {
-    position: relative;
-    width: 100%;
+    position: relative; /* Removes sticky behavior on small screens */
+    width: 100%; /* Full width sidebar */
     height: auto;
     border-right: none;
     border-bottom: 1px solid #ccc;
@@ -123,10 +123,10 @@ section {
   }
 
   .sidebar-nav ul {
-    display: flex;
-    flex-wrap: wrap;
+    display: flex; /* Horizontal layout for nav links */
+    flex-wrap: wrap; /* Allows wrapping of nav items */
     gap: 12px;
-    justify-content: center;
+    justify-content: center; /* Centers items horizontally */
   }
 
   .sidebar-nav li {
@@ -135,7 +135,7 @@ section {
 
   .blog-content img,
   .blog-content section img {
-    float: none;
+    float: none; /* Disables float on small screens */
     margin: 0 auto 20px;
     display: block;
   }
@@ -143,7 +143,7 @@ section {
 
 /* ========== Hero Section ========== */
 .hero-content {
-  height: 100vh;
+  height: 100vh; /* Full screen height hero */
 }
 
 /* Section spacing control */
@@ -157,8 +157,11 @@ section {
 
 /* ========== Image Grid (Visible Signs Section) ========== */
 .image-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  display: grid; /* Enables grid layout */
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(280px, 1fr)
+  ); /* Responsive column sizing */
   gap: 24px;
 }
 
@@ -188,22 +191,22 @@ section {
 
 @media (max-width: 1024px) {
   .video-frame {
-    width: 100%;
+    width: 100%; /* Full width on smaller screens */
   }
 }
 
 .video-wrapper {
-  position: relative;
+  position: relative; /* Used for aspect ratio padding trick */
   width: 100%;
   padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
   height: 0;
-  overflow: hidden;
+  overflow: hidden; /* Clips overflowing iframe content */
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .video-wrapper iframe {
-  position: absolute;
+  position: absolute; /* Fill wrapper */
   top: 0;
   left: 0;
   width: 100%;
@@ -213,15 +216,15 @@ section {
 
 /* ========== Adaptation Grid Section ========== */
 #adaptation {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
+  display: grid; /* Enables side-by-side layout */
+  grid-template-columns: 1fr 1fr; /* Two equal-width columns */
+  align-items: center; /* Vertically aligns content */
   gap: 2rem;
 }
 
 @media (max-width: 768px) {
   #adaptation {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Switch to single column layout */
     text-align: center;
   }
 
@@ -233,8 +236,8 @@ section {
 
 /* ========== Innovation Cards ========== */
 .card-wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: grid; /* Grid layout for cards */
+  grid-template-columns: 1fr 1fr; /* Two columns */
   gap: 2rem;
   margin-top: 2rem;
 }
@@ -244,11 +247,11 @@ section {
   padding: 1.5rem;
   border-radius: 12px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover animation */
 }
 
 .info-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px); /* Subtle lift effect on hover */
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
 }
 
@@ -267,14 +270,14 @@ section {
 /* Mobile card layout */
 @media (max-width: 768px) {
   .card-wrapper {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* Stacks cards vertically */
   }
 }
 
 /* ========== Statistics Table ========== */
 .stats-table-wrapper {
   margin-top: 2rem;
-  overflow-x: auto;
+  overflow-x: auto; /* Enables horizontal scroll on small screens */
 }
 
 .stats-table {
@@ -319,6 +322,6 @@ section {
 
 @media (max-width: 1024px) {
   .youth-climate {
-    width: 100%;
+    width: 100%; /* Full width on tablet and mobile */
   }
 }

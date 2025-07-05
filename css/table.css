@@ -19,22 +19,22 @@
 }
 
 .climate-scroll {
-  overflow-x: auto;
+  overflow-x: auto; /* Enables horizontal scroll for wide tables */
   overflow-y: visible;
   border-radius: 16px;
   background: rgba(255, 255, 255, 0.36);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(2.9px);
-  -webkit-backdrop-filter: blur(2.9px);
+  backdrop-filter: blur(2.9px); /* Applies blur behind container */
+  -webkit-backdrop-filter: blur(2.9px); /* Safari support */
   border: 1px solid rgba(255, 255, 255, 0.32);
-  position: relative;
+  position: relative; /* Context for z-index stacking */
   z-index: 1;
 }
 
 .climate-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 800px;
+  min-width: 800px; /* Ensures table triggers horizontal scroll on small screens */
   background: rgba(255, 255, 255, 0.6);
 }
 
@@ -44,7 +44,7 @@
   border: 1px solid #e3e3e3;
   font-size: 0.9rem;
   color: #333;
-  white-space: nowrap;
+  white-space: nowrap; /* Prevents text wrapping in table cells */
   transition: background 0.2s ease;
 }
 
@@ -52,7 +52,7 @@
   background: rgba(209, 240, 220, 0.6);
   color: #064e3b;
   font-weight: 500;
-  position: sticky;
+  position: sticky; /* Keeps headers fixed when scrolling vertically */
   top: 0;
   z-index: 2;
   border-bottom: 2px solid #b8e4c7;
@@ -61,11 +61,11 @@
 .climate-table td:first-child,
 .climate-table th:first-child {
   background: rgba(245, 255, 249, 0.8);
-  position: sticky;
+  position: sticky; /* Locks first column when scrolling horizontally */
   left: 0;
   font-weight: 500;
   color: #1e3932;
-  z-index: 3;
+  z-index: 3; /* Stacks above normal cells and header */
   border-right: 2px solid #ccead7;
 }
 
@@ -83,7 +83,7 @@
   font-size: 0.75rem;
   color: #444;
   background: rgba(241, 247, 243, 0.6);
-  backdrop-filter: blur(2.9px);
+  backdrop-filter: blur(2.9px); /* Applies blur behind note box */
   -webkit-backdrop-filter: blur(2.9px);
   border-radius: 12px;
   padding: 0.75rem 1rem;
@@ -93,25 +93,25 @@
 }
 
 .note-flex {
-  display: flex;
+  display: flex; /* Aligns image and text side by side */
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-between; /* Pushes image and span to opposite ends */
   width: 100%;
 }
 
 .note-flex img {
   height: 50px;
   width: 50px;
-  flex-shrink: 0;
+  flex-shrink: 0; /* Prevents image from shrinking */
 }
 
 .note-flex span {
   text-align: right;
-  flex: 1;
+  flex: 1; /* Allows span to fill remaining space */
 }
 
 .country {
-  display: flex;
+  display: flex; /* Aligns flag and text in a row */
   align-items: center;
   gap: 8px;
 }
