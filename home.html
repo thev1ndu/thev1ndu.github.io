@@ -63,7 +63,10 @@
         <a href="./profile.html" class="profile-button">Profile →</a>
       </div>
     </header>
+
+    <!-- Main content area -->
     <main>
+      <!-- Hero video background -->
       <div class="hero-video-wrapper">
         <video autoplay muted loop playsinline class="hero-video">
           <source src="../assets/videos/videoplayback.mp4" type="video/mp4" />
@@ -71,6 +74,8 @@
         <div class="hero-overlay"></div>
         <div class="hero-bottom-fade"></div>
       </div>
+
+      <!-- Hero section with main title and CTA -->
       <section class="hero">
         <div class="text-wrapper">
           <h1 class="hero-title">Climate Action for Everyone</h1>
@@ -85,6 +90,8 @@
         /></a>
       </section>
     </main>
+
+    <!-- Call to action bar -->
     <div class="cta-bar">
       <h2>What are you waiting for?</h2>
       <a
@@ -95,9 +102,10 @@
       >
     </div>
 
+    <!-- SDG 13 information section -->
     <section class="sdg13-layout">
       <div class="sdg13-container">
-        <!-- Left Side: Video -->
+        <!-- Left side: Video about SDG 13 -->
         <div class="sdg13-video">
           <div class="video-frame">
             <iframe
@@ -107,7 +115,7 @@
             ></iframe>
           </div>
         </div>
-        <!-- Right Side: Content -->
+        <!-- Right side: Content about SDG 13 -->
         <div class="sdg13-content">
           <span class="sdg13-label">ABOUT US</span>
           <h2 class="sdg13-heading">Guiding Goals for Change</h2>
@@ -129,6 +137,7 @@
       </div>
     </section>
 
+    <!-- Mission statement section -->
     <section class="block-section">
       <div class="block-container">
         <div class="block-content">
@@ -147,6 +156,8 @@
         </div>
       </div>
     </section>
+
+    <!-- Inspirational quote section -->
     <div class="cta-bar" style="text-align: center; display: block">
       <img src="./assets/images/quote.png" alt="quote" style="margin: auto" />
       <h3>
@@ -156,6 +167,8 @@
       </h3>
       <div style="margin-bottom: 2rem"></div>
     </div>
+
+    <!-- Content hub section with resource cards -->
     <section class="content-hub-section">
       <div class="block-container">
         <div class="block-content">
@@ -171,7 +184,9 @@
         </div>
       </div>
       <br />
+      <!-- Resource cards grid -->
       <div class="wrapper">
+        <!-- Card 1: Understanding Climate Change -->
         <div class="card">
           <img
             src="https://images.unsplash.com/photo-1421790500381-fc9b5996f343?q=80&w=3087&auto=format&fit=crop"
@@ -183,10 +198,11 @@
               Explore the climate crisis and the need for urgent action. Learn
               about what drives global climate shifts.
             </p>
-            <a href="../student2/intro.html" class="button">Read more</a>
+            <a href="./content_ST1.html" class="button">Read more</a>
           </div>
         </div>
 
+        <!-- Card 2: Pathways to Action -->
         <div class="card">
           <img
             src="./assets/images/content-card-cover-st2.jpg"
@@ -202,6 +218,7 @@
           </div>
         </div>
 
+        <!-- Card 3: Climate Impact -->
         <div class="card">
           <img
             src="https://images.unsplash.com/photo-1470520518831-10005602ab67?q=80&w=3260&auto=format&fit=crop"
@@ -213,10 +230,11 @@
               Discover how climate change affects our economy, society,
               politics, and the natural environment.
             </p>
-            <a href="../student4/impact.html" class="button">Read more</a>
+            <a href="./content_ST3.html" class="button">Read more</a>
           </div>
         </div>
 
+        <!-- Card 4: Taking Action -->
         <div class="card">
           <img
             src="https://images.unsplash.com/photo-1632507710285-9b7186e79686?w=900&auto=format&fit=crop"
@@ -228,12 +246,13 @@
               Learn about climate solutions and join the global movement to
               protect our shared future.
             </p>
-            <a href="../student1/solutions.html" class="button">Read more</a>
+            <a href="./content_ST4.html" class="button">Read more</a>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Scroll to top button -->
     <button
       class="scroll-to-top"
       onclick="scrollToTop()"
@@ -242,6 +261,7 @@
       <i class="fas fa-arrow-up"></i>
     </button>
 
+    <!-- Footer section -->
     <footer class="footer">
       <div class="footer-grid">
         <div class="footer-column">
@@ -301,6 +321,7 @@
       </div>
     </footer>
 
+    <!-- JavaScript for intersection observer and scroll functionality -->
     <script>
       const cards = document.querySelectorAll(".card");
 
