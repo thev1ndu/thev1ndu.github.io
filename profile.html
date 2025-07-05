@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Character encoding for proper text display -->
+    <meta charset="UTF-8" />
+    <!-- Responsive viewport settings for mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Page title displayed in browser tab -->
+    <title>Profile | SAGE</title>
+
+    <!-- External stylesheet for global styles -->
+    <link rel="stylesheet" href="./css/global.css" />
+    <!-- External stylesheet for profile styles -->
+    <link rel="stylesheet" href="./css/profile.css" />
+    <!-- Favicon for browser tab icon -->
+    <link rel="icon" href="./assets/images/favicon.png" />
+
+    <!-- SEO Meta tags for search engines -->
+    <meta
+      name="description"
+      content="SAGE empowers individuals and communities to take meaningful climate action. Join us in building a sustainable future for everyone."
+    />
+    <meta
+      name="keywords"
+      content="climate action, sustainability, environment, global warming, green energy, carbon footprint"
+    />
+    <meta name="author" content="Kavinu" />
+
+    <!-- Font Awesome icons library for UI icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <!-- Custom JavaScript file -->
+    <script src="./js/script.js"></script>
+  </head>
+
+  <body>
+    <!-- Main header section with navigation -->
+    <header class="header" id="header">
+      <!-- Left side of header containing logos -->
+      <div class="header-left">
+        <!-- Logo container with SAGE and SDG logos -->
+        <div style="display: flex; align-items: center; gap: 16px">
+          <!-- Primary SAGE logo -->
+          <div class="logo-primary">
+            <a href="/"><img src="./assets/images/logo.png" alt="SAGE" /></a>
+          </div>
+          <!-- Text-based SAGE logo -->
+          <div class="logo logo-text"><a href="/">SAGE</a></div>
+          <!-- Visual separator between logos -->
+          <div class="logo-separator"></div>
+          <!-- UN SDG (Sustainable Development Goals) logo -->
+          <div class="logo">
+            <a href="https://sdgs.un.org/" target="_blank">
+              <img src="./assets/images/sdgsaf.webp" alt="SDG Logo" />
+            </a>
+          </div>
+        </div>
+        <!-- Mobile hamburger menu button (visible on small screens) -->
+        <div class="mobile-menu-button" onclick="toggleMobileMenu()">☰</div>
+      </div>
+
+      <!-- Desktop navigation menu -->
+      <nav class="nav-links">
+        <a href="/home.html">Home</a>
+        <a href="./volunteer.html">Volunteer</a>
+        <a href="/table.html">Climate Data</a>
+        <a href="./team.html">Team</a>
+        <a href="./sitemap.html">Sitemap</a>
+        <a href="./feedback.html">Feedback</a>
+      </nav>
+
+      <!-- Right side of header with profile button -->
+      <div class="header-right">
+        <a href="./profile.html" class="profile-button">Profile →</a>
+      </div>
+
+      <!-- Mobile navigation menu (hidden by default, shown when hamburger is clicked) -->
+      <div class="mobile-nav" id="mobileNav">
+        <a href="/home.html">Home</a>
+        <a href="./volunteer.html">Volunteer</a>
+        <a href="/table.html">Climate Data</a>
+        <a href="./team.html">Team</a>
+        <a href="./sitemap.html">Sitemap</a>
+        <a href="./feedback.html">Feedback</a>
+        <a href="./profile.html" class="profile-button">Profile →</a>
+      </div>
+    </header>
+
+    <!-- Main content area -->
+    <main>
+      <div class="profile-layout">
+        <!-- Section 1: Profile Overview -->
+        <section>
+          <div class="avatar-wrapper">
+            <img
+              src="./assets/images/profile-images.png"
+              alt="User Avatar"
+              class="avatar"
+            />
+          </div>
+          <div class="user-info">
+            <h2>Dr. Aiden Thomas</h2>
+            <p class="role">Environmental Policy Advisor</p>
+
+            <div class="content">
+              <label>Age:</label>
+              <span>38 years</span>
+            </div>
+
+            <div class="content">
+              <label>Location:</label>
+              <span>Melbourne, Australia</span>
+            </div>
+
+            <div class="content">
+              <label>Work:</label>
+              <span>
+                Collaborates with environmental think tanks, government bodies,
+                and non-profits to shape legislation on renewable energy, carbon
+                emissions reduction, and sustainable agriculture practices.
+                Regularly speaks at global climate forums and advises on
+                international agreements.
+              </span>
+            </div>
+
+            <div class="content">
+              <label>Education:</label>
+              <span>
+                Ph.D. in Environmental Policy, MPhil in Sustainable Development
+              </span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 2: Introduction -->
+        <section class="user-intro">
+          <h1 class="page-label">Introduction</h1>
+          <p class="content">
+            Hello, I'm Dr. Aiden Thomas. My work lies at the intersection of
+            science, policy, and advocacy. I am passionate about driving policy
+            changes that empower communities to lead sustainable lives, and I
+            firmly believe that impactful climate action begins with informed
+            governance and strong collaboration.
+          </p>
+        </section>
+
+        <!-- Section 3: Skills -->
+        <section class="skills">
+          <div class="category">
+            <h1 class="page-label">Skills</h1>
+            <ul>
+              <li>
+                Policy Development
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 85%">85%</div>
+                </div>
+              </li>
+              <li>
+                Climate Change Advocacy
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 90%">90%</div>
+                </div>
+              </li>
+              <li>
+                Stakeholder Engagement
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 75%">75%</div>
+                </div>
+              </li>
+              <li>
+                Data Interpretation (GIS & Remote Sensing)
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 70%">70%</div>
+                </div>
+              </li>
+              <li>
+                Report Writing & Communication
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 80%">80%</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Section 4: Goals -->
+        <section class="goals">
+          <div class="category">
+            <h1 class="page-label">Goals</h1>
+            <ul>
+              <li>
+                Push for net-zero emissions legislation in 3 Australian states
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 50%">50%</div>
+                </div>
+              </li>
+              <li>
+                Launch a regional climate data platform for policymakers
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 65%">65%</div>
+                </div>
+              </li>
+              <li>
+                Train 100 youth ambassadors for local climate leadership
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 75%">75%</div>
+                </div>
+              </li>
+              <li>
+                Establish partnerships with 50 local councils to implement
+                community climate action plans
+                <div class="progress-bar">
+                  <div class="progress-fill" style="width: 40%">40%</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Section 5: Frustrations -->
+        <section class="frustrations">
+          <h1 class="page-label">Frustrations</h1>
+          <ul>
+            <li>Inconsistent climate policies across regions</li>
+            <li>Delays in funding approvals for green initiatives</li>
+            <li>Public misinformation on environmental science</li>
+            <li>
+              Underrepresentation of indigenous knowledge in climate planning
+            </li>
+          </ul>
+        </section>
+
+        <!-- Section 6: Experience -->
+        <section class="experience">
+          <h1 class="page-label">Experience</h1>
+          <ul>
+            <li>
+              Global Climate Alliance, Sydney, Australia <br />
+              January 2020 – Present
+              <ul>
+                <li>
+                  Spearheaded legislative reviews that resulted in stronger
+                  renewable energy targets for regional councils.
+                </li>
+                <li>
+                  Advised UNDP teams on adaptation policy frameworks for Pacific
+                  nations.
+                </li>
+                <li>
+                  Facilitated stakeholder meetings with local leaders,
+                  researchers, and policymakers to co-design climate adaptation
+                  plans.
+                </li>
+                <li>
+                  Published policy briefs and research articles in top
+                  environmental journals.
+                </li>
+                <li>
+                  Represented Australia at COP27 in Egypt, contributing to
+                  policy drafting on climate financing and loss & damage.
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Section 7: Interests -->
+        <section class="interests-card">
+          <h1 class="page-label">Interests</h1>
+          <div class="interests-images">
+            <img src="./assets/images/plant.png" alt="Plant icon" />
+            <p>Urban Gardening</p>
+            <img src="./assets/images/recycle.png" alt="Recycle icon" />
+            <p>Recycling Projects</p>
+            <img src="./assets/images/water.png" alt="Water drop icon" />
+            <p>Rainwater Harvesting</p>
+            <img src="./assets/images/bicycle.png" alt="Bicycle icon" />
+            <p>Eco-Friendly Transport</p>
+          </div>
+        </section>
+
+        <!-- Section 8: Volunteering Opportunities -->
+        <section class="volunteer-card">
+          <h1 class="page-label">Volunteering</h1>
+          <div class="volunteering">
+            <div class="card">
+              <img
+                src="./assets/images/cleaning-beach.jpg"
+                alt="Cleaning beaches in Sri Lanka"
+                class="program-image"
+              />
+              <div class="content">
+                <div class="country-flag">
+                  <img
+                    src="https://flagcdn.com/w40/lk.png"
+                    alt="Sri Lanka flag"
+                  />
+                  <p>Sri Lanka</p>
+                </div>
+                <h3>Islandwide Beach Cleaning</h3>
+                <p>
+                  Join a community-driven effort to preserve Sri Lanka’s
+                  beautiful coastlines by removing plastic waste and raising
+                  awareness among locals and tourists.
+                </p>
+                <br />
+                <div class="form-buttons">
+                  <a href="#" class="btn-1">Learn More</a>
+                  <a href="#" class="btn-2">Apply</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <img
+                src="./assets/images/amazon-reforestation.webp"
+                alt="Reforestation in the Amazon rainforest"
+                class="program-image"
+              />
+              <div class="content">
+                <div class="country-flag">
+                  <img src="https://flagcdn.com/w40/br.png" alt="Brazil flag" />
+                  <p>Brazil</p>
+                </div>
+                <h3>Reforestation in the Amazon</h3>
+                <p>
+                  Help restore critical rainforest ecosystems by planting native
+                  trees and supporting biodiversity in one of the world’s most
+                  important habitats.
+                </p>
+                <br />
+                <div class="form-buttons">
+                  <a href="#" class="btn-1">Learn More</a>
+                  <a href="#" class="btn-2">Apply</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <img
+                src="./assets/images/india-farming.webp"
+                alt="Sustainable farming in India"
+                class="program-image"
+              />
+              <div class="content">
+                <div class="country-flag">
+                  <img src="https://flagcdn.com/w40/in.png" alt="India flag" />
+
+                  <p>India</p>
+                </div>
+                <h3>Sustainable Farming in India</h3>
+                <p>
+                  Work alongside local farmers to implement eco-friendly
+                  agricultural practices that protect the land and improve food
+                  security.
+                </p>
+                <br />
+                <div class="form-buttons">
+                  <a href="#" class="btn-1">Learn More</a>
+                  <a href="#" class="btn-2">Apply</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section 9: Volunteering Availability -->
+        <section class="volunteer-card">
+          <h1 class="page-label">Volunteering Availability</h1>
+          <div class="volunteer-table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Day</th>
+                  <th>Morning</th>
+                  <th>Afternoon</th>
+                  <th>Evening</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th>Monday</th>
+                  <td>✓</td>
+                  <td></td>
+                  <td>✓</td>
+                </tr>
+                <tr>
+                  <th>Tuesday</th>
+                  <td></td>
+                  <td>✓</td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th>Friday</th>
+                  <td>✓</td>
+                  <td></td>
+                  <td>✓</td>
+                </tr>
+                <tr>
+                  <th>Saturday</th>
+                  <td>✓</td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <th>Sunday</th>
+                  <td></td>
+                  <td>✓</td>
+                  <td></td>
+                </tr>
+                <tr class="table-bottom">
+                  <td colspan="4"><div class="logo logo-text">SAGE</div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- Section 10: Contact Form -->
+        <section class="contact">
+          <h1 class="page-label">Contact Me</h1>
+          <form action="#" method="post">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="firstName"
+                  >First Name <span class="asterisk">*</span></label
+                >
+                <input
+                  type="text"
+                  id="firstName"
+                  name="firstName"
+                  placeholder="Enter your first name"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="lastName"
+                  >Last Name <span class="asterisk">*</span></label
+                >
+                <input
+                  type="text"
+                  id="lastName"
+                  name="lastName"
+                  placeholder="Enter your last name"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="email">Email <span class="asterisk">*</span></label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Enter your email address"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="tel"
+                  >Phone Number <span class="asterisk">*</span></label
+                >
+                <input
+                  type="tel"
+                  id="tel"
+                  name="tel"
+                  placeholder="Enter your phone number"
+                  required
+                />
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="reason">Reason <span class="asterisk">*</span></label>
+              <select id="reason" name="reason" required>
+                <option value="" disabled selected>Select a reason</option>
+                <option value="climate-action">
+                  Interested in climate action
+                </option>
+                <option value="sustainability">
+                  Inquiring about sustainability initiatives
+                </option>
+                <option value="environmental-education">
+                  Seeking environmental education resources
+                </option>
+                <option value="partnership">
+                  Interested in collaboration or partnership
+                </option>
+                <option value="volunteering">
+                  Interested in volunteering opportunities
+                </option>
+                <option value="general-inquiry">General inquiry</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message"
+                >Message / Inquiry <span class="asterisk">*</span></label
+              >
+              <textarea
+                id="message"
+                name="message"
+                rows="5"
+                placeholder="Write your message here..."
+                required
+              ></textarea>
+            </div>
+
+            <div class="form-buttons">
+              <button type="submit" class="main-button">send</button>
+              <button type="reset" class="main-button">reset</button>
+            </div>
+          </form>
+        </section>
+      </div>
+    </main>
+
+    <!-- Scroll to top button (appears when user scrolls down) -->
+    <button
+      class="scroll-to-top"
+      onclick="scrollToTop()"
+      aria-label="Scroll to Top"
+    >
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Footer section with multiple columns of links -->
+    <footer class="footer">
+      <!-- Grid container for footer columns -->
+      <div class="footer-grid">
+        <!-- First column: Website navigation links -->
+        <div class="footer-column">
+          <h4>Website Links</h4>
+          <a href="/home.html">Home</a>
+          <a href="./volunteer.html">Volunteer</a>
+          <a href="/table.html">Climate Data</a>
+          <a href="./team.html">Team</a>
+          <a href="./sitemap.html">Sitemap</a>
+          <a href="./feedback.html">Feedback</a>
+        </div>
+
+        <!-- Second column: External useful links -->
+        <div class="footer-column">
+          <h4>Useful Links</h4>
+          <a
+            href="https://www.undp.org/sustainable-development-goals"
+            target="_blank"
+            >Conditions</a
+          >
+          <a
+            href="https://sdgactioncampaign.org/privacy-policy/"
+            target="_blank"
+            >Privacy Policy</a
+          >
+          <a href="https://sdgdata.gov.uk/cookies/" target="_blank">Cookies</a>
+          <a
+            href="https://anti-corruption.org/themes/anti-corruption-in-sdgs-2/"
+            target="_blank"
+            >Anti Corruption</a
+          >
+          <a
+            href="https://www.un.org/sustainabledevelopment/news/communications-material/"
+            target="_blank"
+            >Asset License</a
+          >
+        </div>
+
+        <!-- Third column: Content pages -->
+        <div class="footer-column">
+          <h4>Content Pages</h4>
+          <a href=".content_ST1.html">Content 01</a>
+          <a href="./content_ST2.html">Content 02</a>
+          <a href="./content_ST3.html">Content 03</a>
+          <a href="./content_ST4.html">Content 04</a>
+        </div>
+
+        <!-- Fourth column: Student pages -->
+        <div class="footer-column">
+          <h4>Student Pages</h4>
+          <a href="./pageEditor_ST1.html">Student 01</a>
+          <a href="./pageEditor_ST2.html">Student 02</a>
+          <a href="./pageEditor_ST3.html">Student 03</a>
+          <a href="./pageEditor_ST4.html">Student 04</a>
+        </div>
+      </div>
+
+      <!-- Footer bottom section with copyright -->
+      <div class="footer-bottom">
+        <p>Copyright © 2025 WebDev Group 5 Subgroup 5. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

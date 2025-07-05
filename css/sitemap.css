@@ -1,0 +1,85 @@
+.page-label {
+  margin-bottom: 1rem;
+  font-size: 30px;
+}
+
+section .block-content {
+  margin: 5% 8% 0;
+}
+
+section .site-map {
+  max-height: 900px;
+  max-width: 1300px;
+  margin: 0 2% 2rem;
+  overflow: hidden;
+}
+
+section .site-map:hover {
+  overflow: auto;
+  scrollbar-width: thin;
+}
+
+.svg-mobile {
+  display: none;
+}
+
+.site-map rect {
+  rx: 10;
+  fill: white;
+  stroke: #77c052;
+  stroke-width: 2;
+  transition: fill 0.3s ease;
+}
+
+.site-map rect:hover {
+  fill: #dbffe2;
+  cursor: pointer;
+}
+
+.site-map line {
+  stroke: #81c784;
+  stroke-width: 2;
+}
+
+.site-map polyline {
+  fill: #4caf50;
+}
+
+.site-map svg text {
+  font-size: 14px;
+  fill: #2f7e4c;
+  pointer-events: none;
+}
+
+.site-map .text2 {
+  font-size: 12px;
+}
+
+@media screen and (max-width: 600px) {
+  .svg-mobile {
+    display: block;
+  }
+
+  .svg-desktop {
+    display: none;
+  }
+
+  .page-label {
+    font-size: 20px;
+  }
+
+  section .site-map {
+    margin: 0 1rem 1rem;
+    height: 730px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  section.block-content {
+    margin: 2% 2% 0;
+  }
+
+  section .site-map {
+    height: 585px;
+  }
+}

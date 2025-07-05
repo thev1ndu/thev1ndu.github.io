@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Character encoding for proper text display -->
+    <meta charset="UTF-8" />
+    <!-- Responsive viewport settings for mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Page title displayed in browser tab -->
+    <title>Sitemap | SAGE</title>
+
+    <!-- External stylesheet for global styles -->
+    <link rel="stylesheet" href="./css/global.css" />
+    <!-- External stylesheet for sitemap styles -->
+    <link rel="stylesheet" href="./css/sitemap.css" />
+    <!-- Favicon for browser tab icon -->
+    <link rel="icon" href="./assets/images/favicon.png" />
+
+    <!-- SEO Meta tags for search engines -->
+    <meta
+      name="description"
+      content="SAGE empowers individuals and communities to take meaningful climate action. Join us in building a sustainable future for everyone."
+    />
+    <meta
+      name="keywords"
+      content="climate action, sustainability, environment, global warming, green energy, carbon footprint"
+    />
+    <meta name="author" content="Kavinu" />
+
+    <!-- Font Awesome icons library for UI icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <!-- Custom JavaScript file -->
+    <script src="./js/script.js"></script>
+  </head>
+
+  <body>
+    <!-- Main header section with navigation -->
+    <header class="header" id="header">
+      <!-- Left side of header containing logos -->
+      <div class="header-left">
+        <!-- Logo container with SAGE and SDG logos -->
+        <div style="display: flex; align-items: center; gap: 16px">
+          <!-- Primary SAGE logo -->
+          <div class="logo-primary">
+            <a href="/"><img src="./assets/images/logo.png" alt="SAGE" /></a>
+          </div>
+          <!-- Text-based SAGE logo -->
+          <div class="logo logo-text"><a href="/">SAGE</a></div>
+          <!-- Visual separator between logos -->
+          <div class="logo-separator"></div>
+          <!-- UN SDG (Sustainable Development Goals) logo -->
+          <div class="logo">
+            <a href="https://sdgs.un.org/" target="_blank">
+              <img src="./assets/images/sdgsaf.webp" alt="SDG Logo" />
+            </a>
+          </div>
+        </div>
+        <!-- Mobile hamburger menu button (visible on small screens) -->
+        <div class="mobile-menu-button" onclick="toggleMobileMenu()">☰</div>
+      </div>
+
+      <!-- Desktop navigation menu -->
+      <nav class="nav-links">
+        <a href="/home.html">Home</a>
+        <a href="./volunteer.html">Volunteer</a>
+        <a href="/table.html">Climate Data</a>
+        <a href="./team.html">Team</a>
+        <a href="./sitemap.html">Sitemap</a>
+        <a href="./feedback.html">Feedback</a>
+      </nav>
+
+      <!-- Right side of header with profile button -->
+      <div class="header-right">
+        <a href="./profile.html" class="profile-button">Profile →</a>
+      </div>
+
+      <!-- Mobile navigation menu (hidden by default, shown when hamburger is clicked) -->
+      <div class="mobile-nav" id="mobileNav">
+        <a href="/home.html">Home</a>
+        <a href="./volunteer.html">Volunteer</a>
+        <a href="/table.html">Climate Data</a>
+        <a href="./team.html">Team</a>
+        <a href="./sitemap.html">Sitemap</a>
+        <a href="./feedback.html">Feedback</a>
+        <a href="./profile.html" class="profile-button">Profile →</a>
+      </div>
+    </header>
+
+    <!-- Main content area -->
+    <main>
+      <!-- Section 1: Visual Sitemap Intro -->
+      <section>
+        <div class="block-content">
+          <h1 class="page-label">Visual Sitemap</h1>
+          <p>
+            The Visual Sitemap provides a clear overview of the SAGE website’s
+            structure, showing how all the main pages are connected. It helps
+            users understand the navigation flow, locate specific sections
+            easily, and explore the site more effectively. By presenting the
+            hierarchy of content and links, the sitemap serves as a guide to the
+            website’s features and resources at a glance.
+          </p>
+        </div>
+      </section>
+      <!-- Section 2: Sitemap SVG Diagram -->
+      <section class="site-map">
+        <!-- Sitemap Desktop View -->
+        <div class="svg-desktop">
+          <svg viewBox="0 0 800 510">
+            <defs>
+              <marker
+                id="arrowhead"
+                markerWidth="6"
+                markerHeight="4"
+                refX="6"
+                refY="2"
+                orient="auto"
+              >
+                <polyline points="0 0, 6 2, 0 4" />
+              </marker>
+            </defs>
+            <line
+              x1="400"
+              y1="50"
+              x2="400"
+              y2="100"
+              marker-end="url(#arrowhead)"
+            />
+            <line x1="64" y1="180" x2="736" y2="180" />
+            <line x1="400" y1="130" x2="400" y2="180" />
+            <line
+              x1="64"
+              y1="180"
+              x2="64"
+              y2="230"
+              marker-end="url(#arrowhead)"
+            />
+            <line
+              x1="160"
+              y1="180"
+              x2="160"
+              y2="230"
+              marker-end="url(#arrowhead)"
+            />
+            <line
+              x1="256"
+              y1="180"
+              x2="256"
+              y2="230"
+              marker-end="url(#arrowhead)"
+            />
+            <line
+              x1="352"
+              y1="180"
+              x2="352"
+              y2="230"
+              marker-end="url(#arrowhead)"
+            />
+            <line
+              x1="448"
+              y1="180"
+              x2="448"
+              y2="230"
+              marker-end="url(#arrowhead)"
+            />
+            <line
+              x1="544"
+              y1="180"
+              x2="544"
+              y2="230"
+              marker-end="url(#arrowhead)"
+            />
+            <line
+              x1="640"
+              y1="180"
+              x2="640"
+              y2="230"
+              marker-end="url(#arrowhead)"
+            />
+            <line
+              x1="736"
+              y1="180"
+              x2="736"
+              y2="230"
+              marker-end="url(#arrowhead)"
+            />
+            <line x1="256" y1="260" x2="256" y2="460.5" />
+            <line
+              x1="256"
+              y1="310"
+              x2="296"
+              y2="310"
+              marker-end="url(#arrowhead)"
+            />
+            <line
+              x1="256"
+              y1="360"
+              x2="296"
+              y2="360"
+              marker-end="url(#arrowhead)"
+            />
+            <line
+              x1="256"
+              y1="410"
+              x2="296"
+              y2="410"
+              marker-end="url(#arrowhead)"
+            />
+            <line
+              x1="256"
+              y1="460"
+              x2="296"
+              y2="460"
+              marker-end="url(#arrowhead)"
+            />
+            <line x1="640" y1="260" x2="640" y2="460.5" />
+            <line
+              x1="640"
+              y1="310"
+              x2="680"
+              y2="310"
+              marker-end="url(#arrowhead)"
+            />
+            <line
+              x1="640"
+              y1="360"
+              x2="680"
+              y2="360"
+              marker-end="url(#arrowhead)"
+            />
+            <line
+              x1="640"
+              y1="410"
+              x2="680"
+              y2="410"
+              marker-end="url(#arrowhead)"
+            />
+            <line
+              x1="640"
+              y1="460"
+              x2="680"
+              y2="460"
+              marker-end="url(#arrowhead)"
+            />
+
+            <a href="./splash.html">
+              <rect width="110px" height="30px" x="345" y="20" />
+              <text x="353" y="41">Splash Screen</text>
+            </a>
+            <a href="./home.html">
+              <rect width="80px" height="30px" x="360" y="100" />
+              <text x="380" y="121">Home</text>
+            </a>
+            <a href="./volunteer.html">
+              <rect width="80px" height="30px" x="23" y="230" />
+              <text x="33" y="251">Volunteer</text>
+            </a>
+            <a href="./profile.html">
+              <rect width="80px" height="30px" x="120" y="230" />
+              <text x="138" y="251">Profile</text>
+            </a>
+
+            <rect width="80px" height="30px" x="216" y="230" />
+            <text x="229" y="251">Content</text>
+
+            <a href="./content_ST1.html">
+              <rect width="75px" height="26px" x="296" y="297" />
+              <text x="303" y="314" class="text2">Content 01</text>
+            </a>
+            <a href="./content_ST2.html">
+              <rect width="75px" height="26px" x="296" y="347" />
+              <text x="303" y="364" class="text2">Content 02</text>
+            </a>
+            <a href="./content_ST3.html">
+              <rect width="75px" height="26px" x="296" y="397" />
+              <text x="303" y="414" class="text2">Content 03</text>
+            </a>
+            <a href="./content_ST4.html">
+              <rect width="75px" height="26px" x="296" y="447" />
+              <text x="303" y="464" class="text2">Content 04</text>
+            </a>
+            <a href="./team.html">
+              <rect width="80px" height="30px" x="312" y="230" />
+              <text x="335" y="251">Team</text>
+            </a>
+            <a href="./table.html">
+              <rect width="80px" height="30px" x="408" y="230" />
+              <text x="430" y="251">Table</text>
+            </a>
+            <a href="./sitemap.html">
+              <rect width="80px" height="30px" x="504" y="230" />
+              <text x="520" y="251">Sitemap</text>
+            </a>
+
+            <rect width="90px" height="30px" x="595" y="230" />
+            <text x="601.5" y="251">Page Editor</text>
+
+            <a href="./pageEditor_ST1.html">
+              <rect width="75px" height="26px" x="680" y="297" />
+              <text x="687" y="314" class="text2">Student 01</text>
+            </a>
+            <a href="./pageEditor_ST2.html">
+              <rect width="75px" height="26px" x="680" y="347" />
+              <text x="687" y="364" class="text2">Student 02</text>
+            </a>
+            <a href="./pageEditor_ST3.html">
+              <rect width="75px" height="26px" x="680" y="397" />
+              <text x="687" y="414" class="text2">Student 03</text>
+            </a>
+            <a href="./pageEditor_ST4.html">
+              <rect width="75px" height="26px" x="680" y="447" />
+              <text x="687" y="464" class="text2">Student 04</text>
+            </a>
+            <a href="#">
+              <rect width="80px" height="30px" x="696" y="230" />
+              <text x="704" y="251">Feedback</text>
+            </a>
+          </svg>
+        </div>
+        <!-- Sitemap Mobile View -->
+        <div class="svg-mobile">
+          <svg viewBox="0 0 400 650">
+            <defs>
+              <marker
+                id="arrowhead-mobile"
+                markerWidth="6"
+                markerHeight="4"
+                refX="6"
+                refY="2"
+                orient="auto"
+              >
+                <polyline points="0 0, 6 2, 0 4" />
+              </marker>
+            </defs>
+            <line
+              x1="200"
+              y1="40"
+              x2="200"
+              y2="75"
+              marker-end="url(#arrowhead-mobile)"
+            />
+            <line x1="200" y1="105" x2="200" y2="400.5" />
+            <line
+              x1="200"
+              y1="155"
+              x2="140"
+              y2="155"
+              marker-end="url(#arrowhead-mobile)"
+            />
+            <line
+              x1="200"
+              y1="190"
+              x2="260"
+              y2="190"
+              marker-end="url(#arrowhead-mobile)"
+            />
+            <line
+              x1="200"
+              y1="225"
+              x2="140"
+              y2="225"
+              marker-end="url(#arrowhead-mobile)"
+            />
+            <line
+              x1="200"
+              y1="260"
+              x2="260"
+              y2="260"
+              marker-end="url(#arrowhead-mobile)"
+            />
+            <line
+              x1="200"
+              y1="295"
+              x2="140"
+              y2="295"
+              marker-end="url(#arrowhead-mobile)"
+            />
+            <line
+              x1="200"
+              y1="330"
+              x2="260"
+              y2="330"
+              marker-end="url(#arrowhead-mobile)"
+            />
+            <line x1="200" y1="365" x2="140" y2="365" />
+            <line
+              x1="140"
+              y1="365"
+              x2="140"
+              y2="405"
+              marker-end="url(#arrowhead-mobile)"
+            />
+            <line x1="140" y1="435" x2="140" y2="590.5" />
+            <line
+              x1="140"
+              y1="470"
+              x2="110"
+              y2="470"
+              marker-end="url(#arrowhead-mobile)"
+            />
+            <line
+              x1="140"
+              y1="510"
+              x2="110"
+              y2="510"
+              marker-end="url(#arrowhead-mobile)"
+            />
+            <line
+              x1="140"
+              y1="550"
+              x2="110"
+              y2="550"
+              marker-end="url(#arrowhead-mobile)"
+            />
+            <line
+              x1="140"
+              y1="590"
+              x2="110"
+              y2="590"
+              marker-end="url(#arrowhead-mobile)"
+            />
+            <line x1="200" y1="400" x2="260" y2="400" />
+            <line
+              x1="260"
+              y1="400"
+              x2="260"
+              y2="440"
+              marker-end="url(#arrowhead-mobile)"
+            />
+            <line x1="260" y1="470" x2="260" y2="630.5" />
+            <line
+              x1="260"
+              y1="510"
+              x2="290"
+              y2="510"
+              marker-end="url(#arrowhead-mobile)"
+            />
+            <line
+              x1="260"
+              y1="550"
+              x2="290"
+              y2="550"
+              marker-end="url(#arrowhead-mobile)"
+            />
+            <line
+              x1="260"
+              y1="590"
+              x2="290"
+              y2="590"
+              marker-end="url(#arrowhead-mobile)"
+            />
+            <line
+              x1="260"
+              y1="630"
+              x2="290"
+              y2="630"
+              marker-end="url(#arrowhead-mobile)"
+            />
+
+            <a href="./splash.html">
+              <rect width="110px" height="30px" x="145" y="10" />
+              <text x="153" y="31">Splash Screen</text>
+            </a>
+            <a href="./home.html">
+              <rect width="80px" height="30px" x="160" y="75" />
+              <text x="180" y="96">Home</text>
+            </a>
+            <a href="./profile.html">
+              <rect width="80px" height="30px" x="60" y="140" />
+              <text x="78" y="160">Profile</text>
+            </a>
+            <a href="./volunteer.html">
+              <rect width="80px" height="30px" x="260" y="175" />
+              <text x="270" y="195">Volunteer</text>
+            </a>
+            <a href="./team.html">
+              <rect width="80px" height="30px" x="60" y="210" />
+              <text x="82" y="230">Team</text>
+            </a>
+            <a href="./table.html">
+              <rect width="80px" height="30px" x="260" y="245" />
+              <text x="280" y="265">Table</text>
+            </a>
+            <a href="./feedback.html">
+              <rect width="80px" height="30px" x="60" y="280" />
+              <text x="68" y="300">Feedback</text>
+            </a>
+            <a href="./sitemap.html">
+              <rect width="80px" height="30px" x="260" y="315" />
+              <text x="273" y="335">Sitemap</text>
+            </a>
+            <rect width="80px" height="30px" x="100" y="405" />
+            <text x="113" y="425">Content</text>
+            <a href="./content_ST1.html">
+              <rect width="75px" height="26px" x="35" y="457" />
+              <text x="42" y="475" class="text2">Content 01</text>
+            </a>
+            <a href="./content_ST2.html">
+              <rect width="75px" height="26px" x="35" y="497" />
+              <text x="42" y="515" class="text2">Content 02</text>
+            </a>
+            <a href="./content_ST3.html">
+              <rect width="75px" height="26px" x="35" y="537" />
+              <text x="42" y="555" class="text2">Content 03</text>
+            </a>
+            <a href="./content_ST4.html">
+              <rect width="75px" height="26px" x="35" y="577" />
+              <text x="42" y="595" class="text2">Content 04</text>
+            </a>
+
+            <rect width="90px" height="30px" x="215" y="440" />
+            <text x="223" y="460">Page editor</text>
+
+            <a href="./pageEditor_ST1.html">
+              <rect width="75px" height="26px" x="290" y="497" />
+              <text x="297" y="514" class="text2">Student 01</text>
+            </a>
+            <a href="./pageEditor_ST2.html">
+              <rect width="75px" height="26px" x="290" y="537" />
+              <text x="297" y="554" class="text2">Student 02</text>
+            </a>
+            <a href="./pageEditor_ST3.html">
+              <rect width="75px" height="26px" x="290" y="577" />
+              <text x="297" y="594" class="text2">Student 03</text>
+            </a>
+            <a href="./pageEditor_ST4.html">
+              <rect width="75px" height="26px" x="290" y="617" />
+              <text x="297" y="634" class="text2">Student 04</text>
+            </a>
+          </svg>
+        </div>
+      </section>
+    </main>
+
+    <button
+      class="scroll-to-top"
+      onclick="scrollToTop()"
+      aria-label="Scroll to Top"
+    >
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h4>Website Links</h4>
+          <a href="./home.html">Home</a>
+          <a href="./volunteer.html">Volunteer</a>
+          <a href="./table.html">Climate Data</a>
+          <a href="./team.html">Team</a>
+          <a href="./sitemap.html">Sitemap</a>
+          <a href="./feedback.html">Feedback</a>
+        </div>
+
+        <div class="footer-column">
+          <h4>Useful Links</h4>
+          <a
+            href="https://www.undp.org/sustainable-development-goals"
+            target="_blank"
+            >Conditions</a
+          >
+          <a
+            href="https://sdgactioncampaign.org/privacy-policy/"
+            target="_blank"
+            >Privacy Policy</a
+          >
+          <a href="https://sdgdata.gov.uk/cookies/" target="_blank">Cookies</a>
+          <a
+            href="https://anti-corruption.org/themes/anti-corruption-in-sdgs-2/"
+            target="_blank"
+            >Anti Corruption</a
+          >
+          <a
+            href="https://www.un.org/sustainabledevelopment/news/communications-material/"
+            target="_blank"
+            >Asset License</a
+          >
+        </div>
+
+        <div class="footer-column">
+          <h4>Content Pages</h4>
+          <a href="./content_ST1.html">Content 01</a>
+          <a href="./content_ST2.html">Content 02</a>
+          <a href="./content_ST3.html">Content 03</a>
+          <a href="./content_ST4.html">Content 04</a>
+        </div>
+
+        <div class="footer-column">
+          <h4>Student Pages</h4>
+          <a href="./pageEditor_ST1.html">Student 01</a>
+          <a href="./pageEditor_ST2.html">Student 02</a>
+          <a href="./pageEditor_ST3.html">Student 03</a>
+          <a href="./pageEditor_ST4.html">Student 04</a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>Copyright © 2025 WebDev Group 5 Subgroup 5. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      function toggleMobileMenu() {
+        document.getElementById("header").classList.toggle("show-mobile-nav");
+      }
+
+      function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    </script>
+  </body>
+</html>

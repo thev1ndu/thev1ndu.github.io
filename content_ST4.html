@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Character encoding for proper text display -->
+    <meta charset="UTF-8" />
+    <!-- Responsive viewport settings for mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Page title displayed in browser tab -->
+    <title>Climate Science | SAGE</title>
+
+    <!-- External stylesheet for global styles -->
+    <link rel="stylesheet" href="./css/global.css" />
+    <!-- External stylesheet for content_ST4 styles -->
+    <link rel="stylesheet" href="./css/content_ST4.css" />
+    <!-- Favicon for browser tab icon -->
+    <link rel="icon" href="./assets/images/favicon.png" />
+
+    <!-- SEO Meta tags for search engines -->
+    <meta
+      name="description"
+      content="SAGE empowers individuals and communities to take meaningful climate action. Join us in building a sustainable future for everyone."
+    />
+    <meta
+      name="keywords"
+      content="climate action, sustainability, environment, global warming, green energy, carbon footprint"
+    />
+    <meta name="author" content="Kavinu" />
+
+    <!-- Font Awesome icons library for UI icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <!-- Custom JavaScript file -->
+    <script src="./js/script.js"></script>
+  </head>
+
+  <body>
+    <!-- Main header section with navigation -->
+    <header class="header" id="header">
+      <!-- Left side of header containing logos -->
+      <div class="header-left">
+        <!-- Logo container with SAGE and SDG logos -->
+        <div style="display: flex; align-items: center; gap: 16px">
+          <!-- Primary SAGE logo -->
+          <div class="logo-primary">
+            <a href="/"><img src="./assets/images/logo.png" alt="SAGE" /></a>
+          </div>
+          <!-- Text-based SAGE logo -->
+          <div class="logo logo-text"><a href="/">SAGE</a></div>
+          <!-- Visual separator between logos -->
+          <div class="logo-separator"></div>
+          <!-- UN SDG (Sustainable Development Goals) logo -->
+          <div class="logo">
+            <a href="https://sdgs.un.org/" target="_blank">
+              <img src="./assets/images/sdgsaf.webp" alt="SDG Logo" />
+            </a>
+          </div>
+        </div>
+        <!-- Mobile hamburger menu button (visible on small screens) -->
+        <div class="mobile-menu-button" onclick="toggleMobileMenu()">☰</div>
+      </div>
+
+      <!-- Desktop navigation menu -->
+      <nav class="nav-links">
+        <a href="/home.html">Home</a>
+        <a href="./volunteer.html">Volunteer</a>
+        <a href="/table.html">Climate Data</a>
+        <a href="./team.html">Team</a>
+        <a href="./sitemap.html">Sitemap</a>
+        <a href="./feedback.html">Feedback</a>
+      </nav>
+
+      <!-- Right side of header with profile button -->
+      <div class="header-right">
+        <a href="./profile.html" class="profile-button">Profile →</a>
+      </div>
+
+      <!-- Mobile navigation menu (hidden by default, shown when hamburger is clicked) -->
+      <div class="mobile-nav" id="mobileNav">
+        <a href="/home.html">Home</a>
+        <a href="./volunteer.html">Volunteer</a>
+        <a href="/table.html">Climate Data</a>
+        <a href="./team.html">Team</a>
+        <a href="./sitemap.html">Sitemap</a>
+        <a href="./feedback.html">Feedback</a>
+        <a href="./profile.html" class="profile-button">Profile →</a>
+      </div>
+    </header>
+
+    <!-- Main content area -->
+    <main>
+      <div class="container">
+        <!-- Sidebar Navigation -->
+        <div class="sidebar">
+          <div class="logo logo-text">SAGE</div>
+          <ul class="nav">
+            <li>
+              <a href="#what-is-climate-science">
+                <i class="fas fa-flask"></i
+                ><span> What is Climate Science?</span>
+              </a>
+            </li>
+            <li>
+              <a href="#importance">
+                <i class="fas fa-bullseye"></i><span> Why It Matters</span>
+              </a>
+            </li>
+            <li>
+              <a href="#climate-systems">
+                <i class="fas fa-globe-americas"></i
+                ><span> Earth’s Climate System</span>
+              </a>
+            </li>
+            <li>
+              <a href="#greenhouse-gases">
+                <i class="fas fa-cloud"></i><span> Greenhouse Gases</span>
+              </a>
+            </li>
+            <li>
+              <a href="#evidence">
+                <i class="fas fa-chart-line"></i
+                ><span> Scientific Evidence</span>
+              </a>
+            </li>
+            <li>
+              <a href="#climate-models">
+                <i class="fas fa-cogs"></i
+                ><span> Understanding Climate Models</span>
+              </a>
+            </li>
+            <li>
+              <a href="#predictions">
+                <i class="fas fa-forward"></i
+                ><span> Future Climate Scenarios</span>
+              </a>
+            </li>
+            <li>
+              <a href="#mitigation">
+                <i class="fas fa-recycle"></i
+                ><span> Science and Solutions</span>
+              </a>
+            </li>
+            <li>
+              <a href="#institutions">
+                <i class="fas fa-university"></i
+                ><span> Key Research Institutions</span>
+              </a>
+            </li>
+            <li>
+              <a href="#resources">
+                <i class="fas fa-book"></i><span> Further Learning</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="content">
+          <!-- Section 1: Page Title -->
+          <section class="content-h">
+            <h1>Climate Science: The Science Behind Our Planet’s Future</h1>
+          </section>
+          <img
+            src="./assets/images/climate-science.png"
+            alt="climate-science"
+            class="climate-img"
+          />
+          <!-- Section 2: What is Climate Science -->
+          <section id="what-is-climate-science">
+            <h2 class="header-for-content">What is Climate Science?</h2>
+            <p>
+              Climate science is the study of the Earth's climate system the
+              complex interaction between the atmosphere, oceans, land surfaces,
+              and living organisms that determines the planet’s long-term
+              weather patterns. Unlike weather, which describes short-term
+              atmospheric conditions, climate refers to the average conditions
+              over decades or longer.
+            </p>
+            <p>
+              At its core, climate science aims to understand how natural and
+              human-made factors influence the Earth's climate. These include
+              solar radiation, volcanic activity, greenhouse gases, ocean
+              currents, and human activities such as deforestation and the
+              burning of fossil fuels. Scientists use a combination of
+              observations, theoretical models, and simulations to predict
+              future climate trends and assess the potential impacts on
+              ecosystems, societies, and economies.
+            </p>
+
+            <p>
+              With the growing concern over global warming and extreme weather
+              events, climate science plays a crucial role in informing public
+              policy, guiding environmental conservation, and supporting
+              sustainable development. By understanding how our actions affect
+              the climate, we can make better decisions to protect the planet
+              for future generations.
+            </p>
+            <div class="video-frame">
+              <div class="video-wrapper">
+                <iframe
+                  src="https://www.youtube.com/embed/B3hpN8Odu1A"
+                  title="Fundamentals of Climate Science"
+                  allowfullscreen
+                ></iframe>
+              </div>
+            </div>
+          </section>
+
+          <!-- Section 3: Why it matters -->
+          <section id="importance">
+            <h2 class="header-for-content">Why it matters</h2>
+            <p>
+              Climate science is key to tackling some of today’s biggest
+              challenges from rising sea levels and melting glaciers to droughts
+              and intense storms. By studying climate, scientists can predict
+              future trends, helping communities prepare for risks and make
+              smart, sustainable choices.
+            </p>
+          </section>
+
+          <!-- Section 4: Earth’s Climate System -->
+          <section id="climate-systems">
+            <h2 class="header-for-content">Earth’s Climate System</h2>
+            <p>
+              The Earth’s climate system is composed of the atmosphere, oceans,
+              cryosphere, biosphere, and geosphere. These subsystems interact
+              constantly, exchanging energy and matter. A disruption in one such
+              as deforestation can cascade through the others and affect the
+              entire planet.
+            </p>
+            <img
+              src="./assets/images/earth_system.png"
+              alt="Diagram of Earth’s climate system"
+            />
+          </section>
+
+          <!-- Section 5: Greenhouse Gases -->
+          <section id="greenhouse-gases">
+            <h2 class="header-for-content">Greenhouse Gases</h2>
+            <p>
+              GHGs like carbon dioxide (CO₂), methane (CH₄), and nitrous oxide
+              (N₂O) trap heat in Earth’s atmosphere. Human activities such as
+              fossil fuel combustion and agriculture are increasing these gas
+              concentrations, amplifying the natural greenhouse effect and
+              accelerating global warming.
+            </p>
+            <img
+              src="./assets/images/ghg_chart.png"
+              alt="Greenhouse gas chart"
+            />
+          </section>
+
+          <!-- Section 6: Scientific Evidence -->
+          <section id="evidence">
+            <h2 class="header-for-content">Scientific Evidence</h2>
+            <p>
+              Thousands of peer-reviewed studies confirm climate change.
+              Observable data includes rising temperatures, melting glaciers,
+              shrinking Arctic ice, coral bleaching, and changing precipitation
+              patterns. NASA and the IPCC compile and analyze this evidence.
+            </p>
+            <iframe
+              src="https://climate.nasa.gov/interactives/climate-time-machine"
+              title="NASA Climate Time Machine Interactive"
+              allowfullscreen
+            ></iframe>
+          </section>
+
+          <!-- Section 7: Understanding Climate Models -->
+          <section id="climate-models">
+            <h2 class="header-for-content">Understanding Climate Models</h2>
+            <p>
+              Climate models are complex simulations based on physics,
+              chemistry, and biology. They simulate past climate conditions and
+              forecast future scenarios based on different emissions levels.
+              Models are essential tools used by scientists and policymakers
+              worldwide.
+            </p>
+            <img
+              src="./assets/images/climate_model.png"
+              alt="Climate simulation model illustration"
+            />
+          </section>
+
+          <!-- Section 8: Future Climate Scenarios -->
+          <section id="predictions">
+            <h2 class="header-for-content">Future Climate Scenarios</h2>
+            <p>
+              Future projections range from a 1.5°C to 4.5°C temperature
+              increase by 2100. These scenarios impact sea level, food security,
+              and biodiversity. Regions may experience more heatwaves, stronger
+              storms, or severe droughts, depending on mitigation success.
+            </p>
+          </section>
+
+          <!-- Section 9: Science and Solutions -->
+          <section id="mitigation">
+            <h2 class="header-for-content">Science and Solutions</h2>
+            <p>
+              Climate science supports solutions like renewable energy, carbon
+              sequestration, sustainable agriculture, and resilient
+              infrastructure. Adaptation and mitigation strategies rely on
+              scientific evidence to minimize impacts and protect future
+              generations.
+            </p>
+          </section>
+
+          <!-- Section 10: Key Research Institutions -->
+          <section id="institutions">
+            <h2 class="header-for-content">Key Research Institutions</h2>
+            <p>
+              Organizations like the IPCC, NASA, NOAA, and the UK Met Office
+              conduct climate research and provide accessible data. Their work
+              informs international climate policy and educates the public about
+              climate change.
+            </p>
+          </section>
+
+          <!-- Section 11: Further Learning -->
+          <section id="resources">
+            <h2 class="header-for-content">Further Learning</h2>
+            <ul>
+              <li>
+                <a href="https://climate.nasa.gov/" target="_blank"
+                  >NASA Climate Change</a
+                >
+              </li>
+              <li>
+                <a href="https://www.ipcc.ch/" target="_blank">IPCC Reports</a>
+              </li>
+              <li>
+                <a href="https://www.metoffice.gov.uk/" target="_blank"
+                  >UK Met Office</a
+                >
+              </li>
+              <li>
+                <a href="https://www.noaa.gov/climate" target="_blank"
+                  >NOAA Climate Portal</a
+                >
+              </li>
+            </ul>
+          </section>
+
+          <!-- Section 12: Global Climate Map -->
+          <section id="interactive-map">
+            <h2 class="header-for-content">Global Climate Map</h2>
+            <p>
+              This map shows current temperature anomalies compared to the
+              long-term average. It provides a live view of how different
+              regions are warming.
+            </p>
+            <iframe
+              src="https://climatereanalyzer.org/clim/t2_daily/"
+              title="Climate Reanalyzer Map"
+              allowfullscreen
+            ></iframe>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <!-- Scroll to top button (appears when user scrolls down) -->
+    <button
+      class="scroll-to-top"
+      onclick="scrollToTop()"
+      aria-label="Scroll to Top"
+    >
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Footer section with multiple columns of links -->
+    <footer class="footer">
+      <!-- Grid container for footer columns -->
+      <div class="footer-grid">
+        <!-- First column: Website navigation links -->
+        <div class="footer-column">
+          <h4>Website Links</h4>
+          <a href="/home.html">Home</a>
+          <a href="./volunteer.html">Volunteer</a>
+          <a href="/table.html">Climate Data</a>
+          <a href="./team.html">Team</a>
+          <a href="./sitemap.html">Sitemap</a>
+          <a href="./feedback.html">Feedback</a>
+        </div>
+
+        <!-- Second column: External useful links -->
+        <div class="footer-column">
+          <h4>Useful Links</h4>
+          <a
+            href="https://www.undp.org/sustainable-development-goals"
+            target="_blank"
+            >Conditions</a
+          >
+          <a
+            href="https://sdgactioncampaign.org/privacy-policy/"
+            target="_blank"
+            >Privacy Policy</a
+          >
+          <a href="https://sdgdata.gov.uk/cookies/" target="_blank">Cookies</a>
+          <a
+            href="https://anti-corruption.org/themes/anti-corruption-in-sdgs-2/"
+            target="_blank"
+            >Anti Corruption</a
+          >
+          <a
+            href="https://www.un.org/sustainabledevelopment/news/communications-material/"
+            target="_blank"
+            >Asset License</a
+          >
+        </div>
+
+        <!-- Third column: Content pages -->
+        <div class="footer-column">
+          <h4>Content Pages</h4>
+          <a href=".content_ST1.html">Content 01</a>
+          <a href="./content_ST2.html">Content 02</a>
+          <a href="./content_ST3.html">Content 03</a>
+          <a href="./content_ST4.html">Content 04</a>
+        </div>
+
+        <!-- Fourth column: Student pages -->
+        <div class="footer-column">
+          <h4>Student Pages</h4>
+          <a href="./pageEditor_ST1.html">Student 01</a>
+          <a href="./pageEditor_ST2.html">Student 02</a>
+          <a href="./pageEditor_ST3.html">Student 03</a>
+          <a href="./pageEditor_ST4.html">Student 04</a>
+        </div>
+      </div>
+
+      <!-- Footer bottom section with copyright -->
+      <div class="footer-bottom">
+        <p>Copyright © 2025 WebDev Group 5 Subgroup 5. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>

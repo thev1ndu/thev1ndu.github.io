@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Character encoding for proper text display -->
+    <meta charset="UTF-8" />
+    <!-- Responsive viewport settings for mobile devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Page title displayed in browser tab -->
+    <title>Student 4: Page Editor | SAGE</title>
+
+    <!-- External stylesheet for global styles -->
+    <link rel="stylesheet" href="./css/global.css" />
+    <!-- External stylesheet for pageEditor_validator_ST4 styles -->
+    <link rel="stylesheet" href="./css/pageEditor_validator_ST4.css" />
+    <!-- Favicon for browser tab icon -->
+    <link rel="icon" href="./assets/images/favicon.png" />
+
+    <!-- SEO Meta tags for search engines -->
+    <meta
+      name="description"
+      content="SAGE empowers individuals and communities to take meaningful climate action. Join us in building a sustainable future for everyone."
+    />
+    <meta
+      name="keywords"
+      content="climate action, sustainability, environment, global warming, green energy, carbon footprint"
+    />
+    <meta name="author" content="Kavinu" />
+
+    <!-- Font Awesome icons library for UI icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <!-- Custom JavaScript file -->
+    <script src="./js/script.js"></script>
+  </head>
+
+  <body>
+    <!-- Main header section with navigation -->
+    <header class="header" id="header">
+      <!-- Left side of header containing logos -->
+      <div class="header-left">
+        <!-- Logo container with SAGE and SDG logos -->
+        <div style="display: flex; align-items: center; gap: 16px">
+          <!-- Primary SAGE logo -->
+          <div class="logo-primary">
+            <a href="/"><img src="./assets/images/logo.png" alt="SAGE" /></a>
+          </div>
+          <!-- Text-based SAGE logo -->
+          <div class="logo logo-text"><a href="/">SAGE</a></div>
+          <!-- Visual separator between logos -->
+          <div class="logo-separator"></div>
+          <!-- UN SDG (Sustainable Development Goals) logo -->
+          <div class="logo">
+            <a href="https://sdgs.un.org/" target="_blank">
+              <img src="./assets/images/sdgsaf.webp" alt="SDG Logo" />
+            </a>
+          </div>
+        </div>
+        <!-- Mobile hamburger menu button (visible on small screens) -->
+        <div class="mobile-menu-button" onclick="toggleMobileMenu()">☰</div>
+      </div>
+
+      <!-- Desktop navigation menu -->
+      <nav class="nav-links">
+        <a href="/home.html">Home</a>
+        <a href="./volunteer.html">Volunteer</a>
+        <a href="/table.html">Climate Data</a>
+        <a href="./team.html">Team</a>
+        <a href="./sitemap.html">Sitemap</a>
+        <a href="./feedback.html">Feedback</a>
+      </nav>
+
+      <!-- Right side of header with profile button -->
+      <div class="header-right">
+        <a href="./profile.html" class="profile-button">Profile →</a>
+      </div>
+
+      <!-- Mobile navigation menu (hidden by default, shown when hamburger is clicked) -->
+      <div class="mobile-nav" id="mobileNav">
+        <a href="/home.html">Home</a>
+        <a href="./volunteer.html">Volunteer</a>
+        <a href="/table.html">Climate Data</a>
+        <a href="./team.html">Team</a>
+        <a href="./sitemap.html">Sitemap</a>
+        <a href="./feedback.html">Feedback</a>
+        <a href="./profile.html" class="profile-button">Profile →</a>
+      </div>
+    </header>
+
+    <section class="content-h">
+      <h2>Kavinu Thepul | Page Editor | Student 04</h2>
+    </section>
+
+    <div class="container">
+      <!-- Sidebar Navigation -->
+      <aside>
+        <h3>Core pages developed:</h3>
+        <hr />
+        <ul class="top-level-ul">
+          <li>
+            Student 4
+            <ul>
+              <li><a href="#profile">Profile page</a></li>
+              <li><a href="#sitemap">Sitemap page</a></li>
+              <li><a href="#content">Content page</a></li>
+            </ul>
+          </li>
+          <li><a href="#challenge">Challenges and Lessons Learned</a></li>
+          <li><a href="#compliance">Compliance</a></li>
+          <li><a href="#ref">References</a></li>
+        </ul>
+      </aside>
+
+      <!-- Main content area -->
+      <main>
+        <div class="content">
+          <!-- Section 1: Profile Page -->
+          <section id="profile">
+            <h2>Profile Page</h2>
+            <hr />
+            <h3>Technical Description</h3>
+            <p>Key HTML and CSS techniques used:</p>
+            <ul>
+              <li>
+                HTML Structure:
+                <ul>
+                  <li>
+                    Used semantic tags like <code>&lt;section&gt;</code>,
+                    <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>,
+                    <code>&lt;footer&gt;</code>, and
+                    <code>&lt;main&gt;</code> for accessibility and logical
+                    layout.
+                  </li>
+                  <li>
+                    Profile content is grouped into clear categories such as
+                    user info, skills, goals, and contact form using separate
+                    <code>&lt;section&gt;</code> blocks.
+                  </li>
+                  <li>
+                    Used <code>&lt;ul&gt;</code> and <code>&lt;li&gt;</code> for
+                    lists of skills, goals, and experiences.
+                  </li>
+                  <li>
+                    Form inputs are labeled with
+                    <code>&lt;label for&gt;</code> for better accessibility and
+                    validation.
+                  </li>
+                </ul>
+              </li>
+              <li>
+                CSS Styling:
+                <ul>
+                  <li>
+                    Used <code>column-count</code> in
+                    <code>.profile-layout</code> to create a two-column
+                    responsive layout.
+                  </li>
+                  <li>
+                    Used <code>border-radius</code>, <code>box-shadow</code>,
+                    and <code>transition</code> for smooth hover effects on
+                    cards.
+                  </li>
+                  <li>
+                    Each section uses max-width and padding for clear spacing
+                    and visual hierarchy.
+                  </li>
+                  <li>
+                    Progress bars for skills and goals are implemented using
+                    <code>.progress-bar</code> and
+                    <code>.progress-fill</code> divs with dynamic
+                    <code>width</code> values.
+                  </li>
+                  <li>
+                    Responsive design handled using media queries for tablet and
+                    mobile screen widths.
+                  </li>
+                </ul>
+              </li>
+            </ul>
+
+            <h3>Accessibility</h3>
+            <ul>
+              <li>
+                Semantic HTML tags (e.g. <code>&lt;main&gt;</code>,
+                <code>&lt;section&gt;</code>) enhance screen reader
+                compatibility.
+              </li>
+              <li>
+                All images use descriptive <code>alt</code> attributes (e.g.
+                profile photo, interest icons).
+              </li>
+              <li>
+                Form inputs include <code>&lt;label&gt;</code> elements linked
+                to <code>id</code>s using <code>for</code> attributes.
+              </li>
+              <li>
+                Color contrast (e.g. green buttons on light backgrounds) ensures
+                text is readable.
+              </li>
+              <li>
+                A scroll-to-top button with <code>aria-label</code> improves
+                keyboard navigation and accessibility.
+              </li>
+              <li>
+                Focus states and input validation (e.g.
+                <code>required</code> fields) support user interaction.
+              </li>
+            </ul>
+
+            <h3>Link to the Validation Page</h3>
+            <p>
+              <a href="./validation_ST4.html#profile">Profile Validation </a>|
+              Student 4: Validation Page
+            </p>
+
+            <h3>Link to the Page</h3>
+            <p>
+              <a href="./profile.html" target="_blank">Profile Page</a>
+            </p>
+          </section>
+
+          <!-- Section 2: Sitemap Page -->
+          <section id="sitemap">
+            <h2>Sitemap Page</h2>
+            <hr />
+            <h3>Technical Description</h3>
+            <ul>
+              <li>
+                HTML Structure:
+                <ul>
+                  <li>
+                    Uses semantic HTML elements like
+                    <code>&lt;section&gt;</code> and
+                    <code>&lt;main&gt;</code> for structure and readability.
+                  </li>
+                  <li>
+                    Interactive sitemap created using <code>&lt;svg&gt;</code>,
+                    <code>&lt;rect&gt;</code>, <code>&lt;text&gt;</code>, and
+                    <code>&lt;line&gt;</code> for scalable vector graphics.
+                  </li>
+                  <li>
+                    SVG elements are nested in <code>&lt;a&gt;</code> tags to
+                    enable clickable navigation.
+                  </li>
+                  <li>
+                    Separate SVG structures are used for desktop and mobile
+                    views with <code>.svg-desktop</code> and
+                    <code>.svg-mobile</code> classes.
+                  </li>
+                </ul>
+              </li>
+
+              <li>
+                CSS Techniques:
+                <ul>
+                  <li>
+                    SVG elements are styled using class selectors like
+                    <code>.rect1</code>, <code>.rect2</code>,
+                    <code>.rect3</code> to differentiate shape sizes.
+                  </li>
+                  <li>
+                    <code>fill</code>, <code>stroke</code>, and
+                    <code>transition</code> properties enhance interactivity
+                    with hover effects on rectangles.
+                  </li>
+                  <li>
+                    Text within SVGs styled via <code>svg text</code> selectors
+                    for font size and color control.
+                  </li>
+                  <li>
+                    <code>section</code> has max width/height and shows
+                    scrollbars on hover to keep layout clean initially.
+                  </li>
+                  <li>
+                    Responsiveness handled using media queries: below 600px, the
+                    desktop SVG is hidden and the mobile SVG is shown instead.
+                  </li>
+                </ul>
+              </li>
+            </ul>
+
+            <h3>Accessibility</h3>
+            <ul>
+              <li>Uses semantic tags to improve screen reader support.</li>
+              <li>
+                Links embedded within <code>&lt;a&gt;</code> tags inside SVGs
+                allow keyboard and assistive technology access.
+              </li>
+              <li>Hover effects provide visual feedback for mouse users.</li>
+              <li>
+                Mobile-friendly version ensures the content is accessible on
+                smaller screens.
+              </li>
+            </ul>
+
+            <h3>Link to the Validation Page</h3>
+            <p>
+              <a href="./validation_ST4.html#sitemap">Sitemap Validation </a>|
+              Student 4: Validation Page
+            </p>
+
+            <h3>Link to the Page</h3>
+            <p>
+              <a href="./sitemap.html" target="_blank">Sitemap Page</a>
+            </p>
+          </section>
+
+          <!-- Section 3: Content Page -->
+          <section id="content">
+            <h2>Content Page</h2>
+            <hr />
+            <h3>Technical Description</h3>
+            <ul>
+              <li>
+                HTML Structure:
+                <ul>
+                  <li>
+                    Uses semantic tags like <code>&lt;section&gt;</code>,
+                    <code>&lt;nav&gt;</code>, and <code>&lt;main&gt;</code> to
+                    structure content meaningfully.
+                  </li>
+                  <li>
+                    The sidebar uses a nested <code>&lt;ul&gt;</code> list with
+                    icons and anchor tags linking to specific
+                    <code>id</code>-based sections for smooth in-page
+                    navigation.
+                  </li>
+                  <li>
+                    Each section contains a heading, descriptive text, and
+                    relevant media (e.g. <code>&lt;img&gt;</code> and
+                    <code>&lt;iframe&gt;</code>).
+                  </li>
+                  <li>
+                    Embedded YouTube and interactive maps are included using
+                    <code>&lt;iframe&gt;</code> tags inside responsive wrappers.
+                  </li>
+                </ul>
+              </li>
+
+              <li>
+                CSS Styling:
+                <ul>
+                  <li>
+                    The page layout is split using a flex container in the
+                    <code>.container</code> class to position sidebar and
+                    content side-by-side.
+                  </li>
+                  <li>
+                    <code>.sidebar</code> is styled with padding, box-shadow,
+                    and hover transitions for a card-like UI with interactive
+                    navigation items.
+                  </li>
+                  <li>
+                    Section headings use distinct classes like
+                    <code>.content-h</code> and
+                    <code>.header-for-content</code> to control size and color
+                    (e.g. <span>green highlights</span>).
+                  </li>
+                  <li>
+                    Responsive design handled using media queries for screens
+                    under 768px and 600px. This hides sidebar text labels and
+                    adjusts padding/font sizes.
+                  </li>
+                  <li>
+                    <code>iframe</code> and <code>img</code> tags are styled for
+                    full width display, with <code>border-radius</code> and
+                    <code>box-shadow</code> for visual polish.
+                  </li>
+                </ul>
+              </li>
+            </ul>
+
+            <h3>Accessibility</h3>
+            <ul>
+              <li>
+                All images include descriptive <code>alt</code> text (e.g.
+                "Greenhouse gas chart", "Earth’s climate system").
+              </li>
+              <li>
+                Consistent heading levels (<code>h1</code>, <code>h2</code>) for
+                proper content hierarchy, supporting screen readers and keyboard
+                navigation.
+              </li>
+              <li>
+                Embedded videos and maps use descriptive
+                <code>title</code> attributes for accessibility.
+              </li>
+              <li>
+                Contrast-friendly text and hover effects improve readability for
+                all users.
+              </li>
+              <li>
+                Navigation sidebar uses anchor links with clear labels and icons
+                to support both visual and keyboard navigation.
+              </li>
+            </ul>
+
+            <h3>Link to the Validation Page</h3>
+            <p>
+              <a href="./validation_ST4.html#content"> Content Validation </a>|
+              Student 4: Validation Page
+            </p>
+
+            <h3>Link to the Page</h3>
+            <p>
+              <a href="./content_ST4.html" target="_blank"> Content Page </a>
+            </p>
+          </section>
+
+          <!-- Section 4: Challenges and Lessons Learned -->
+          <section id="challenge">
+            <h2>Challenges and Lessons Learned</h2>
+            <hr />
+            <ul>
+              <li>
+                Responsive Design: Ensuring proper layout across screen sizes
+                was challenging. Media queries were applied to restructure
+                content like sidebars and form elements for better mobile
+                usability.
+              </li>
+              <li>
+                SVG Implementation: Building an interactive visual sitemap using
+                SVG required learning how to nest
+                <code>&lt;a&gt;</code> elements inside
+                <code>&lt;svg&gt;</code> and style them with CSS for hover
+                feedback.
+              </li>
+              <li>
+                Form Accessibility: Structuring form fields with proper
+                <code>&lt;label for&gt;</code> usage, placeholder text, and
+                required validation enhanced accessibility and user guidance.
+              </li>
+              <li>
+                Content Linking: Creating section-based anchor navigation in the
+                content page required accurate ID management and styling
+                consistency between links and their target sections.
+              </li>
+              <li>
+                Lessons Learned: A key takeaway is that accessibility,
+                responsiveness, and semantic structure are just as important as
+                visual design. Online documentation and validators were vital to
+                overcoming development issues.
+              </li>
+            </ul>
+          </section>
+
+          <!-- Section 5: Compliance -->
+          <section id="compliance">
+            <h2>Compliance</h2>
+            <hr />
+            <ul>
+              <li>
+                HTML & CSS Validation: The site complies with HTML5 and CSS3
+                standards, verified through W3C validation tools. Errors and
+                warnings were resolved throughout the development process.
+              </li>
+              <li>
+                Accessibility: The site includes semantic elements, alt
+                attributes for images, accessible form labels, and logical
+                heading structures, aligning with WCAG 2.1 guidelines.
+              </li>
+              <li>
+                JANET Guidelines: All content adheres to JANET's Acceptable Use
+                Policy by avoiding commercial or inappropriate material, using
+                verified educational sources, and ensuring user safety.
+              </li>
+              <li>
+                Copyright and Data: All external resources are credited, and no
+                personal data is collected or stored, meeting GDPR expectations.
+              </li>
+            </ul>
+          </section>
+
+          <!-- Section 6: References -->
+          <section id="ref">
+            <h2>References</h2>
+            <hr />
+
+            <ul>
+              <li id="ref1">
+                W3Schools. (2025). <i>HTML table styling</i>. Available at:
+                <a
+                  href="https://www.w3schools.com/html/html_table_styling.asp"
+                  target="_blank"
+                >
+                  https://www.w3schools.com/html/html_table_styling.asp
+                </a>
+                (Accessed: 12 June 2025).
+              </li>
+              <li id="ref2">
+                NASA. (2025).
+                <i>Climate Change: Vital Signs of the Planet</i>. Available at:
+                <a href="https://climate.nasa.gov/" target="_blank">
+                  https://climate.nasa.gov/
+                </a>
+                (Accessed: 20 June 2025).
+              </li>
+              <li id="ref3">
+                IPCC. (2025). <i>Reports</i>. Available at:
+                <a href="https://www.ipcc.ch/" target="_blank">
+                  https://www.ipcc.ch/
+                </a>
+                (Accessed: 20 June 2025).
+              </li>
+              <li id="ref4">
+                W3Schools. (2025).
+                <i>CSS Responsive Web Design - Media Queries</i>. Available at:
+                <a
+                  href="https://www.w3schools.com/css/css_rwd_mediaqueries.asp"
+                  target="_blank"
+                >
+                  https://www.w3schools.com/css/css_rwd_mediaqueries.asp
+                </a>
+                (Accessed: 24 June 2025).
+              </li>
+              <li id="ref5">
+                W3Schools. (2025). <i>SVG Tutorial</i>. Available at:
+                <a
+                  href="https://www.w3schools.com/graphics/svg_intro.asp"
+                  target="_blank"
+                >
+                  https://www.w3schools.com/graphics/svg_intro.asp
+                </a>
+                (Accessed: 25 June 2025).
+              </li>
+              <li id="ref6">
+                Stack Overflow. (2013).
+                <i>How to use the SVG viewBox attribute?</i> Available at:
+                <a
+                  href="https://stackoverflow.com/questions/15335926/how-to-use-the-svg-viewbox-attribute"
+                  target="_blank"
+                >
+                  https://stackoverflow.com/questions/15335926/how-to-use-the-svg-viewbox-attribute
+                </a>
+                (Accessed: 25 June 2025).
+              </li>
+              <li id="ref7">
+                Flagpedia. (2025). <i>Download Icons</i>. Available at:
+                <a href="https://flagpedia.net/download/icons" target="_blank">
+                  https://flagpedia.net/download/icons
+                </a>
+                (Accessed: 27 June 2025).
+              </li>
+              <li id="ref8">
+                Font Awesome. (2025). <i>Icons</i>. Available at:
+                <a href="https://fontawesome.com/icons" target="_blank">
+                  https://fontawesome.com/icons
+                </a>
+                (Accessed: 29 June 2025).
+              </li>
+              <li id="ref9">
+                W3C. (2025). <i>Markup Validation Service</i>. Available at:
+                <a href="https://validator.w3.org/" target="_blank">
+                  https://validator.w3.org/
+                </a>
+                (Accessed: 2 July 2025).
+              </li>
+            </ul>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <!-- Scroll to top button (appears when user scrolls down) -->
+    <button
+      class="scroll-to-top"
+      onclick="scrollToTop()"
+      aria-label="Scroll to Top"
+    >
+      <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Footer section with multiple columns of links -->
+    <footer class="footer">
+      <!-- Grid container for footer columns -->
+      <div class="footer-grid">
+        <!-- First column: Website navigation links -->
+        <div class="footer-column">
+          <h4>Website Links</h4>
+          <a href="/home.html">Home</a>
+          <a href="./volunteer.html">Volunteer</a>
+          <a href="/table.html">Climate Data</a>
+          <a href="./team.html">Team</a>
+          <a href="./sitemap.html">Sitemap</a>
+          <a href="./feedback.html">Feedback</a>
+        </div>
+
+        <!-- Second column: External useful links -->
+        <div class="footer-column">
+          <h4>Useful Links</h4>
+          <a
+            href="https://www.undp.org/sustainable-development-goals"
+            target="_blank"
+            >Conditions</a
+          >
+          <a
+            href="https://sdgactioncampaign.org/privacy-policy/"
+            target="_blank"
+            >Privacy Policy</a
+          >
+          <a href="https://sdgdata.gov.uk/cookies/" target="_blank">Cookies</a>
+          <a
+            href="https://anti-corruption.org/themes/anti-corruption-in-sdgs-2/"
+            target="_blank"
+            >Anti Corruption</a
+          >
+          <a
+            href="https://www.un.org/sustainabledevelopment/news/communications-material/"
+            target="_blank"
+            >Asset License</a
+          >
+        </div>
+
+        <!-- Third column: Content pages -->
+        <div class="footer-column">
+          <h4>Content Pages</h4>
+          <a href=".content_ST1.html">Content 01</a>
+          <a href="./content_ST2.html">Content 02</a>
+          <a href="./content_ST3.html">Content 03</a>
+          <a href="./content_ST4.html">Content 04</a>
+        </div>
+
+        <!-- Fourth column: Student pages -->
+        <div class="footer-column">
+          <h4>Student Pages</h4>
+          <a href="./pageEditor_ST1.html">Student 01</a>
+          <a href="./pageEditor_ST2.html">Student 02</a>
+          <a href="./pageEditor_ST3.html">Student 03</a>
+          <a href="./pageEditor_ST4.html">Student 04</a>
+        </div>
+      </div>
+
+      <!-- Footer bottom section with copyright -->
+      <div class="footer-bottom">
+        <p>Copyright © 2025 WebDev Group 5 Subgroup 5. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
