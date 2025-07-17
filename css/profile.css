@@ -11,6 +11,7 @@ h2 {
   font-size: 20px;
 }
 
+/* columns for desktop */
 .profile-layout {
   column-count: 2;
   column-gap: 3.5rem;
@@ -70,6 +71,7 @@ section:hover {
 
 .avatar-wrapper {
   padding: 1rem;
+  /* Use flex to center avatar horizontally */
   display: flex;
   justify-content: center;
 }
@@ -109,6 +111,7 @@ li {
   margin-bottom: 2rem;
 }
 
+/* Progress bar styling */
 .progress-bar {
   background-color: #6263623b;
   height: 1.1rem;
@@ -126,6 +129,7 @@ li {
   font-size: 14px;
 }
 
+/* Force certain cards to span full width */
 .interests-card,
 .volunteer-card,
 .contact {
@@ -134,6 +138,7 @@ li {
 }
 
 .interests-images {
+  /* Display interests in a horizontal row with spacing */
   display: flex;
   gap: 2rem;
   margin-top: 1.5rem;
@@ -145,12 +150,14 @@ li {
 }
 
 .volunteering {
+  /* Arrange volunteering cards in a responsive row */
   display: flex;
   gap: 1rem;
-  flex-wrap: wrap;
+  flex-wrap: wrap; /* Allow cards to wrap on smaller screens */
   justify-content: center;
 }
 
+/* Volunteering cards layout */
 .volunteering .card {
   width: 320px;
   margin: 1rem auto;
@@ -172,6 +179,7 @@ li {
 }
 
 .country-flag {
+  /* Place flag and country text side by side */
   display: flex;
 }
 
@@ -189,6 +197,7 @@ li {
   color: #13a049;
 }
 
+/* Volunteering buttons */
 .volunteering .form-buttons {
   position: absolute;
   bottom: 1rem;
@@ -210,6 +219,7 @@ li {
   background-color: #45ec85;
 }
 
+/* Volunteer availability table */
 .volunteer-table {
   margin: 2rem auto;
   overflow-x: auto;
@@ -269,7 +279,9 @@ li {
   color: rgb(117, 208, 126);
 }
 
+/* Contact form styles */
 .contact form {
+  /* Use column layout for form fields */
   display: flex;
   flex-direction: column;
   padding: 0 2rem 1rem 2rem;
@@ -307,11 +319,16 @@ label {
   box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
 }
 
+.contact textarea {
+  resize: vertical;
+}
+
 .asterisk {
   color: #b92922;
 }
 
 .form-row {
+  /* Arrange form groups side by side and wrap on smaller screens */
   display: flex;
   gap: 2rem;
   flex-wrap: wrap;
@@ -337,6 +354,7 @@ label {
 }
 
 .form-buttons {
+  /* Arrange buttons horizontally */
   display: flex;
   gap: 1rem;
 }
@@ -353,6 +371,7 @@ label {
   color: #555;
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
   .profile-layout {
     column-count: 1;
