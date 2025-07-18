@@ -41,6 +41,7 @@ hr {
   color: #09b44b;
 }
 
+/* Sidebar navigation */
 aside {
   top: 90px;
   height: 100vh;
@@ -48,8 +49,8 @@ aside {
   padding: 24px 20px;
   margin-bottom: 20px;
   scroll-behavior: smooth;
-  position: sticky;
-  flex-shrink: 0;
+  position: sticky; /* keeps sidebar fixed in viewport */
+  flex-shrink: 0; /* prevents shrinking when flexbox overflows */
   border-radius: 15px;
   box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
   transition: width 0.3s ease;
@@ -122,6 +123,7 @@ aside ul ul li:hover {
   color: #777777d8;
 }
 
+/* Inline code styling */
 code {
   background-color: #f0f0f0;
   color: #b30038;

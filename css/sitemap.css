@@ -19,12 +19,14 @@ section .site-map:hover {
   scrollbar-width: thin;
 }
 
+/* Hide mobile SVG by default (desktop view) */
 .svg-mobile {
   display: none;
 }
 
+/* Styling for rectangles in the SVG site map */
 .site-map rect {
-  rx: 10;
+  rx: 10; /* rounded corners */
   fill: white;
   stroke: #77c052;
   stroke-width: 2;
@@ -41,21 +43,25 @@ section .site-map:hover {
   stroke-width: 2;
 }
 
+/* Styling for polylines (arrows) */
 .site-map polyline {
   fill: #4caf50;
 }
 
+/* Styling for text labels inside the SVG */
 .site-map svg text {
   font-size: 14px;
   fill: #2f7e4c;
-  pointer-events: none;
+  pointer-events: none; /* text is not clickable */
 }
 
 .site-map .text2 {
   font-size: 12px;
 }
 
+/* Responsive Design */
 @media screen and (max-width: 600px) {
+  /* Show the mobile SVG and hide desktop SVG */
   .svg-mobile {
     display: block;
   }
